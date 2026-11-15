@@ -34,3 +34,9 @@ histórica ou registro de causas da variação.
 - O trabalho está no [PR inicial](https://github.com/Lincoln16yyy/Smart-Nation-Director-HOI-IV-/pull/1).
   Preserve a distinção entre resultados estáticos e resultados vistos em
   campanha e registre o avanço na documentação.
+
+A gestão externa da construção é declarada pelo jogador. Enquanto estiver
+marcada, o Director bloqueia novas autorizações e o despacho mensal. Uma
+autorização anterior permanece pendente e ainda pode ser cancelada. O
+controle também aparece no relatório nacional. Não há detecção de outros mods
+nem controle de `human_ai` pelo script.

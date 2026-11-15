@@ -71,3 +71,11 @@ campanha de teste. Ative, confira a mensagem de espera e passe uma virada de
 mês após uma mudança conhecida na contagem de fábricas. Compare a variação
 com as contagens observadas. Desative e reative para conferir a limpeza da
 comparação anterior.
+
+## Coordenação da fila de construção
+
+As verificações estáticas cobrem os dois bloqueios e as referências do
+relatório. Para conferir em jogo, autorize o piloto, marque gestão externa e
+passe a virada de mês. Confira que a autorização permanece pendente e que
+não houve despacho. Libere o Director antes da virada seguinte e confira
+uma única ordem, desde que a capital continue elegível.

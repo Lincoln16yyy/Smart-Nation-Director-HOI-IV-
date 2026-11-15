@@ -33,7 +33,9 @@ class PackageTests(unittest.TestCase):
         decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
         references = re.findall(r'country_event\s*=\s*\{\s*id\s*=\s*(snd\.\d+)', effect + decisions)
         self.assertCountEqual(event_ids, references)
-        scripted_loc = (MOD / 'common/scripted_localisation/snd_industry_localisation.txt').read_text()
+        scripted_loc = '\n'.join(
+            path.read_text() for path in (MOD / 'common/scripted_localisation').glob('snd_*.txt')
+        )
         required = {'snd_director_category'}
         required.update(re.findall(r'localization_key\s*=\s*(snd_\w+)', scripted_loc))
         getters = re.findall(r'name\s*=\s*(GetSnd\w+)', scripted_loc)
@@ -52,6 +54,19 @@ class PackageTests(unittest.TestCase):
                     for variable in re.findall(r"\[\?(snd_\w+)", line):
                         self.assertIn(f"{variable} =", decisions + effect)
                 self.assertEqual(set(re.findall(r'\[Root\.(GetSnd\w+)\]', '\n'.join(lines))), set(getters))
+
+    def test_external_construction_blocks_authorization_and_dispatch(self):
+        decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
+        on_actions = (MOD / 'common/on_actions/snd_on_actions.txt').read_text()
+        guard = 'NOT = { has_country_flag = snd_external_construction }'
+
+        external_controls, pilot = decisions.split('    snd_enable_pilot = {', 1)
+        self.assertIn('set_country_flag = snd_external_construction', external_controls)
+        self.assertIn('clr_country_flag = snd_external_construction', external_controls)
+        self.assertNotIn('clr_country_flag = snd_pilot_enabled', external_controls)
+        self.assertIn(guard, pilot)
+        dispatch_check = on_actions.split('snd_update_industry_tracking = yes', 1)[1]
+        self.assertIn(guard, dispatch_check.split('snd_dispatch_pilot = yes', 1)[0])
 
     def test_pilot_uses_regular_queue(self):
         effect = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
