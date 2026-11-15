@@ -14,7 +14,11 @@
 
 Nenhum adaptador de terceiros foi implementado. A escolha do responsável por uma função depende da execução demonstrada em jogo.
 
-Na instalação local, os exemplos consultados de `add_equipment_production`
-são para encomendas navais, como o cruzador em `events/NSB_Soviet.txt`.
-Ainda falta confirmar como aplicar o efeito à produção terrestre e detectar
-linhas existentes antes de permitir que o Director abra novas linhas.
+O padrão terrestre de `add_equipment_production` está em
+`history/units/BRA_1936.txt`. O piloto usa os modelos 0 a 3, com as mesmas
+tecnologias vanilla e Road to 56. A documentação local 1.19.3 descreve
+consultas de estoque e capacidade, mas não encontrei nela um trigger de
+consulta a uma linha de produção por equipamento. O piloto continua
+limitado a uma solicitação por país. É necessário testar se uma linha
+existente interfere na alocação e, antes de automatizar novas solicitações,
+confirmar um método de evitar duplicatas.

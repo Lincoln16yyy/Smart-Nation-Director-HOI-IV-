@@ -36,3 +36,7 @@ A categoria **Smart Nation Director** também mostra um painel compacto com fáb
 **Iniciar rotinas automáticas do Director** liga acompanhamento, alertas e, quando a fila estiver livre para o Director, construção recorrente. **Parar rotinas automáticas do Director** interrompe novas ações, cancela o piloto pendente e mantém as obras que já estão na fila.
 
 O Director reconhece automaticamente a configuração de construção do Iron Secretary 2.1.0 e aguarda enquanto ela puder emitir ordens. Use o controle manual de gestão externa para a IA nativa e outros mods.
+
+O **piloto de produção de infantaria** é uma autorização separada. Em guerra, a rotina avalia mensalmente a reserva e a capacidade militar. Pode solicitar uma única linha para o modelo mais avançado já pesquisado entre os quatro níveis compatíveis com o vanilla e o Road to 56. Use com a produção sob seu controle até a validação em jogo.
+
+Se a IA nativa ou outro mod assumir a produção militar, use **Indicar produção gerida externamente**. A autorização pendente fica guardada até você liberar a produção para o Director.

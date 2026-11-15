@@ -1,0 +1,30 @@
+defined_text = {
+    name = GetSndProductionStatus
+    text = {
+        trigger = { has_country_flag = snd_external_production }
+        localization_key = snd_production_status_external
+    }
+    text = {
+        trigger = {
+            NOT = { has_country_flag = snd_external_production }
+            has_country_flag = snd_rifle_order_issued
+        }
+        localization_key = snd_production_status_issued
+    }
+    text = {
+        trigger = {
+            NOT = { has_country_flag = snd_external_production }
+            NOT = { has_country_flag = snd_rifle_order_issued }
+            has_country_flag = snd_rifle_production_enabled
+        }
+        localization_key = snd_production_status_pending
+    }
+    text = {
+        trigger = {
+            NOT = { has_country_flag = snd_external_production }
+            NOT = { has_country_flag = snd_rifle_order_issued }
+            NOT = { has_country_flag = snd_rifle_production_enabled }
+        }
+        localization_key = snd_production_status_off
+    }
+}

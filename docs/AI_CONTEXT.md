@@ -83,3 +83,20 @@ A categoria de decisões declara `scripted_gui = snd_dashboard`. O painel usa
 chamam `snd_refresh_dashboard` e `snd_show_national_report`, e a captura de
 variáveis é compartilhada por `snd_capture_report_values`. O painel foi
 dimensionado em 490x236 e ainda não foi visto em jogo.
+
+O piloto de produção é opt-in separado das rotinas gerais e emite no máximo
+uma solicitação por país. A rotina pede uma fábrica em uma linha de armas de
+infantaria já desbloqueadas, sem alterar estoque, eficiência ou progresso.
+Até confirmar a semântica das fábricas disponíveis e o comportamento com
+linhas existentes, trate o piloto como experimental e não o combine com
+gestão de produção externa.
+
+A gestão externa da produção é uma opção manual independente da construção.
+Ela impede novas autorizações e o despacho de um piloto já autorizado,
+sem apagar a autorização pendente. O relatório mostra a gestão externa ou
+o estado do piloto. Uma ordem emitida é um pedido, sujeito à fila do jogo.
+
+A seleção de armamento usa a ordem 3, 2, 1 e 0, conforme a tecnologia.
+Os quatro vínculos tecnologia/equipamento correspondem ao vanilla e ao
+Road to 56 instalado. Estoque e capacidade militar não identificam linhas
+existentes. A autorização permanece de uso único.

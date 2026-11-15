@@ -11,6 +11,7 @@
 | Alertas nacionais automáticos | Revisão mensal opcional de estabilidade, apoio à guerra, mão de obra e equipamento de infantaria. Validação em jogo pendente. |
 | Controle das rotinas | Ativação e parada conjuntas, com elegibilidade de construção preservada. Validação em jogo pendente. |
 | Painel do Director | Scripted GUI na categoria de decisões com fábricas, estaleiros, mão de obra e comércio. Reutiliza a captura do relatório. Validação em jogo pendente. |
+| Produção de infantaria | Piloto opt-in de uma solicitação pela fila normal, com suspensão por gestão externa e status no relatório. Seleciona o modelo pesquisado mais avançado entre os níveis 0–3. Validação em jogo pendente. |
 | Integrações, política e guerra | Pendentes. |
 | Campanhas longas e desempenho | Pendentes. |
 

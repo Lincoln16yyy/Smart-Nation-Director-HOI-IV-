@@ -168,3 +168,35 @@ snd_start_government_routines = {
         set_country_flag = snd_auto_construction
     }
 }
+
+snd_dispatch_rifle_order = {
+    if = {
+        limit = { has_tech = advanced_infantry_weapons }
+        add_equipment_production = {
+            equipment = { type = infantry_equipment_3 }
+            requested_factories = 1
+        }
+    }
+    else_if = {
+        limit = { has_tech = improved_infantry_weapons }
+        add_equipment_production = {
+            equipment = { type = infantry_equipment_2 }
+            requested_factories = 1
+        }
+    }
+    else_if = {
+        limit = { has_tech = infantry_weapons1 }
+        add_equipment_production = {
+            equipment = { type = infantry_equipment_1 }
+            requested_factories = 1
+        }
+    }
+    else = {
+        add_equipment_production = {
+            equipment = { type = infantry_equipment_0 }
+            requested_factories = 1
+        }
+    }
+    set_country_flag = snd_rifle_order_issued
+    clr_country_flag = snd_rifle_production_enabled
+}

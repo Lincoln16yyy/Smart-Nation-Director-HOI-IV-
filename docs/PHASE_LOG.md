@@ -24,3 +24,6 @@
 18. O Director passou a consultar as flags que acionam construção no Iron Secretary 2.1.0 e suspende suas ordens enquanto houver sobreposição. Validação estática concluída.
 19. Adicionado alerta de reserva baixa de equipamento de infantaria e status comercial do Iron Secretary no relatório. Validação estática concluída.
 20. Primeiro painel do Director via scripted GUI dentro da categoria de decisões, reutilizando a captura do relatório. Validação estática concluída.
+20. Implementado piloto opcional de linha de produção de infantaria. Validação estática concluída.
+21. Adicionado controle de gestão externa da produção e status do piloto no relatório. Validação estática concluída.
+22. Piloto de infantaria passou a escolher o modelo mais avançado entre os quatro níveis comuns ao vanilla e ao Road to 56. Validação estática concluída.

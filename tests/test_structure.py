@@ -115,7 +115,7 @@ class PackageTests(unittest.TestCase):
     def test_iron_secretary_trade_status_checks_weekly_module_flags(self):
         triggers = (MOD / 'common/scripted_triggers/snd_triggers.txt').read_text()
         getter = (MOD / 'common/scripted_localisation/snd_trade_localisation.txt').read_text()
-        trade = triggers.split('snd_iron_secretary_runs_trade = {', 1)[1]
+        trade = triggers.split('snd_iron_secretary_runs_trade = {', 1)[1].split('\n}', 1)[0]
         self.assertCountEqual(re.findall(r'has_country_flag = (\w+)', trade),
                               ['ais_enabled', 'ais_trade_enabled'])
         self.assertIn('trigger = { snd_iron_secretary_runs_trade = yes }', getter)
@@ -199,6 +199,36 @@ class PackageTests(unittest.TestCase):
         self.assertIn('check_variable = { snd_current_risk > 0 }', review)
         self.assertIn('snd_show_national_report = yes', review)
         self.assertRegex(on_actions, r'has_country_flag = snd_risk_alerts_enabled\s*}\s*snd_review_national_risk = yes')
+
+    def test_external_production_preserves_pending_pilot_and_blocks_dispatch(self):
+        decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
+        triggers = (MOD / 'common/scripted_triggers/snd_triggers.txt').read_text()
+        guard = 'NOT = { has_country_flag = snd_external_production }'
+        controls, pilot = decisions.split('    snd_set_external_production = {', 1)[1].split(
+            '    snd_enable_rifle_production_pilot = {', 1
+        )
+        self.assertIn('set_country_flag = snd_external_production', controls)
+        self.assertIn('clr_country_flag = snd_external_production', controls)
+        self.assertNotIn('clr_country_flag = snd_rifle_production_enabled', controls)
+        self.assertIn(f'available = {{ {guard} }}', pilot)
+        self.assertIn(guard, triggers.split('snd_can_dispatch_rifle_order = {', 1)[1])
+
+    def test_rifle_pilot_only_requests_one_regular_factory(self):
+        effects = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
+        actions = (MOD / 'common/on_actions/snd_on_actions.txt').read_text()
+        triggers = (MOD / 'common/scripted_triggers/snd_triggers.txt').read_text()
+        effect = effects.split('snd_dispatch_rifle_order = {', 1)[1]
+        models = ('infantry_equipment_3', 'infantry_equipment_2', 'infantry_equipment_1', 'infantry_equipment_0')
+        self.assertEqual(re.findall(r'type = (infantry_equipment_\d+)', effect), list(models))
+        for tech, model in zip(('advanced_infantry_weapons', 'improved_infantry_weapons', 'infantry_weapons1'), models):
+            self.assertRegex(effect, rf'has_tech = {tech} }}\s+add_equipment_production = {{\s+equipment = {{ type = {model} }}')
+        self.assertEqual(effect.count('requested_factories = 1'), len(models))
+        for bonus in ('efficiency', 'progress', 'add_equipment_to_stockpile'):
+            self.assertNotIn(bonus, effect)
+        self.assertIn('set_country_flag = snd_rifle_order_issued', effect)
+        self.assertIn('NOT = { has_country_flag = snd_rifle_order_issued }', actions)
+        self.assertIn('snd_has_infantry_equipment_risk = yes', triggers)
+        self.assertIn('num_of_available_military_factories > 0', triggers)
 
     def test_pilot_uses_regular_queue(self):
         effect = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
