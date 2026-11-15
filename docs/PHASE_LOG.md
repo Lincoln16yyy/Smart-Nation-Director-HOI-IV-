@@ -42,3 +42,9 @@
 31. Adicionada leitura de slots nativos, identificação do sistema virtual e sugestão contextual de pesquisa. Validação estática concluída.
 
 32. Adicionadas orientação de focos e leitura de progresso de um foco brasileiro conhecido. Validação estática concluída.
+
+33. Adicionada a visão militar de guerra, forças e capitulação. Validação estática concluída.
+
+34. Integrado alerta de risco de capitulação à revisão mensal. Transições para o risco abrem o relatório militar. Validação estática concluída.
+
+35. Adicionada visão diplomática de facção, liderança e países subordinados. Validação estática concluída.

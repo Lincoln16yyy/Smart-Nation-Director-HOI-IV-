@@ -230,3 +230,13 @@ A leitura e as referências passaram na validação estática. Em jogo, compare 
 ## Focos nacionais no relatório
 
 Em uma campanha com a árvore brasileira `brazil_tree`, compare o texto antes de iniciar, durante e após concluir Consequências da crise do café. Use outra árvore para conferir a orientação genérica. O relatório não seleciona nem conclui focos. Validação atual estática.
+
+## Situação militar
+
+Compare uma campanha em paz e outra em guerra. Confira divisões e navios com a interface do jogo. Confirme que o percentual rumo à capitulação só aparece em guerra antes da capitulação. Validação atual estática.
+
+Com os alertas ligados e o país em guerra, passe uma virada com progresso rumo à capitulação acima de 50%. Confira que a situação militar tem prioridade sobre os outros avisos. Mantenha a condição por mais uma virada para conferir que o aviso não repete. A validação atual é estática.
+
+## Situação diplomática
+
+Abra a visão diplomática com um líder de facção, outro membro e um país fora de facção. Confira o nome e a contagem no menu diplomático. Use um país subordinado para validar o texto de dependência. A validação atual é estática.

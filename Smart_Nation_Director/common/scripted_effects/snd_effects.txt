@@ -144,9 +144,17 @@ snd_show_national_report = {
     country_event = { id = snd.3 }
 }
 
+snd_show_military_report = {
+    country_event = { id = snd.4 }
+}
+
 snd_review_national_risk = {
     set_temp_variable = { snd_current_risk = 0 }
     if = {
+        limit = { snd_has_surrender_risk = yes }
+        set_temp_variable = { snd_current_risk = 5 }
+    }
+    else_if = {
         limit = { snd_has_stability_risk = yes }
         set_temp_variable = { snd_current_risk = 1 }
     }
@@ -168,6 +176,10 @@ snd_review_national_risk = {
         }
         set_variable = { snd_last_reported_risk = snd_current_risk }
         if = {
+            limit = { check_variable = { snd_current_risk = 5 } }
+            snd_show_military_report = yes
+        }
+        else_if = {
             limit = { check_variable = { snd_current_risk > 0 } }
             snd_show_national_report = yes
         }

@@ -55,3 +55,9 @@ O relatório também mostra o poder político e avalia se vale revisar as leis d
 Na seção de pesquisa, o relatório mostra o total de slots nativos e indica se o Automated Research System está ativo pelos indicadores do mod. O Director sugere tecnologias com base na situação e omite as que já foram pesquisadas ou estão em andamento.
 
 O relatório também sugere áreas para o próximo foco e pode mostrar o progresso registrado ou a conclusão de **Consequências da crise do café** na árvore brasileira que contém esse foco.
+
+**Consultar situação militar** mostra a quantidade de divisões sob controle, a frota, o apoio à guerra e, durante uma guerra, o progresso rumo à capitulação.
+
+Com os alertas automáticos ligados, o Director dá prioridade ao risco de capitulação. Ao detectar progresso acima de 50% na virada elegível, ele abre o relatório militar. Viradas consecutivas com a mesma prioridade não repetem o aviso.
+
+**Consultar situação diplomática** mostra se você lidera ou integra uma facção, o total de membros, se o país é subordinado e quantos países ele controla como subordinados.

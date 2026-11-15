@@ -55,6 +55,24 @@ snd_director_category = {
             snd_show_national_report = yes
         }
     }
+    snd_open_military_report = {
+        visible = { is_ai = no }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            snd_show_military_report = yes
+        }
+    }
+    snd_open_diplomatic_report = {
+        visible = { is_ai = no }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            country_event = { id = snd.5 }
+        }
+    }
     snd_enable_risk_alerts = {
         visible = {
             is_ai = no
