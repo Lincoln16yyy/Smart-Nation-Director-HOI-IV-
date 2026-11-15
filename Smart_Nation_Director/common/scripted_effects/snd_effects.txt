@@ -128,7 +128,7 @@ snd_record_auto_project = {
     ROOT = {
         set_variable = { snd_auto_project_state = PREV }
         set_country_flag = snd_auto_project_pending
-        set_country_flag = { flag = snd_auto_construction_cooldown days = 180 }
+        set_country_flag = { flag = snd_auto_construction_cooldown value = 1 days = 180 }
     }
 }
 

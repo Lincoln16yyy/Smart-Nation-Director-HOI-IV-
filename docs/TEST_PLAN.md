@@ -68,3 +68,14 @@ entre as etapas; deixe `human_ai` desligado.
 5. Desative as rotinas: o status deve indicar desativação, preservando o registro
    da última ordem e o intervalo. Repita os estados principais após salvar e
    recarregar; registre idiomas testados e erros de localização em RUNTIME_TESTS.
+
+
+## Reteste das flags temporárias corrigidas
+
+Use um perfil novo gerado após a correção de `value = 1`. Na variante de
+aprovação, o relatório deve mostrar intervalo mínimo de 180 dias logo após
+a ordem e após salvar/recarregar. Na variante de recusa, deve mostrar
+adiamento de 90 dias, inclusive após salvar/recarregar e ao trocar para modo
+consultivo. Confira a duração efetiva cruzando os prazos, sem confundir
+intervalo expirado com liberação da espera de obra. Saves da versão anterior
+podem conter temporizadores de valor zero e não validam essa correção.

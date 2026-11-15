@@ -249,7 +249,7 @@ snd_director_category = {
         ai_will_do = { factor = 0 }
         complete_effect = {
             clr_country_flag = snd_construction_proposal_pending
-            set_country_flag = { flag = snd_construction_proposal_deferred days = 90 }
+            set_country_flag = { flag = snd_construction_proposal_deferred value = 1 days = 90 }
         }
     }
     snd_release_pending_project = {

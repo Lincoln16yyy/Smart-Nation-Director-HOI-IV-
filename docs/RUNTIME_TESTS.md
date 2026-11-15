@@ -268,3 +268,80 @@ os 23 testes Python continuam aprovados. A versão do manifesto local
 continua 1.19.3.0. Nesta etapa Wine e campanhas não foram iniciados.
 A observação da proposta, aprovação e consumo de capacidade civil continua
 pendente; o lançador do Brasil e as instruções estão preparados.
+
+## Construção supervisionada no Brasil — evidências do usuário, 15/11/2026
+
+Na campanha descartável `construction-test.1giVJOvA`, o usuário operou a
+interface e forneceu quatro capturas. Em 1º de janeiro de 1936, o painel
+mostrou 15 fábricas civis, 3 militares, 2 estaleiros e mão de obra de 572,0
+milhares antes de abrir o relatório. O HUD mostrava 572,05 mil; a diferença
+é compatível com a precisão de exibição. Confirmação visual em inglês,
+resolução 1440×900; português e 1920×1080 continuam pendentes.
+
+Após habilitar supervisão e construção automática, em 2 de fevereiro de
+1936 às 21h apareceram as opções de aprovar e recusar proposta. Antes da
+aprovação, a fila estava vazia: 7/17 fábricas destinadas a bens de consumo,
+15 próprias e 2 de comércio. Após o clique de aprovação, no mesmo horário,
+a fila mostrou uma única fábrica civil no Paraná, nível solicitado 1, com
+10/15 fábricas alocadas. Bens de consumo permaneceram em 7; o total alocado
+passou a 17/17. Isso demonstra proposta sem despacho antecipado e ordem
+pela fila regular com consumo de capacidade civil após aprovação.
+
+Não confirma conclusão, avanço de progresso, repetição após intervalo,
+recusa, revalidação de estado inválido ou persistência após salvar/carregar.
+O `error.log` estava vazio na coleta após aprovação. As capturas fornecidas
+foram preservadas apenas na pasta local ignorada `runtime/.../evidence/`.
+
+### Progresso da fábrica supervisionada
+
+Captura fornecida pelo usuário em 11/2/1936 às 8h: a única fábrica civil
+no Paraná continuava com 10/15 fábricas alocadas e tinha 252/10800 de
+progresso (2% na interface). O tooltip indicava velocidade de construção
+28,00, saída das dez fábricas de 50,00, modificadores de economia civil
+−30%, foco em exportações +10%, Neglected State −40% e infraestrutura
+estadual ×1,40. A previsão exibida era 23/2/1937 à 1h. O custo mostrado era
+10800. São valores observados nesta configuração, não constantes do Director.
+Isso confirma avanço pela construção regular, sujeito aos modificadores
+exibidos pelo jogo; conclusão e persistência após recarregar ainda pendentes.
+Captura local: `evidence/queue-progress-feb11.png` no perfil descartável.
+
+### Fila após salvar/recarregar
+
+Após a instrução de salvar e recarregar, o usuário forneceu nova captura em
+11/2/1936 às 8h. A fila continuava com uma única fábrica civil no Paraná,
+252/10800 (2%), 10/15 fábricas alocadas e previsão de 23/2/1937 à 1h.
+O save ` snd_teste_construcao.hoi4` foi localizado exclusivamente no perfil
+descartável (o nome contém um espaço inicial). O game.log consultado não
+traz uma linha explícita de recarga; a evidência visual posterior ao passo
+solicitado sustenta a preservação da fila e do progresso, sem demonstrar
+por si só as flags internas do Director. Falta conferir o relatório após
+recarga e atravessar outra virada mensal sem gerar duplicatas.
+Captura local: `evidence/queue-after-reload-feb11.png`.
+
+### Relatório após recarga e falha no temporizador
+
+A captura seguinte, ainda em 11/2/1936 às 8h, mostrou última ordem de fábrica
+civil no Paraná, proposta ausente e espera por aumento de nível da obra.
+O relatório também exibiu 17 civis/3 militares, 2 estaleiros, 572,8 mil de
+mão de obra, dois slots nativos e alerta de estabilidade abaixo de 50%.
+Os 17 civis do relatório contrastam com as 15 próprias mais duas de comércio
+na fila: a contagem dinâmica inclui capacidade de comércio nesta observação;
+não equivale exclusivamente ao total de fábricas próprias. A interpretação
+completa desse indicador ainda exige comparação adicional.
+
+O status pulou o intervalo de 180 dias, que deveria ter prioridade sobre a
+obra pendente. Inspeção somente de leitura do save binário encontrou o nome
+da flag de cooldown com valor zero e a flag de obra pendente com valor um.
+Os exemplos vanilla locais em `common/national_focus/usa.txt`
+(`USA_great_depression_cooldown`) e `common/decisions/TUR.txt` definem flags
+temporárias com `value = 1`. O Director omitia esse campo em ambos os
+intervalos (180 dias e 90 dias após recusa). Corrigidas as duas definições
+para usar valor explícito e ajustadas as asserções estáticas.
+
+A correção ainda não foi executada na engine. A campanha aberta usa a cópia
+anterior; alterar o repositório não atualiza esse processo nem corrige o
+valor já salvo. A obra pendente continua sendo uma barreira independente,
+mas o intervalo da versão testada não deve ser considerado validado.
+Repetir aprovação/recusa em perfil novo com código corrigido e conferir o
+status e a persistência dos temporizadores antes de declarar a correção
+confirmada em runtime.

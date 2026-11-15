@@ -81,7 +81,7 @@ class PackageTests(unittest.TestCase):
             auto_effect,
         )
         self.assertCountEqual(orders, ['arms_factory', 'industrial_complex', 'infrastructure'])
-        self.assertIn('flag = snd_auto_construction_cooldown days = 180', auto_effect)
+        self.assertIn('flag = snd_auto_construction_cooldown value = 1 days = 180', auto_effect)
         self.assertIn('any_owned_state = { snd_auto_factory_candidate = yes }', auto_effect)
         self.assertIn('random_owned_controlled_state = {', auto_effect)
         self.assertIn('set_variable = { snd_auto_project_state = PREV }', auto_effect)
@@ -144,7 +144,7 @@ class PackageTests(unittest.TestCase):
         self.assertIn('snd_can_plan_auto_construction = yes', eligible)
         self.assertIn('var:snd_proposal_state = {', eligible)
         decline = decisions.split('snd_decline_construction_proposal = {', 1)[1].split('\n    }', 1)[0]
-        self.assertIn('flag = snd_construction_proposal_deferred days = 90', decline)
+        self.assertIn('flag = snd_construction_proposal_deferred value = 1 days = 90', decline)
         self.assertNotIn('snd_queue_planned_project = yes', decline)
 
     def test_advisory_construction_only_refreshes_a_recommendation(self):
