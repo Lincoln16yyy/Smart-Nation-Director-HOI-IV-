@@ -48,3 +48,8 @@
 34. Integrado alerta de risco de capitulação à revisão mensal. Transições para o risco abrem o relatório militar. Validação estática concluída.
 
 35. Adicionada visão diplomática de facção, liderança e países subordinados. Validação estática concluída.
+
+36. Adicionada auditoria reproduzível de símbolos do Director contra os mods locais.
+    Em 15/11/2026, 346 definições comparadas a 11 mods, sem colisões ou duplicatas
+    nos domínios cobertos. Versão 1.19.3.0 reconfirmada. 22 testes estáticos
+    aprovados; nenhum novo teste em campanha.

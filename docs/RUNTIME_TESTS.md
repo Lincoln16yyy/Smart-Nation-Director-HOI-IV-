@@ -240,3 +240,12 @@ Com os alertas ligados e o país em guerra, passe uma virada com progresso rumo 
 ## Situação diplomática
 
 Abra a visão diplomática com um líder de facção, outro membro e um país fora de facção. Confira o nome e a contagem no menu diplomático. Use um país subordinado para validar o texto de dependência. A validação atual é estática.
+
+## Auditoria estática — 15/11/2026
+
+Executados `python3 scripts/audit_symbols.py PERFIL` e
+`python3 -m unittest discover -s tests -v`: 346 definições do Director,
+11 mods locais, nenhuma colisão nos domínios cobertos e 22 testes aprovados.
+O manifesto da instalação mantém a versão 1.19.3.0. Não foi iniciada uma
+campanha nesta etapa. Os testes pendentes do painel, relatórios, modos de
+construção e variante de produção continuam pendentes.

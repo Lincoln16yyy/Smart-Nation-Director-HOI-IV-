@@ -31,7 +31,7 @@ histórica ou registro de causas da variação.
   dúvidas concretas que afetam a implementação. Quando precisar do jogo,
   avise o usuário para que ele abra a tela necessária. O usuário não precisa
   fornecer números manualmente.
-- O trabalho está no [PR inicial](https://github.com/Lincoln16yyy/Smart-Nation-Director-HOI-IV-/pull/1).
+- O PR inicial é histórico. Confira o estado atual do GitHub antes de publicar novas mudanças.
   Preserve a distinção entre resultados estáticos e resultados vistos em
   campanha e registre o avanço na documentação.
 
@@ -126,3 +126,9 @@ A decisão **Consultar situação militar** abre `snd.4` e distingue paz, guerra
 O risco de capitulação tem prioridade sobre os demais alertas. O limite é `surrender_progress > 0.5` em guerra, antes da capitulação. A revisão mensal registra o risco no mesmo histórico dos alertas nacionais e abre `snd.4` no lugar do relatório nacional quando essa passa a ser a prioridade. A consulta manual da situação militar não modifica o histórico.
 
 A visão diplomática é uma leitura do próprio país. `snd.5` usa `is_faction_leader`, `is_in_faction`, `is_subject`, `num_faction_members` e `num_subjects`. Ela não modifica facções, relações ou autonomia.
+
+A auditoria de símbolos pode ser repetida com
+`python3 scripts/audit_symbols.py PERFIL`. O resumo em
+`docs/SYMBOL_AUDIT.json` registra 346 definições do Director, 11 mods e nenhuma
+colisão nos domínios cobertos. Não inclui flags, variáveis, ideias, sprites,
+janelas, vanilla nem todos os pares de terceiros; veja `MOD_AUDIT.md`.
