@@ -33,11 +33,20 @@ country_event = {
         }
     }
     desc = {
+        text = snd.3.d_low_manpower
+        trigger = {
+            NOT = { snd_has_stability_risk = yes }
+            NOT = { snd_has_war_support_risk = yes }
+            snd_has_manpower_risk = yes
+        }
+    }
+    desc = {
         text = snd.3.d_war
         trigger = {
             NOT = { snd_has_stability_risk = yes }
             has_war = yes
             NOT = { snd_has_war_support_risk = yes }
+            NOT = { snd_has_manpower_risk = yes }
         }
     }
     desc = {

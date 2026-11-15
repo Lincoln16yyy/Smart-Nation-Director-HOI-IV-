@@ -43,12 +43,15 @@ snd_dispatch_auto_construction = {
             capital_scope = { is_demilitarized_zone = no }
         }
         capital_scope = {
+            ROOT = {
+                set_variable = { snd_auto_project_type = 3 }
+                set_variable = { snd_auto_project_baseline = PREV.building_level@infrastructure }
+            }
             add_building_construction = {
                 type = infrastructure
                 level = 1
                 instant_build = no
             }
-            ROOT = { set_variable = { snd_auto_project_type = 3 } }
             snd_record_auto_project = yes
         }
     }
@@ -57,20 +60,26 @@ snd_dispatch_auto_construction = {
 snd_queue_preferred_factory = {
     if = {
         limit = { ROOT = { has_war = yes } }
+        ROOT = {
+            set_variable = { snd_auto_project_type = 2 }
+            set_variable = { snd_auto_project_baseline = PREV.building_level@arms_factory }
+        }
         add_building_construction = {
             type = arms_factory
             level = 1
             instant_build = no
         }
-        ROOT = { set_variable = { snd_auto_project_type = 2 } }
     }
     else = {
+        ROOT = {
+            set_variable = { snd_auto_project_type = 1 }
+            set_variable = { snd_auto_project_baseline = PREV.building_level@industrial_complex }
+        }
         add_building_construction = {
             type = industrial_complex
             level = 1
             instant_build = no
         }
-        ROOT = { set_variable = { snd_auto_project_type = 1 } }
     }
     snd_record_auto_project = yes
 }
@@ -78,6 +87,7 @@ snd_queue_preferred_factory = {
 snd_record_auto_project = {
     ROOT = {
         set_variable = { snd_auto_project_state = PREV }
+        set_country_flag = snd_auto_project_pending
         set_country_flag = { flag = snd_auto_construction_cooldown days = 180 }
     }
 }
@@ -100,6 +110,10 @@ snd_review_national_risk = {
         limit = { snd_has_war_support_risk = yes }
         set_temp_variable = { snd_current_risk = 2 }
     }
+    else_if = {
+        limit = { snd_has_manpower_risk = yes }
+        set_temp_variable = { snd_current_risk = 3 }
+    }
     if = {
         limit = {
             NOT = { check_variable = { snd_last_reported_risk = snd_current_risk } }
@@ -109,5 +123,36 @@ snd_review_national_risk = {
             limit = { check_variable = { snd_current_risk > 0 } }
             snd_show_national_report = yes
         }
+    }
+}
+
+snd_start_industry_tracking = {
+    snd_capture_industry_baseline = yes
+    clr_country_flag = snd_industry_sample_ready
+    set_country_flag = snd_industry_tracking
+}
+
+snd_stop_industry_tracking = {
+    clr_country_flag = snd_industry_tracking
+    clr_country_flag = snd_industry_sample_ready
+}
+
+snd_start_risk_alerts = {
+    set_variable = { snd_last_reported_risk = 0 }
+    set_country_flag = snd_risk_alerts_enabled
+}
+
+snd_start_government_routines = {
+    if = {
+        limit = { NOT = { has_country_flag = snd_industry_tracking } }
+        snd_start_industry_tracking = yes
+    }
+    if = {
+        limit = { NOT = { has_country_flag = snd_risk_alerts_enabled } }
+        snd_start_risk_alerts = yes
+    }
+    if = {
+        limit = { snd_can_start_auto_construction = yes }
+        set_country_flag = snd_auto_construction
     }
 }

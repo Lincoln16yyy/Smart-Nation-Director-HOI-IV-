@@ -39,3 +39,54 @@ snd_has_war_support_risk = {
     has_war = yes
     has_war_support < 0.5
 }
+
+snd_can_start_auto_construction = {
+    NOT = { snd_construction_managed_externally = yes }
+    NOT = { has_country_flag = snd_pilot_enabled }
+}
+
+snd_auto_project_level_increased = {
+    var:snd_auto_project_state = {
+        is_owned_by = ROOT
+        is_controlled_by = ROOT
+        OR = {
+            AND = {
+                check_variable = { ROOT.snd_auto_project_type = 1 }
+                check_variable = { building_level@industrial_complex > ROOT.snd_auto_project_baseline }
+            }
+            AND = {
+                check_variable = { ROOT.snd_auto_project_type = 2 }
+                check_variable = { building_level@arms_factory > ROOT.snd_auto_project_baseline }
+            }
+            AND = {
+                check_variable = { ROOT.snd_auto_project_type = 3 }
+                check_variable = { building_level@infrastructure > ROOT.snd_auto_project_baseline }
+            }
+        }
+    }
+}
+
+snd_has_manpower_risk = {
+    has_war = yes
+    has_manpower < 25000
+}
+
+# Mirrors the new-construction branch in Iron Secretary 2.1.0.
+snd_iron_secretary_runs_construction = {
+    OR = {
+        has_country_flag = ais_logistics_enabled
+        has_country_flag = ais_air_enabled
+        has_country_flag = ais_industry_enabled
+    }
+    OR = {
+        has_country_flag = ais_enabled
+        any_owned_state = { has_state_flag = ais_railway_project_active }
+    }
+}
+
+snd_construction_managed_externally = {
+    OR = {
+        has_country_flag = snd_external_construction
+        snd_iron_secretary_runs_construction = yes
+    }
+}

@@ -27,6 +27,10 @@ Antes de deixar a IA nativa ou outro mod cuidar da construção, use **Indicar c
 
 O relatório também mostra estaleiros e mão de obra disponível, em milhares. Em guerra, prioriza um alerta de apoio à guerra abaixo de 50% quando a estabilidade está em pelo menos 50%.
 
-**Ativar construção automática** mantém a avaliação mensal de obras ligada. O Director prioriza uma fábrica civil em paz, uma militar em guerra e infraestrutura na capital se a fábrica preferida não couber em um estado central controlado. Cada ordem entra na fila normal e inicia um intervalo de 180 dias. A gestão externa suspende novos despachos. O relatório registra o tipo e o local da última ordem automática.
+**Ativar construção automática** mantém a avaliação mensal de obras ligada. O Director prioriza uma fábrica civil em paz, uma militar em guerra e infraestrutura na capital se a fábrica preferida não couber em um estado central controlado. Cada ordem usa a fila normal. A rotina espera pelo menos 180 dias e um aumento do nível desse edifício no estado antes de pedir outra obra. Se você cancelar a obra ou perder o estado, libere o planejamento pelo menu. A gestão externa suspende novos despachos. O relatório registra o tipo e o local da última ordem automática.
 
 **Ativar alertas nacionais automáticos** abre o relatório quando começa ou muda uma prioridade de risco. Em condições estáveis, ou enquanto a mesma prioridade persistir, a revisão mensal segue em silêncio.
+
+**Iniciar rotinas automáticas do Director** liga acompanhamento, alertas e, quando a fila estiver livre para o Director, construção recorrente. **Parar rotinas automáticas do Director** interrompe novas ações, cancela o piloto pendente e mantém as obras que já estão na fila.
+
+O Director reconhece automaticamente a configuração de construção do Iron Secretary 2.1.0 e aguarda enquanto ela puder emitir ordens. Use o controle manual de gestão externa para a IA nativa e outros mods.

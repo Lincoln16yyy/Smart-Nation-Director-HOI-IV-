@@ -18,3 +18,7 @@
 12. Implementada construção recorrente por prioridade em paz e guerra. O despacho revalida a capital e respeita a gestão externa e o intervalo de 180 dias. Validação estática concluída.
 13. A construção automática passou a procurar vagas em outros estados centrais quando a capital não é elegível. O relatório registra o último pedido. Validação estática concluída.
 14. Adicionada revisão mensal opt-in para avisar o jogador quando a prioridade de risco muda. Validação estática concluída.
+15. Adicionado controle único das rotinas automáticas, preservando a gestão externa e o intervalo de construção. Validação estática concluída.
+16. Construção recorrente agora espera o aumento do nível no estado registrado. Cancelamentos podem liberar a espera sem apagar o intervalo. Validação estática concluída.
+17. A revisão mensal ganhou um alerta de mão de obra abaixo de 25 mil em guerra, após as prioridades de estabilidade e apoio à guerra. Validação estática concluída.
+18. O Director passou a consultar as flags que acionam construção no Iron Secretary 2.1.0 e suspende suas ordens enquanto houver sobreposição. Validação estática concluída.

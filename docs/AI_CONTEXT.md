@@ -35,11 +35,12 @@ histórica ou registro de causas da variação.
   Preserve a distinção entre resultados estáticos e resultados vistos em
   campanha e registre o avanço na documentação.
 
-A gestão externa da construção é declarada pelo jogador. Enquanto estiver
-marcada, o Director bloqueia novas autorizações e o despacho mensal. Uma
-autorização anterior permanece pendente e ainda pode ser cancelada. O
-controle também aparece no relatório nacional. Não há detecção de outros mods
-nem controle de `human_ai` pelo script.
+A gestão externa da construção pode ser declarada pelo jogador. O Director
+também lê as flags que acionam o ciclo de construção no Iron Secretary
+2.1.0. Se qualquer uma dessas condições corresponder, o Director bloqueia
+novas autorizações e o despacho mensal. O relatório mostra a origem do
+bloqueio. A autorização pendente continua disponível para cancelar.
+Marque a gestão externa manualmente para `human_ai` e outros mods.
 
 O relatório usa `num_of_naval_factories` para estaleiros e `manpower_k` para
 mão de obra disponível em milhares. O alerta de baixo apoio à guerra (abaixo
@@ -49,7 +50,10 @@ A construção automática é opcional e continua entre viradas mensais até
 ser desativada. O Director procura fábricas primeiro na capital e depois em outros estados centrais sob posse e controle
 e prioriza fábrica civil em paz ou militar em guerra, com infraestrutura
 na capital como alternativa. O intervalo de 180 dias limita novas ordens do Director.
-Esse intervalo conta a partir do despacho e não verifica se a fila já terminou.
+Além do intervalo, a automação aguarda aumento no nível do mesmo tipo de
+edifício no estado registrado. É um indicador indireto e outra obra do mesmo
+tipo no local pode satisfazê-lo. Se a ordem tiver sido cancelada ou o estado
+perdido, o jogador pode liberar a espera sem remover o intervalo.
 
 O relatório registra o tipo e o estado da última ordem automática. Esse
 registro indica o pedido de construção, cujo progresso pode ser conferido
@@ -59,3 +63,12 @@ Os alertas automáticos são opt-in e rodam no ciclo mensal. A decisão e o
 alerta compartilham o disparo de `snd.3`, com os mesmos indicadores e
 prioridades. `snd_last_reported_risk` persiste o último risco. O risco zero
 rearma a próxima ocorrência sem publicar relatório.
+
+O controle único inicia os módulos sem reiniciar medições ou alertas ativos.
+Ele só ativa a construção recorrente se a gestão externa estiver desmarcada
+e não houver piloto pendente. A parada mantém o registro da última ordem,
+o intervalo de construção e a preferência de gestão externa.
+
+O alerta de mão de obra é uma heurística consultiva para países em guerra,
+com limiar fixo de 25 mil. Ele fica atrás dos alertas de estabilidade e
+apoio à guerra. Nenhuma lei de recrutamento é alterada pelo alerta.
