@@ -58,9 +58,12 @@ class PackageTests(unittest.TestCase):
     def test_external_construction_blocks_authorization_and_dispatch(self):
         decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
         on_actions = (MOD / 'common/on_actions/snd_on_actions.txt').read_text()
-        guard = 'NOT = { has_country_flag = snd_external_construction }'
+        guard = 'NOT = { snd_construction_managed_externally = yes }'
 
-        external_controls, pilot = decisions.split('    snd_enable_pilot = {', 1)
+        external_controls = decisions.split('    snd_set_external_construction = {', 1)[1].split(
+            '    snd_enable_auto_construction = {', 1
+        )[0]
+        pilot = decisions.split('    snd_enable_pilot = {', 1)[1]
         self.assertIn('set_country_flag = snd_external_construction', external_controls)
         self.assertIn('clr_country_flag = snd_external_construction', external_controls)
         self.assertNotIn('clr_country_flag = snd_pilot_enabled', external_controls)
@@ -88,8 +91,59 @@ class PackageTests(unittest.TestCase):
 
         on_actions = (MOD / 'common/on_actions/snd_on_actions.txt').read_text()
         auto_check = on_actions.split('snd_dispatch_auto_construction = yes', 1)[0].rsplit('            if = {', 1)[1]
-        for flag in ('snd_external_construction', 'snd_auto_construction_cooldown', 'snd_pilot_enabled'):
+        for flag in ('snd_auto_construction_cooldown', 'snd_pilot_enabled', 'snd_auto_project_pending'):
             self.assertIn(f'NOT = {{ has_country_flag = {flag} }}', auto_check)
+
+    def test_iron_secretary_gate_checks_construction_modules(self):
+        triggers = (MOD / 'common/scripted_triggers/snd_triggers.txt').read_text()
+        actions = (MOD / 'common/on_actions/snd_on_actions.txt').read_text()
+        iron, external = triggers.split('snd_iron_secretary_runs_construction = {', 1)[1].split(
+            'snd_construction_managed_externally = {', 1
+        )
+        groups = re.findall(r'OR = \{(.*?)\n    \}', iron, re.S)
+        self.assertEqual(len(groups), 2)
+        self.assertCountEqual(re.findall(r'has_country_flag = (\w+)', groups[0]),
+                              ['ais_logistics_enabled', 'ais_air_enabled', 'ais_industry_enabled'])
+        self.assertIn('has_country_flag = ais_enabled', groups[1])
+        self.assertIn('any_owned_state = { has_state_flag = ais_railway_project_active }', groups[1])
+        self.assertIn('snd_iron_secretary_runs_construction = yes', external)
+        self.assertIn('has_country_flag = snd_external_construction', external)
+        self.assertEqual(actions.count('NOT = { snd_construction_managed_externally = yes }'), 2)
+
+    def test_auto_project_requires_level_growth_at_the_recorded_state(self):
+        effects = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
+        actions = (MOD / 'common/on_actions/snd_on_actions.txt').read_text()
+        triggers = (MOD / 'common/scripted_triggers/snd_triggers.txt').read_text()
+        decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
+        for building in ('industrial_complex', 'arms_factory', 'infrastructure'):
+            self.assertIn(f'snd_auto_project_baseline = PREV.building_level@{building}', effects)
+            self.assertIn(f'building_level@{building} > ROOT.snd_auto_project_baseline', triggers)
+        self.assertIn('var:snd_auto_project_state = {', triggers)
+        self.assertRegex(actions, r'snd_auto_project_level_increased = yes\s*}\s*clr_country_flag = snd_auto_project_pending')
+        release = decisions.split('snd_release_pending_project = {', 1)[1].split('snd_enable_pilot = {', 1)[0]
+        self.assertIn('clr_country_flag = snd_auto_project_pending', release)
+        self.assertNotIn('snd_auto_construction_cooldown', release)
+
+    def test_government_controls_preserve_construction_safeguards_and_history(self):
+        decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
+        triggers = (MOD / 'common/scripted_triggers/snd_triggers.txt').read_text()
+        effects = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
+
+        safeguard = triggers.split('snd_can_start_auto_construction = {', 1)[1].split('}', 2)
+        self.assertIn('NOT = { snd_construction_managed_externally = yes', safeguard[0])
+        self.assertIn('NOT = { has_country_flag = snd_pilot_enabled', safeguard[1])
+
+        start = effects.split('snd_start_government_routines = {', 1)[1]
+        self.assertIn('limit = { snd_can_start_auto_construction = yes }', start)
+        self.assertIn('limit = { NOT = { has_country_flag = snd_industry_tracking } }', start)
+        self.assertIn('limit = { NOT = { has_country_flag = snd_risk_alerts_enabled } }', start)
+
+        stop = decisions.split('snd_stop_automatic_government = {', 1)[1].split('snd_open_delegation_guide = {', 1)[0]
+        self.assertIn('snd_stop_industry_tracking = yes', stop)
+        for flag in ('snd_risk_alerts_enabled', 'snd_auto_construction', 'snd_pilot_enabled'):
+            self.assertIn(f'clr_country_flag = {flag}', stop)
+        self.assertNotIn('snd_auto_construction_cooldown', stop)
+        self.assertNotIn('snd_external_construction', stop)
 
     def test_national_alerts_use_a_single_report_and_track_risk_changes(self):
         effects = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()

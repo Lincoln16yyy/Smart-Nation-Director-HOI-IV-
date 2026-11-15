@@ -5,7 +5,14 @@ defined_text = {
         localization_key = snd_construction_status_external
     }
     text = {
-        trigger = { NOT = { has_country_flag = snd_external_construction } }
+        trigger = {
+            NOT = { has_country_flag = snd_external_construction }
+            snd_iron_secretary_runs_construction = yes
+        }
+        localization_key = snd_construction_status_iron_secretary
+    }
+    text = {
+        trigger = { NOT = { snd_construction_managed_externally = yes } }
         localization_key = snd_construction_status_available
     }
 }
@@ -19,14 +26,14 @@ defined_text = {
     text = {
         trigger = {
             has_country_flag = snd_auto_construction
-            has_country_flag = snd_external_construction
+            snd_construction_managed_externally = yes
         }
         localization_key = snd_auto_construction_suspended
     }
     text = {
         trigger = {
             has_country_flag = snd_auto_construction
-            NOT = { has_country_flag = snd_external_construction }
+            NOT = { snd_construction_managed_externally = yes }
             has_country_flag = snd_auto_construction_cooldown
         }
         localization_key = snd_auto_construction_waiting
@@ -34,8 +41,18 @@ defined_text = {
     text = {
         trigger = {
             has_country_flag = snd_auto_construction
-            NOT = { has_country_flag = snd_external_construction }
+            NOT = { snd_construction_managed_externally = yes }
             NOT = { has_country_flag = snd_auto_construction_cooldown }
+            has_country_flag = snd_auto_project_pending
+        }
+        localization_key = snd_auto_construction_pending
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_auto_construction
+            NOT = { snd_construction_managed_externally = yes }
+            NOT = { has_country_flag = snd_auto_construction_cooldown }
+            NOT = { has_country_flag = snd_auto_project_pending }
         }
         localization_key = snd_auto_construction_active
     }

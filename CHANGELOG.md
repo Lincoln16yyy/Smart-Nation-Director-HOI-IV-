@@ -9,6 +9,10 @@
 - Seleção manual de gestão externa da construção, com suspensão do despacho do piloto.
 - Construção automática opcional em estados centrais, com prioridade por cenário e intervalo mínimo de 180 dias.
 - Alertas mensais opcionais quando muda a prioridade de estabilidade ou apoio à guerra.
+- Controle único para iniciar e parar as rotinas automáticas do Director.
+- Espera por aumento de nível da obra anterior antes de despachar outra ordem automática.
+- Alerta mensal de baixa mão de obra em guerra, com limiar de 25 mil.
+- Bloqueio automático da construção quando o Iron Secretary 2.1.0 está configurado para emitir ordens.
 
 ## 0.1.0
 

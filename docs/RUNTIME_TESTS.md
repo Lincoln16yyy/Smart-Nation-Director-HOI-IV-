@@ -95,8 +95,10 @@ da fila normal nos três ramos. Em jogo, confirme fábrica civil em paz e
 militar em guerra; quando a fábrica preferida estiver sem vaga, confira a
 alternativa de infraestrutura. Depois do primeiro despacho, passe mais uma
 virada antes dos 180 dias e verifique que não surge outra ordem. Ativar ou
-desativar a opção não apaga o timer. A fila pode conter obras anteriores
-quando o intervalo termina.
+desativar a opção não apaga o timer. Deixe a obra sem alocação até depois
+dos 180 dias e confira que outra ordem não surge. Se for cancelada, libere
+o planejamento na decisão própria. Em outro teste, deixe o nível subir no
+estado registrado e confira que a construção retoma após o intervalo.
 
 Para testar a seleção territorial junto com a construção automática, use uma
 capital sem vaga e outro estado central com vaga. Compare o local e tipo
@@ -112,3 +114,25 @@ de 50% e espere duas viradas. Confira um aviso na primeira e nenhum na
 segunda. Deixe o risco desaparecer e reaparecer para conferir o novo
 aviso. Em guerra, confira a transição de estabilidade baixa para apoio à
 guerra baixo quando apenas este último risco permanecer.
+
+## Controle das rotinas automáticas
+
+Validação estática cobre as condições de ativação conjunta e a parada.
+Em jogo, inicie as rotinas com gestão externa e confira que alertas e
+acompanhamento funcionam enquanto a construção permanece desativada.
+Repita sem gestão externa, confira o despacho elegível e pare as rotinas.
+A ordem já emitida deve ficar na fila. Reative para conferir que o intervalo
+de construção anterior continua valendo.
+
+## Iron Secretary 2.1.0
+
+Validado estaticamente contra o ramo de `ais_run_construction_cycle` em
+`common/on_actions/ais_on_actions.txt` do Iron Secretary instalado. Para
+a validação em jogo, compare uma virada com logística, aviação ou indústria
+ligadas e outra com os três módulos desligados. Antes de cada virada,
+confira a origem do bloqueio no relatório. Comércio sozinho não bloqueia.
+O ramo que só finaliza ou libera uma ferrovia anterior não bloqueia
+quando os três módulos de construção estão desligados.
+
+Na mesma rodada de testes, o alerta de mão de obra deve aparecer em guerra
+abaixo de 25 mil quando estabilidade e apoio à guerra não são prioritários.

@@ -1,4 +1,41 @@
 snd_director_category = {
+    snd_start_automatic_government = {
+        visible = {
+            is_ai = no
+            OR = {
+                NOT = { has_country_flag = snd_industry_tracking }
+                NOT = { has_country_flag = snd_risk_alerts_enabled }
+                AND = {
+                    NOT = { has_country_flag = snd_auto_construction }
+                    snd_can_start_auto_construction = yes
+                }
+            }
+        }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            snd_start_government_routines = yes
+        }
+    }
+    snd_stop_automatic_government = {
+        visible = {
+            is_ai = no
+            OR = {
+                has_country_flag = snd_industry_tracking
+                has_country_flag = snd_risk_alerts_enabled
+                has_country_flag = snd_auto_construction
+                has_country_flag = snd_pilot_enabled
+            }
+        }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            snd_stop_industry_tracking = yes
+            clr_country_flag = snd_risk_alerts_enabled
+            clr_country_flag = snd_auto_construction
+            clr_country_flag = snd_pilot_enabled
+        }
+    }
     snd_open_delegation_guide = {
         visible = { is_ai = no }
         cost = 0
@@ -23,8 +60,7 @@ snd_director_category = {
         cost = 0
         ai_will_do = { factor = 0 }
         complete_effect = {
-            set_variable = { snd_last_reported_risk = 0 }
-            set_country_flag = snd_risk_alerts_enabled
+            snd_start_risk_alerts = yes
         }
     }
     snd_disable_risk_alerts = {
@@ -46,9 +82,7 @@ snd_director_category = {
         cost = 0
         ai_will_do = { factor = 0 }
         complete_effect = {
-            snd_capture_industry_baseline = yes
-            clr_country_flag = snd_industry_sample_ready
-            set_country_flag = snd_industry_tracking
+            snd_start_industry_tracking = yes
         }
     }
     snd_disable_industry_tracking = {
@@ -59,8 +93,7 @@ snd_director_category = {
         cost = 0
         ai_will_do = { factor = 0 }
         complete_effect = {
-            clr_country_flag = snd_industry_tracking
-            clr_country_flag = snd_industry_sample_ready
+            snd_stop_industry_tracking = yes
         }
     }
     snd_set_external_construction = {
@@ -91,8 +124,7 @@ snd_director_category = {
             NOT = { has_country_flag = snd_auto_construction }
         }
         available = {
-            NOT = { has_country_flag = snd_external_construction }
-            NOT = { has_country_flag = snd_pilot_enabled }
+            snd_can_start_auto_construction = yes
         }
         cost = 0
         ai_will_do = { factor = 0 }
@@ -111,13 +143,24 @@ snd_director_category = {
             clr_country_flag = snd_auto_construction
         }
     }
+    snd_release_pending_project = {
+        visible = {
+            is_ai = no
+            has_country_flag = snd_auto_project_pending
+        }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            clr_country_flag = snd_auto_project_pending
+        }
+    }
     snd_enable_pilot = {
         visible = {
             NOT = { has_country_flag = snd_pilot_enabled }
             NOT = { has_country_flag = snd_pilot_dispatched }
         }
         available = {
-            NOT = { has_country_flag = snd_external_construction }
+            NOT = { snd_construction_managed_externally = yes }
             NOT = { has_country_flag = snd_auto_construction }
             snd_pilot_capital_eligible = yes
         }
