@@ -13,3 +13,4 @@ mais recentes do usuário para orientar a execução.
 - Preserve custos, requisitos e progresso normal de construção e pesquisa. Registre efeitos de terceiros antes de criar adaptadores.
 - Faça PRs pequenos. A aprovação do mantenedor é necessária antes do merge.
 - Quando um PR for mesclado, crie uma nova branch a partir da main atualizada e abra outro PR para as mudanças seguintes.
+- Acumule várias mudanças relacionadas localmente e publique o conjunto em um novo PR. Evite atualizar o PR a cada melhoria isolada.

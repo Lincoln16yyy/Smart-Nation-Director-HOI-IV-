@@ -24,3 +24,90 @@ snd_update_industry_tracking = {
     snd_capture_industry_baseline = yes
     set_country_flag = snd_industry_sample_ready
 }
+
+snd_dispatch_auto_construction = {
+    if = {
+        limit = { capital_scope = { snd_auto_factory_candidate = yes } }
+        capital_scope = { snd_queue_preferred_factory = yes }
+    }
+    else_if = {
+        limit = { any_owned_state = { snd_auto_factory_candidate = yes } }
+        random_owned_controlled_state = {
+            limit = { snd_auto_factory_candidate = yes }
+            snd_queue_preferred_factory = yes
+        }
+    }
+    else_if = {
+        limit = {
+            snd_pilot_capital_eligible = yes
+            capital_scope = { is_demilitarized_zone = no }
+        }
+        capital_scope = {
+            add_building_construction = {
+                type = infrastructure
+                level = 1
+                instant_build = no
+            }
+            ROOT = { set_variable = { snd_auto_project_type = 3 } }
+            snd_record_auto_project = yes
+        }
+    }
+}
+
+snd_queue_preferred_factory = {
+    if = {
+        limit = { ROOT = { has_war = yes } }
+        add_building_construction = {
+            type = arms_factory
+            level = 1
+            instant_build = no
+        }
+        ROOT = { set_variable = { snd_auto_project_type = 2 } }
+    }
+    else = {
+        add_building_construction = {
+            type = industrial_complex
+            level = 1
+            instant_build = no
+        }
+        ROOT = { set_variable = { snd_auto_project_type = 1 } }
+    }
+    snd_record_auto_project = yes
+}
+
+snd_record_auto_project = {
+    ROOT = {
+        set_variable = { snd_auto_project_state = PREV }
+        set_country_flag = { flag = snd_auto_construction_cooldown days = 180 }
+    }
+}
+
+snd_show_national_report = {
+    set_variable = { snd_report_civilian_factories = num_of_civilian_factories }
+    set_variable = { snd_report_military_factories = num_of_military_factories }
+    set_variable = { snd_report_dockyards = num_of_naval_factories }
+    set_variable = { snd_report_manpower_k = manpower_k }
+    country_event = { id = snd.3 }
+}
+
+snd_review_national_risk = {
+    set_temp_variable = { snd_current_risk = 0 }
+    if = {
+        limit = { snd_has_stability_risk = yes }
+        set_temp_variable = { snd_current_risk = 1 }
+    }
+    else_if = {
+        limit = { snd_has_war_support_risk = yes }
+        set_temp_variable = { snd_current_risk = 2 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { snd_last_reported_risk = snd_current_risk } }
+        }
+        set_variable = { snd_last_reported_risk = snd_current_risk }
+        if = {
+            limit = { check_variable = { snd_current_risk > 0 } }
+            snd_show_national_report = yes
+        }
+    }
+}

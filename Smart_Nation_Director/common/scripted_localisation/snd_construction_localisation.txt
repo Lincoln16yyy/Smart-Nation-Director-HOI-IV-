@@ -9,3 +9,54 @@ defined_text = {
         localization_key = snd_construction_status_available
     }
 }
+
+defined_text = {
+    name = GetSndAutoConstructionStatus
+    text = {
+        trigger = { NOT = { has_country_flag = snd_auto_construction } }
+        localization_key = snd_auto_construction_off
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_auto_construction
+            has_country_flag = snd_external_construction
+        }
+        localization_key = snd_auto_construction_suspended
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_auto_construction
+            NOT = { has_country_flag = snd_external_construction }
+            has_country_flag = snd_auto_construction_cooldown
+        }
+        localization_key = snd_auto_construction_waiting
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_auto_construction
+            NOT = { has_country_flag = snd_external_construction }
+            NOT = { has_country_flag = snd_auto_construction_cooldown }
+        }
+        localization_key = snd_auto_construction_active
+    }
+}
+
+defined_text = {
+    name = GetSndLastAutoProject
+    text = {
+        trigger = { NOT = { has_variable = snd_auto_project_type } }
+        localization_key = snd_auto_project_none
+    }
+    text = {
+        trigger = { check_variable = { snd_auto_project_type = 1 } }
+        localization_key = snd_auto_project_civilian
+    }
+    text = {
+        trigger = { check_variable = { snd_auto_project_type = 2 } }
+        localization_key = snd_auto_project_military
+    }
+    text = {
+        trigger = { check_variable = { snd_auto_project_type = 3 } }
+        localization_key = snd_auto_project_infrastructure
+    }
+}

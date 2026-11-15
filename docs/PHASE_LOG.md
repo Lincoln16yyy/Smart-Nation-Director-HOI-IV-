@@ -15,3 +15,6 @@
 9. Adicionado acompanhamento industrial opcional ao relatório nacional, com amostragem mensal sem eventos automáticos. Validação estática concluída.
 10. Adicionado controle manual para suspender ordens de construção do Director durante gestão externa. Validação estática concluída.
 11. Relatório ampliado com estaleiros, mão de obra disponível e alerta de baixo apoio à guerra. Validação estática concluída.
+12. Implementada construção recorrente por prioridade em paz e guerra. O despacho revalida a capital e respeita a gestão externa e o intervalo de 180 dias. Validação estática concluída.
+13. A construção automática passou a procurar vagas em outros estados centrais quando a capital não é elegível. O relatório registra o último pedido. Validação estática concluída.
+14. Adicionada revisão mensal opt-in para avisar o jogador quando a prioridade de risco muda. Validação estática concluída.

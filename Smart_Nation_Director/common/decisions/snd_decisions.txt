@@ -12,11 +12,30 @@ snd_director_category = {
         cost = 0
         ai_will_do = { factor = 0 }
         complete_effect = {
-            set_variable = { snd_report_civilian_factories = num_of_civilian_factories }
-            set_variable = { snd_report_military_factories = num_of_military_factories }
-            set_variable = { snd_report_dockyards = num_of_naval_factories }
-            set_variable = { snd_report_manpower_k = manpower_k }
-            country_event = { id = snd.3 }
+            snd_show_national_report = yes
+        }
+    }
+    snd_enable_risk_alerts = {
+        visible = {
+            is_ai = no
+            NOT = { has_country_flag = snd_risk_alerts_enabled }
+        }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_variable = { snd_last_reported_risk = 0 }
+            set_country_flag = snd_risk_alerts_enabled
+        }
+    }
+    snd_disable_risk_alerts = {
+        visible = {
+            is_ai = no
+            has_country_flag = snd_risk_alerts_enabled
+        }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            clr_country_flag = snd_risk_alerts_enabled
         }
     }
     snd_enable_industry_tracking = {
@@ -66,6 +85,32 @@ snd_director_category = {
             clr_country_flag = snd_external_construction
         }
     }
+    snd_enable_auto_construction = {
+        visible = {
+            is_ai = no
+            NOT = { has_country_flag = snd_auto_construction }
+        }
+        available = {
+            NOT = { has_country_flag = snd_external_construction }
+            NOT = { has_country_flag = snd_pilot_enabled }
+        }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = snd_auto_construction
+        }
+    }
+    snd_disable_auto_construction = {
+        visible = {
+            is_ai = no
+            has_country_flag = snd_auto_construction
+        }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            clr_country_flag = snd_auto_construction
+        }
+    }
     snd_enable_pilot = {
         visible = {
             NOT = { has_country_flag = snd_pilot_enabled }
@@ -73,6 +118,7 @@ snd_director_category = {
         }
         available = {
             NOT = { has_country_flag = snd_external_construction }
+            NOT = { has_country_flag = snd_auto_construction }
             snd_pilot_capital_eligible = yes
         }
         cost = 0

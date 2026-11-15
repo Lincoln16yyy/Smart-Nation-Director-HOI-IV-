@@ -51,7 +51,7 @@ class PackageTests(unittest.TestCase):
                 keys = [re.fullmatch(r' ([\w.]+):0 "[^"]+"', line)[1] for line in lines]
                 self.assertCountEqual(keys, required)
                 for line in lines:
-                    for variable in re.findall(r"\[\?(snd_\w+)", line):
+                    for variable in re.findall(r"\[\?(?:ROOT\.)?(snd_\w+)", line):
                         self.assertIn(f"{variable} =", decisions + effect)
                 self.assertEqual(set(re.findall(r'\[Root\.(GetSnd\w+)\]', '\n'.join(lines))), set(getters))
 
@@ -67,6 +67,43 @@ class PackageTests(unittest.TestCase):
         self.assertIn(guard, pilot)
         dispatch_check = on_actions.split('snd_update_industry_tracking = yes', 1)[1]
         self.assertIn(guard, dispatch_check.split('snd_dispatch_pilot = yes', 1)[0])
+
+    def test_auto_construction_uses_regular_queue_and_observes_cooldown(self):
+        effect = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
+        auto_effect = effect.split('snd_dispatch_auto_construction = {', 1)[1]
+        orders = re.findall(
+            r'add_building_construction\s*=\s*\{\s*type = (\w+)\s+level = 1\s+instant_build = no\s*\}',
+            auto_effect,
+        )
+        self.assertCountEqual(orders, ['arms_factory', 'industrial_complex', 'infrastructure'])
+        self.assertIn('flag = snd_auto_construction_cooldown days = 180', auto_effect)
+        self.assertIn('any_owned_state = { snd_auto_factory_candidate = yes }', auto_effect)
+        self.assertIn('random_owned_controlled_state = {', auto_effect)
+        self.assertIn('set_variable = { snd_auto_project_state = PREV }', auto_effect)
+
+        triggers = (MOD / 'common/scripted_triggers/snd_triggers.txt').read_text()
+        factory_candidate = triggers.split('snd_auto_factory_candidate = {', 1)[1]
+        for guard in ('is_owned_by = ROOT', 'is_controlled_by = ROOT', 'is_core_of = ROOT'):
+            self.assertIn(guard, factory_candidate)
+
+        on_actions = (MOD / 'common/on_actions/snd_on_actions.txt').read_text()
+        auto_check = on_actions.split('snd_dispatch_auto_construction = yes', 1)[0].rsplit('            if = {', 1)[1]
+        for flag in ('snd_external_construction', 'snd_auto_construction_cooldown', 'snd_pilot_enabled'):
+            self.assertIn(f'NOT = {{ has_country_flag = {flag} }}', auto_check)
+
+    def test_national_alerts_use_a_single_report_and_track_risk_changes(self):
+        effects = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
+        decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
+        on_actions = (MOD / 'common/on_actions/snd_on_actions.txt').read_text()
+
+        self.assertEqual(effects.count('country_event = { id = snd.3 }'), 1)
+        self.assertIn('snd_show_national_report = yes', decisions)
+        review = effects.split('snd_review_national_risk = {', 1)[1]
+        self.assertIn('NOT = { check_variable = { snd_last_reported_risk = snd_current_risk } }', review)
+        self.assertIn('set_variable = { snd_last_reported_risk = snd_current_risk }', review)
+        self.assertIn('check_variable = { snd_current_risk > 0 }', review)
+        self.assertIn('snd_show_national_report = yes', review)
+        self.assertRegex(on_actions, r'has_country_flag = snd_risk_alerts_enabled\s*}\s*snd_review_national_risk = yes')
 
     def test_pilot_uses_regular_queue(self):
         effect = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()

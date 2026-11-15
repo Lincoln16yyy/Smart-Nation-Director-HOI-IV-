@@ -5,3 +5,37 @@ snd_pilot_capital_eligible = {
         infrastructure < 5
     }
 }
+
+snd_auto_factory_candidate = {
+    is_owned_by = ROOT
+    is_controlled_by = ROOT
+    is_core_of = ROOT
+    is_demilitarized_zone = no
+    OR = {
+        AND = {
+            ROOT = { has_war = no }
+            free_building_slots = {
+                building = industrial_complex
+                size > 0
+                include_locked = no
+            }
+        }
+        AND = {
+            ROOT = { has_war = yes }
+            free_building_slots = {
+                building = arms_factory
+                size > 0
+                include_locked = no
+            }
+        }
+    }
+}
+
+snd_has_stability_risk = {
+    has_stability < 0.5
+}
+
+snd_has_war_support_risk = {
+    has_war = yes
+    has_war_support < 0.5
+}
