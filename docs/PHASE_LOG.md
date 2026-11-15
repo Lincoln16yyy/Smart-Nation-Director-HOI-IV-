@@ -31,3 +31,8 @@
 25. O painel e as decisões carregaram após a correção. Na Itália, o piloto de infantaria abriu outra linha de Carcano M38 com uma fábrica, preservando as quatro da linha anterior.
 
 26. O menu passou a explicitar que o piloto abre outra linha. O lançador isolado e o roteiro documentam a reprodução do teste.
+27. O painel passou a ler os indicadores dinâmicos do país diretamente. Removidos o botão e o efeito de atualização manual. Validação estática concluída.
+
+28. Adicionado modo supervisionado de construção com proposta persistente, aprovação e recusa. Validação estática concluída.
+
+29. Adicionado modo consultivo de construção, com recomendação mensal e sem despacho. Validação estática concluída.

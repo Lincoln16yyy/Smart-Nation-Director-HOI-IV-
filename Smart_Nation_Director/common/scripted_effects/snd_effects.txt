@@ -26,15 +26,16 @@ snd_update_industry_tracking = {
 }
 
 snd_dispatch_auto_construction = {
+    clr_country_flag = snd_construction_proposal_pending
     if = {
         limit = { capital_scope = { snd_auto_factory_candidate = yes } }
-        capital_scope = { snd_queue_preferred_factory = yes }
+        capital_scope = { snd_plan_preferred_factory = yes }
     }
     else_if = {
         limit = { any_owned_state = { snd_auto_factory_candidate = yes } }
         random_owned_controlled_state = {
             limit = { snd_auto_factory_candidate = yes }
-            snd_queue_preferred_factory = yes
+            snd_plan_preferred_factory = yes
         }
     }
     else_if = {
@@ -44,6 +45,71 @@ snd_dispatch_auto_construction = {
         }
         capital_scope = {
             ROOT = {
+                set_variable = { snd_proposal_type = 3 }
+                set_variable = { snd_proposal_state = PREV }
+            }
+        }
+        snd_offer_construction_project = yes
+    }
+}
+
+snd_plan_preferred_factory = {
+    ROOT = {
+        set_variable = { snd_proposal_state = PREV }
+        if = {
+            limit = { has_war = yes }
+            set_variable = { snd_proposal_type = 2 }
+        }
+        else = {
+            set_variable = { snd_proposal_type = 1 }
+        }
+        snd_offer_construction_project = yes
+    }
+}
+
+snd_offer_construction_project = {
+    if = {
+        limit = {
+            OR = {
+                has_country_flag = snd_construction_advisory
+                has_country_flag = snd_construction_supervised
+            }
+        }
+        set_country_flag = snd_construction_proposal_pending
+    }
+    else = {
+        snd_queue_planned_project = yes
+    }
+}
+
+snd_queue_planned_project = {
+    var:snd_proposal_state = {
+        if = {
+            limit = { check_variable = { ROOT.snd_proposal_type = 2 } }
+            ROOT = {
+                set_variable = { snd_auto_project_type = 2 }
+                set_variable = { snd_auto_project_baseline = PREV.building_level@arms_factory }
+            }
+            add_building_construction = {
+                type = arms_factory
+                level = 1
+                instant_build = no
+            }
+        }
+        else_if = {
+            limit = { check_variable = { ROOT.snd_proposal_type = 1 } }
+            ROOT = {
+                set_variable = { snd_auto_project_type = 1 }
+                set_variable = { snd_auto_project_baseline = PREV.building_level@industrial_complex }
+            }
+            add_building_construction = {
+                type = industrial_complex
+                level = 1
+                instant_build = no
+            }
+        }
+        else = {
+            ROOT = {
                 set_variable = { snd_auto_project_type = 3 }
                 set_variable = { snd_auto_project_baseline = PREV.building_level@infrastructure }
             }
@@ -52,36 +118,10 @@ snd_dispatch_auto_construction = {
                 level = 1
                 instant_build = no
             }
-            snd_record_auto_project = yes
         }
+        snd_record_auto_project = yes
     }
-}
-
-snd_queue_preferred_factory = {
-    if = {
-        limit = { ROOT = { has_war = yes } }
-        ROOT = {
-            set_variable = { snd_auto_project_type = 2 }
-            set_variable = { snd_auto_project_baseline = PREV.building_level@arms_factory }
-        }
-        add_building_construction = {
-            type = arms_factory
-            level = 1
-            instant_build = no
-        }
-    }
-    else = {
-        ROOT = {
-            set_variable = { snd_auto_project_type = 1 }
-            set_variable = { snd_auto_project_baseline = PREV.building_level@industrial_complex }
-        }
-        add_building_construction = {
-            type = industrial_complex
-            level = 1
-            instant_build = no
-        }
-    }
-    snd_record_auto_project = yes
+    clr_country_flag = snd_construction_proposal_pending
 }
 
 snd_record_auto_project = {
@@ -102,10 +142,6 @@ snd_capture_report_values = {
 snd_show_national_report = {
     snd_capture_report_values = yes
     country_event = { id = snd.3 }
-}
-
-snd_refresh_dashboard = {
-    snd_capture_report_values = yes
 }
 
 snd_review_national_risk = {

@@ -29,7 +29,7 @@ O relatório também mostra estaleiros e mão de obra disponível, em milhares. 
 
 **Ativar construção automática** mantém a avaliação mensal de obras ligada. O Director prioriza uma fábrica civil em paz, uma militar em guerra e infraestrutura na capital se a fábrica preferida não couber em um estado central controlado. Cada ordem usa a fila normal. A rotina espera pelo menos 180 dias e um aumento do nível desse edifício no estado antes de pedir outra obra. Se você cancelar a obra ou perder o estado, libere o planejamento pelo menu. A gestão externa suspende novos despachos. O relatório registra o tipo e o local da última ordem automática.
 
-A categoria **Smart Nation Director** também mostra um painel compacto com fábricas civis e militares, estaleiros, mão de obra e o status do comércio. **Atualizar valores** mede o país novamente e **Abrir relatório detalhado** abre o evento com a prioridade sugerida. O painel ainda não foi verificado em jogo.
+A categoria **Smart Nation Director** também mostra um painel compacto com fábricas civis e militares, estaleiros, mão de obra e o status do comércio. O painel consulta esses dados do jogo sem exigir atualização manual. **Abrir relatório detalhado** tira uma nova leitura e mostra a prioridade sugerida.
 
 **Ativar alertas nacionais automáticos** abre o relatório quando começa ou muda uma prioridade de risco. Em condições estáveis, ou enquanto a mesma prioridade persistir, a revisão mensal segue em silêncio.
 
@@ -45,3 +45,7 @@ Se a IA nativa ou outro mod assumir a produção militar, use **Indicar produç�
 Confira a fila de produção primeiro: o teste da Itália confirmou que o
 efeito cria outra linha mesmo quando o modelo já está em produção. Para
 aumentar a alocação da linha atual, use os controles normais de produção.
+
+Com a construção recorrente ligada, **Exigir aprovação para novas obras** faz o Director escolher o projeto na virada do mês e aguardar sua decisão. O relatório mostra o tipo e o estado. Aprovar revalida as condições e usa a fila normal. Recusar adia a próxima proposta por pelo menos 90 dias.
+
+Com a construção recorrente ligada, **Usar modo consultivo na construção** atualiza a recomendação do Director nas viradas elegíveis. Consulte o tipo e o estado no relatório. A decisão de construir continua na fila normal do jogador.

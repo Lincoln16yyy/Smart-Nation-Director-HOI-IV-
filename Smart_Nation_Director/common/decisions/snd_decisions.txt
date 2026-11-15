@@ -34,6 +34,7 @@ snd_director_category = {
             snd_stop_industry_tracking = yes
             clr_country_flag = snd_risk_alerts_enabled
             clr_country_flag = snd_auto_construction
+            clr_country_flag = snd_construction_proposal_pending
             clr_country_flag = snd_pilot_enabled
             clr_country_flag = snd_rifle_production_enabled
         }
@@ -143,6 +144,94 @@ snd_director_category = {
         ai_will_do = { factor = 0 }
         complete_effect = {
             clr_country_flag = snd_auto_construction
+            clr_country_flag = snd_construction_proposal_pending
+        }
+    }
+    snd_enable_construction_advisory = {
+        visible = {
+            is_ai = no
+            NOT = { has_country_flag = snd_construction_advisory }
+        }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            clr_country_flag = snd_construction_supervised
+            clr_country_flag = snd_construction_proposal_pending
+            set_country_flag = snd_construction_advisory
+        }
+    }
+    snd_disable_construction_advisory = {
+        visible = {
+            is_ai = no
+            has_country_flag = snd_construction_advisory
+        }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            clr_country_flag = snd_construction_advisory
+            clr_country_flag = snd_construction_proposal_pending
+        }
+    }
+    snd_enable_construction_supervision = {
+        visible = {
+            is_ai = no
+            NOT = { has_country_flag = snd_construction_supervised }
+        }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            clr_country_flag = snd_construction_advisory
+            clr_country_flag = snd_construction_proposal_pending
+            set_country_flag = snd_construction_supervised
+        }
+    }
+    snd_disable_construction_supervision = {
+        visible = {
+            is_ai = no
+            has_country_flag = snd_construction_supervised
+        }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            clr_country_flag = snd_construction_supervised
+            clr_country_flag = snd_construction_proposal_pending
+        }
+    }
+    snd_approve_construction_proposal = {
+        visible = {
+            is_ai = no
+            has_country_flag = snd_construction_proposal_pending
+            has_country_flag = snd_construction_supervised
+            NOT = { has_country_flag = snd_construction_advisory }
+        }
+        available = { snd_construction_proposal_is_eligible = yes }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            if = {
+                limit = { snd_construction_proposal_is_eligible = yes }
+                snd_queue_planned_project = yes
+            }
+        }
+    }
+    snd_decline_construction_proposal = {
+        visible = {
+            is_ai = no
+            has_country_flag = snd_construction_proposal_pending
+            has_country_flag = snd_construction_supervised
+            NOT = { has_country_flag = snd_construction_advisory }
+        }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            clr_country_flag = snd_construction_proposal_pending
+            set_country_flag = { flag = snd_construction_proposal_deferred days = 90 }
         }
     }
     snd_release_pending_project = {

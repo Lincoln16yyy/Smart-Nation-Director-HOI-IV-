@@ -26,6 +26,14 @@ defined_text = {
     text = {
         trigger = {
             has_country_flag = snd_auto_construction
+            has_country_flag = snd_construction_advisory
+        }
+        localization_key = snd_construction_advisory_active
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_auto_construction
+            NOT = { has_country_flag = snd_construction_advisory }
             snd_construction_managed_externally = yes
         }
         localization_key = snd_auto_construction_suspended
@@ -33,6 +41,7 @@ defined_text = {
     text = {
         trigger = {
             has_country_flag = snd_auto_construction
+            NOT = { has_country_flag = snd_construction_advisory }
             NOT = { snd_construction_managed_externally = yes }
             has_country_flag = snd_auto_construction_cooldown
         }
@@ -41,6 +50,7 @@ defined_text = {
     text = {
         trigger = {
             has_country_flag = snd_auto_construction
+            NOT = { has_country_flag = snd_construction_advisory }
             NOT = { snd_construction_managed_externally = yes }
             NOT = { has_country_flag = snd_auto_construction_cooldown }
             has_country_flag = snd_auto_project_pending
@@ -50,6 +60,7 @@ defined_text = {
     text = {
         trigger = {
             has_country_flag = snd_auto_construction
+            NOT = { has_country_flag = snd_construction_advisory }
             NOT = { snd_construction_managed_externally = yes }
             NOT = { has_country_flag = snd_auto_construction_cooldown }
             NOT = { has_country_flag = snd_auto_project_pending }
@@ -75,5 +86,46 @@ defined_text = {
     text = {
         trigger = { check_variable = { snd_auto_project_type = 3 } }
         localization_key = snd_auto_project_infrastructure
+    }
+}
+
+defined_text = {
+    name = GetSndConstructionProposal
+    text = {
+        trigger = { NOT = { has_country_flag = snd_construction_proposal_pending } }
+        localization_key = snd_proposal_none
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_construction_proposal_pending
+            check_variable = { snd_proposal_type = 1 }
+        }
+        localization_key = snd_proposal_civilian
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_construction_proposal_pending
+            check_variable = { snd_proposal_type = 2 }
+        }
+        localization_key = snd_proposal_military
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_construction_proposal_pending
+            check_variable = { snd_proposal_type = 3 }
+        }
+        localization_key = snd_proposal_infrastructure
+    }
+}
+
+defined_text = {
+    name = GetSndConstructionPlanLabel
+    text = {
+        trigger = { has_country_flag = snd_construction_advisory }
+        localization_key = snd_construction_plan_advisory
+    }
+    text = {
+        trigger = { NOT = { has_country_flag = snd_construction_advisory } }
+        localization_key = snd_construction_plan_proposal
     }
 }

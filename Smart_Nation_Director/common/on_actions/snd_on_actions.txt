@@ -29,11 +29,12 @@ on_actions = {
             if = {
                 limit = {
                     is_ai = no
-                    has_country_flag = snd_auto_construction
-                    NOT = { snd_construction_managed_externally = yes }
-                    NOT = { has_country_flag = snd_auto_construction_cooldown }
-                    NOT = { has_country_flag = snd_auto_project_pending }
-                    NOT = { has_country_flag = snd_pilot_enabled }
+                    snd_can_plan_auto_construction = yes
+                    OR = {
+                        has_country_flag = snd_construction_advisory
+                        NOT = { has_country_flag = snd_construction_proposal_pending }
+                    }
+                    NOT = { has_country_flag = snd_construction_proposal_deferred }
                 }
                 snd_dispatch_auto_construction = yes
             }

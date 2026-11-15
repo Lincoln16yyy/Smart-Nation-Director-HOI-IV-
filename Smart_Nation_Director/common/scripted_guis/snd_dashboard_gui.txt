@@ -7,16 +7,12 @@ scripted_gui = {
         visible = { always = yes }
 
         effects = {
-            snd_dash_refresh_click = {
-                snd_refresh_dashboard = yes
-            }
             snd_dash_report_click = {
                 snd_show_national_report = yes
             }
         }
 
         triggers = {
-            snd_dash_refresh_click_enabled = { always = yes }
             snd_dash_report_click_enabled = { always = yes }
         }
     }
