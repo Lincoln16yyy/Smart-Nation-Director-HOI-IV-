@@ -2,6 +2,12 @@
 
 ## Em desenvolvimento
 
+- Visão diplomática de facções e países subordinados.
+
+- Alerta prioritário de risco de capitulação na revisão mensal.
+
+- Visão militar com divisões, navios, apoio à guerra e progresso rumo à capitulação.
+
 - Orientação de focos e acompanhamento de Consequências da crise do café na árvore brasileira compatível.
 
 - Total de slots nativos, status do Automated Research System e sugestões contextuais de pesquisa.

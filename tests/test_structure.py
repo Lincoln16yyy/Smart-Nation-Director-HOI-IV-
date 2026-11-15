@@ -242,7 +242,7 @@ class PackageTests(unittest.TestCase):
         self.assertNotIn('snd_auto_construction_cooldown', stop)
         self.assertNotIn('snd_external_construction', stop)
 
-    def test_national_alerts_use_a_single_report_and_track_risk_changes(self):
+    def test_national_alerts_route_one_report_per_priority_change(self):
         effects = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
         decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
         on_actions = (MOD / 'common/on_actions/snd_on_actions.txt').read_text()
@@ -254,6 +254,10 @@ class PackageTests(unittest.TestCase):
         self.assertIn('set_variable = { snd_last_reported_risk = snd_current_risk }', review)
         self.assertIn('check_variable = { snd_current_risk > 0 }', review)
         self.assertIn('snd_show_national_report = yes', review)
+        self.assertEqual(effects.count('country_event = { id = snd.4 }'), 1)
+        self.assertIn('snd_show_military_report = yes', decisions)
+        self.assertLess(review.index('snd_has_surrender_risk = yes'), review.index('snd_has_stability_risk = yes'))
+        self.assertRegex(review, r'check_variable = \{ snd_current_risk = 5 } }\s*snd_show_military_report = yes')
         self.assertRegex(on_actions, r'has_country_flag = snd_risk_alerts_enabled\s*}\s*snd_review_national_risk = yes')
 
     def test_external_production_preserves_pending_pilot_and_blocks_dispatch(self):
@@ -297,6 +301,34 @@ class PackageTests(unittest.TestCase):
             self.assertIn(f'NOT = {{ is_researching_technology = {technology} }}', triggers)
         self.assertNotIn('set_technology =', effects)
         self.assertNotIn('set_research_slots =', effects)
+
+    def test_military_report_displays_live_force_and_war_metrics(self):
+        events = (MOD / 'events/snd_events.txt').read_text()
+        report = events.split('id = snd.4', 1)[1]
+        for condition in ('has_capitulated = yes', 'has_war = yes', 'has_war = no'):
+            self.assertIn(condition, report)
+        for locale in ('english', 'braz_por'):
+            loc = (MOD / 'localisation' / locale / f'snd_l_{locale}.yml').read_text(encoding='utf-8-sig')
+            descriptions = dict(line.strip().split(':0 ', 1) for line in loc.splitlines() if line.startswith(' snd.4.d_'))
+            self.assertEqual(set(descriptions), {'snd.4.d_capitulated', 'snd.4.d_surrender_risk', 'snd.4.d_war', 'snd.4.d_peace'})
+            for description in descriptions.values():
+                for variable in ('num_divisions', 'num_ships', 'has_war_support'):
+                    self.assertIn(f'[?ROOT.{variable}|', description)
+            for key in ('snd.4.d_war', 'snd.4.d_surrender_risk'):
+                self.assertIn('[?ROOT.surrender_progress|%0]', descriptions[key])
+            self.assertNotIn('surrender_progress', descriptions['snd.4.d_peace'])
+
+    def test_diplomatic_report_distinguishes_faction_role_and_subject_status(self):
+        loc = (MOD / 'common/scripted_localisation/snd_diplomacy_localisation.txt').read_text()
+        decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
+        self.assertIn('trigger = { is_faction_leader = yes }', loc)
+        self.assertIn('is_faction_leader = no', loc)
+        self.assertIn('is_in_faction = yes', loc)
+        self.assertIn('trigger = { is_in_faction = no }', loc)
+        for value in ('yes', 'no'):
+            self.assertIn(f'trigger = {{ is_subject = {value} }}', loc)
+        report = decisions.split('snd_open_diplomatic_report = {', 1)[1].split('\n    }', 1)[0]
+        self.assertIn('complete_effect = {\n            country_event = { id = snd.5 }\n        }', report)
 
     def test_pilot_uses_regular_queue(self):
         effect = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()

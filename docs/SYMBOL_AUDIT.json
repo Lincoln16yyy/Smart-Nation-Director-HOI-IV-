@@ -1,0 +1,63 @@
+{
+  "target_definition_count": 346,
+  "target_duplicates": [],
+  "mods": [
+    {
+      "mod": "2668048070",
+      "active": true,
+      "definition_count": 14759
+    },
+    {
+      "mod": "3351953045_Council_of_Ministers",
+      "active": false,
+      "definition_count": 455
+    },
+    {
+      "mod": "3372464091",
+      "active": false,
+      "definition_count": 0
+    },
+    {
+      "mod": "3728501882_Handy_Game_Tool_General_Staff",
+      "active": true,
+      "definition_count": 5437
+    },
+    {
+      "mod": "3789297167",
+      "active": false,
+      "definition_count": 337421
+    },
+    {
+      "mod": "3789876653_Industrial_Planner_ACA",
+      "active": false,
+      "definition_count": 640
+    },
+    {
+      "mod": "3811200367_Design_Bureau",
+      "active": true,
+      "definition_count": 13324
+    },
+    {
+      "mod": "3811909711_Automated_Research_System",
+      "active": true,
+      "definition_count": 162
+    },
+    {
+      "mod": "820260968",
+      "active": true,
+      "definition_count": 144273
+    },
+    {
+      "mod": "Coloured_Buttons",
+      "active": false,
+      "definition_count": 0
+    },
+    {
+      "mod": "iron_secretary",
+      "active": true,
+      "definition_count": 229
+    }
+  ],
+  "collisions": [],
+  "skipped": []
+}

@@ -11,3 +11,9 @@
 | Iron Secretary e o piloto | Ambos podem emitir ordens de construção. | Testar separadamente |
 
 A auditoria compara arquivos e confirma algumas referências e pontos de entrada. Uma busca de IDs no formato namespace.número em `events/*.txt` encontrou 10.472 IDs distintos entre os seis ativos e o Council, sem IDs repetidos entre esses mods. Essa busca é textual e não substitui o parser da engine. A comparação completa de IDs de eventos, ideias, decisões, variáveis, janelas e chaves de localização entre todos os mods continua pendente. Os caminhos sem colisão tampouco comprovam que decisões e automações podem coexistir. O piloto tem namespace `snd`, interface por decisões e nenhum `replace_path`.
+
+A auditoria reproduzível do Director em 15/11/2026 não encontrou colisões
+nas 346 definições cobertas contra os 11 mods locais. Consulte o
+[escopo e as limitações](MOD_AUDIT.md#auditoria-dos-símbolos-do-director--15112026)
+e o [resumo JSON](SYMBOL_AUDIT.json). Isso não encerra a auditoria exaustiva
+entre terceiros nem valida a disputa de controle em jogo.

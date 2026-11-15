@@ -191,3 +191,9 @@ snd_tracks_brazil_coffee_focus = {
         focus_progress = { focus = BRA_coffee_crisis_aftermath progress > 0 }
     }
 }
+
+snd_has_surrender_risk = {
+    has_war = yes
+    has_capitulated = no
+    surrender_progress > 0.5
+}

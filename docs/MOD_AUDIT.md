@@ -28,3 +28,27 @@ A leitura dos descriptors internos e externos encontrou a diferença de nome no 
 | Ícones | Modifier Icons adiciona ícones e entradas de localização. O cruzamento com RT56 encontrou apenas a miniatura em comum. | Pendente |
 
 O levantamento é reproduzível com `python3 scripts/audit_mods.py PERFIL`. As contagens comparam bytes e caminhos sem distinguir maiúsculas e minúsculas. Consulte [compatibilidade](MOD_COMPATIBILITY.md) para a triagem inicial por tipo de colisão.
+
+## Auditoria dos símbolos do Director — 15/11/2026
+
+A execução de `scripts/audit_symbols.py PERFIL` examinou **346 definições**
+do Director contra os **11 mods locais**, incluindo os seis ativos. Não
+houve duplicatas internas nem colisões com esses mods nos domínios cobertos.
+Nenhum descriptor foi ignorado. O resumo reproduzível está em
+[SYMBOL_AUDIT.json](SYMBOL_AUDIT.json), sem conteúdo proprietário.
+
+A ferramenta distingue definições de referências e ignora comentários e
+textos entre aspas. Compara eventos, decisões, categorias, efeitos e triggers
+scriptados, scripted GUIs e nomes de localização scriptada. As chaves de
+localização são comparadas por idioma; traduções não contam como duplicatas.
+O bloco `scripted_gui` é um contêiner, não um ID de interface.
+
+O escopo é o cruzamento **Director × cada mod**, não todos os pares entre
+terceiros. Não cobre ideias, focos, sprites, nomes de janelas, variáveis,
+flags, namespaces compartilhados sem IDs repetidos ou overrides vanilla.
+Os arquivos são lidos como texto, sem executar preprocessamento da engine;
+subpastas de scripts fora dos diretórios reconhecidos não são indexadas.
+Mods exclusivamente gráficos podem ter zero definições cobertas. Ausência
+de colisão de ID não comprova coexistência das automações em campanha.
+A versão local foi reconfirmada em `launcher-settings.json`:
+Operation Postern v1.19.3.0.c01a (5632).

@@ -70,3 +70,43 @@ country_event = {
 
     option = { name = snd.3.a }
 }
+
+country_event = {
+    id = snd.4
+    title = snd.4.t
+    desc = {
+        text = snd.4.d_capitulated
+        trigger = { has_capitulated = yes }
+    }
+    desc = {
+        text = snd.4.d_surrender_risk
+        trigger = { snd_has_surrender_risk = yes }
+    }
+    desc = {
+        text = snd.4.d_war
+        trigger = {
+            has_capitulated = no
+            has_war = yes
+            NOT = { snd_has_surrender_risk = yes }
+        }
+    }
+    desc = {
+        text = snd.4.d_peace
+        trigger = {
+            has_capitulated = no
+            has_war = no
+        }
+    }
+    is_triggered_only = yes
+
+    option = { name = snd.4.a }
+}
+
+country_event = {
+    id = snd.5
+    title = snd.5.t
+    desc = snd.5.d
+    is_triggered_only = yes
+
+    option = { name = snd.5.a }
+}

@@ -31,7 +31,7 @@ histórica ou registro de causas da variação.
   dúvidas concretas que afetam a implementação. Quando precisar do jogo,
   avise o usuário para que ele abra a tela necessária. O usuário não precisa
   fornecer números manualmente.
-- O trabalho está no [PR inicial](https://github.com/Lincoln16yyy/Smart-Nation-Director-HOI-IV-/pull/1).
+- O PR inicial é histórico. Confira o estado atual do GitHub antes de publicar novas mudanças.
   Preserve a distinção entre resultados estáticos e resultados vistos em
   campanha e registre o avanço na documentação.
 
@@ -120,3 +120,15 @@ A orientação de política interna lê as leis do país por `has_idea` e o pode
 O relatório lê o total de slots nativos em `amount_research_slots` e distingue o sistema virtual usando a variável `zzars_on` do Automated Research System versão 1. A sugestão consulta duas tecnologias, exclui as concluídas ou em andamento e não inicia pesquisa. A engine local documenta consulta de tecnologia em andamento e efeitos de concessão, mas não foi encontrada uma operação para enfileirar a pesquisa normal por script.
 
 A orientação de focos prioriza estabilidade, logística e indústria militar, ou indústria civil e pesquisa. O acompanhamento nominal usa somente `BRA_coffee_crisis_aftermath` sob a árvore `brazil_tree`, presente no vanilla e no arquivo correspondente do Road to 56. Progresso registrado não confirma seleção atual. A documentação local expõe `focus_progress` por ID e conclusão forçada, sem consulta genérica verificada ao foco ativo.
+
+A decisão **Consultar situação militar** abre `snd.4` e distingue paz, guerra e capitulação. O relatório lê divisões sob controle, navios, apoio à guerra e, se o país estiver em guerra sem ter capitulado, progresso rumo à capitulação. Contagem de divisões não equivale a efetivo ou prontidão.
+
+O risco de capitulação tem prioridade sobre os demais alertas. O limite é `surrender_progress > 0.5` em guerra, antes da capitulação. A revisão mensal registra o risco no mesmo histórico dos alertas nacionais e abre `snd.4` no lugar do relatório nacional quando essa passa a ser a prioridade. A consulta manual da situação militar não modifica o histórico.
+
+A visão diplomática é uma leitura do próprio país. `snd.5` usa `is_faction_leader`, `is_in_faction`, `is_subject`, `num_faction_members` e `num_subjects`. Ela não modifica facções, relações ou autonomia.
+
+A auditoria de símbolos pode ser repetida com
+`python3 scripts/audit_symbols.py PERFIL`. O resumo em
+`docs/SYMBOL_AUDIT.json` registra 346 definições do Director, 11 mods e nenhuma
+colisão nos domínios cobertos. Não inclui flags, variáveis, ideias, sprites,
+janelas, vanilla nem todos os pares de terceiros; veja `MOD_AUDIT.md`.
