@@ -49,3 +49,9 @@ aumentar a alocação da linha atual, use os controles normais de produção.
 Com a construção recorrente ligada, **Exigir aprovação para novas obras** faz o Director escolher o projeto na virada do mês e aguardar sua decisão. O relatório mostra o tipo e o estado. Aprovar revalida as condições e usa a fila normal. Recusar adia a próxima proposta por pelo menos 90 dias.
 
 Com a construção recorrente ligada, **Usar modo consultivo na construção** atualiza a recomendação do Director nas viradas elegíveis. Consulte o tipo e o estado no relatório. A decisão de construir continua na fila normal do jogador.
+
+O relatório também mostra o poder político e avalia se vale revisar as leis de recrutamento ou de mobilização econômica. A escolha e o custo continuam no menu de leis do jogo.
+
+Na seção de pesquisa, o relatório mostra o total de slots nativos e indica se o Automated Research System está ativo pelos indicadores do mod. O Director sugere tecnologias com base na situação e omite as que já foram pesquisadas ou estão em andamento.
+
+O relatório também sugere áreas para o próximo foco e pode mostrar o progresso registrado ou a conclusão de **Consequências da crise do café** na árvore brasileira que contém esse foco.

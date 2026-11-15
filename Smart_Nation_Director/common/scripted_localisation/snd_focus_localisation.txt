@@ -1,0 +1,40 @@
+defined_text = {
+    name = GetSndFocusAdvice
+    text = {
+        trigger = {
+            snd_tracks_brazil_coffee_focus = yes
+            has_completed_focus = BRA_coffee_crisis_aftermath
+        }
+        localization_key = snd_focus_coffee_completed
+    }
+    text = {
+        trigger = {
+            snd_tracks_brazil_coffee_focus = yes
+            NOT = { has_completed_focus = BRA_coffee_crisis_aftermath }
+        }
+        localization_key = snd_focus_coffee_progress
+    }
+    text = {
+        trigger = {
+            NOT = { snd_tracks_brazil_coffee_focus = yes }
+            snd_has_stability_risk = yes
+        }
+        localization_key = snd_focus_advice_stability
+    }
+    text = {
+        trigger = {
+            NOT = { snd_tracks_brazil_coffee_focus = yes }
+            NOT = { snd_has_stability_risk = yes }
+            has_war = yes
+        }
+        localization_key = snd_focus_advice_war
+    }
+    text = {
+        trigger = {
+            NOT = { snd_tracks_brazil_coffee_focus = yes }
+            NOT = { snd_has_stability_risk = yes }
+            has_war = no
+        }
+        localization_key = snd_focus_advice_industry
+    }
+}

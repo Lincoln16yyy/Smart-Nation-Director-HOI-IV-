@@ -286,6 +286,18 @@ class PackageTests(unittest.TestCase):
         self.assertIn('snd_has_infantry_equipment_risk = yes', triggers)
         self.assertIn('num_of_available_military_factories > 0', triggers)
 
+    def test_research_review_distinguishes_virtual_and_native_research(self):
+        triggers = (MOD / 'common/scripted_triggers/snd_triggers.txt').read_text()
+        effects = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
+        virtual = triggers.split('snd_automated_research_enabled = {', 1)[1].split('\n}', 1)[0]
+        self.assertIn('has_variable = zzars_on', virtual)
+        self.assertIn('check_variable = { zzars_on = 1 }', virtual)
+        for technology in ('infantry_weapons1', 'basic_machine_tools'):
+            self.assertIn(f'NOT = {{ has_tech = {technology} }}', triggers)
+            self.assertIn(f'NOT = {{ is_researching_technology = {technology} }}', triggers)
+        self.assertNotIn('set_technology =', effects)
+        self.assertNotIn('set_research_slots =', effects)
+
     def test_pilot_uses_regular_queue(self):
         effect = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
         self.assertIn('instant_build = no', effect)

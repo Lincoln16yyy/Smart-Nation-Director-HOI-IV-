@@ -2,6 +2,12 @@
 
 ## Em desenvolvimento
 
+- Orientação de focos e acompanhamento de Consequências da crise do café na árvore brasileira compatível.
+
+- Total de slots nativos, status do Automated Research System e sugestões contextuais de pesquisa.
+
+- Orientação de política interna sobre recrutamento e mobilização econômica.
+
 - Modo consultivo de construção, com recomendações mensais sem despacho.
 
 - Modo supervisionado de construção com seleção automática, aprovação e recusa.

@@ -1,0 +1,21 @@
+defined_text = {
+    name = GetSndDomesticPolicy
+    text = {
+        trigger = { snd_consider_conscription_policy = yes }
+        localization_key = snd_policy_review_conscription
+    }
+    text = {
+        trigger = {
+            NOT = { snd_consider_conscription_policy = yes }
+            snd_consider_economic_mobilization = yes
+        }
+        localization_key = snd_policy_review_mobilization
+    }
+    text = {
+        trigger = {
+            NOT = { snd_consider_conscription_policy = yes }
+            NOT = { snd_consider_economic_mobilization = yes }
+        }
+        localization_key = snd_policy_no_priority
+    }
+}

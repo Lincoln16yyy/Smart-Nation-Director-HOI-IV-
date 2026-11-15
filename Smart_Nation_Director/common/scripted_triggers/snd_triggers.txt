@@ -149,3 +149,45 @@ snd_construction_proposal_is_eligible = {
         }
     }
 }
+
+snd_consider_conscription_policy = {
+    snd_has_manpower_risk = yes
+    OR = {
+        has_idea = volunteer_only
+        has_idea = limited_conscription
+    }
+}
+
+snd_consider_economic_mobilization = {
+    has_war = yes
+    OR = {
+        has_idea = civilian_economy
+        has_idea = low_economic_mobilisation
+    }
+}
+
+# Reads the activation setting from Automated Research System version 1.
+snd_automated_research_enabled = {
+    has_variable = zzars_on
+    check_variable = { zzars_on = 1 }
+}
+
+snd_consider_infantry_research = {
+    snd_has_infantry_equipment_risk = yes
+    has_tech = infantry_weapons
+    NOT = { has_tech = infantry_weapons1 }
+    NOT = { is_researching_technology = infantry_weapons1 }
+}
+
+snd_consider_industrial_research = {
+    NOT = { has_tech = basic_machine_tools }
+    NOT = { is_researching_technology = basic_machine_tools }
+}
+
+snd_tracks_brazil_coffee_focus = {
+    has_focus_tree = brazil_tree
+    OR = {
+        has_completed_focus = BRA_coffee_crisis_aftermath
+        focus_progress = { focus = BRA_coffee_crisis_aftermath progress > 0 }
+    }
+}

@@ -14,7 +14,10 @@
 | Controle das rotinas | Ativação e parada conjuntas, com elegibilidade de construção preservada. Validação em jogo pendente. |
 | Painel do Director | Scripted GUI na categoria de decisões com fábricas, estaleiros, mão de obra e comércio. Painel e decisões visíveis no teste da Itália. Leitura dinâmica sem clique implementada; validação dessa revisão pendente. |
 | Produção de infantaria | Piloto opt-in de uma solicitação pela fila normal, com suspensão por gestão externa e status no relatório. Na Itália, abriu uma segunda linha do Carcano M38 com uma fábrica. A variante sem linha existente está pendente. |
-| Integrações, política e guerra | Pendentes. |
+| Política interna | Avaliação consultiva de recrutamento e mobilização no relatório. Validação em jogo pendente. |
+| Pesquisa | Total de slots e status do sistema virtual no relatório. Sugestões contextuais; validação em jogo pendente. |
+| Focos nacionais | Orientação contextual e acompanhamento de um foco brasileiro por ID. Validação em jogo pendente. |
+| Integrações e guerra | Pendentes. |
 | Campanhas longas e desempenho | Pendentes. |
 
 O teste pendente de produção é a variante sem linha de infantaria existente e a verificação do limite de uso após recarregar. A produção recorrente depende de um meio confiável de identificar ou reutilizar linhas.
