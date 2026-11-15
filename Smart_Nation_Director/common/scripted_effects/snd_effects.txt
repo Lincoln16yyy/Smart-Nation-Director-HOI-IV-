@@ -10,3 +10,17 @@ snd_dispatch_pilot = {
     clr_country_flag = snd_pilot_enabled
     country_event = { id = snd.1 }
 }
+
+snd_capture_industry_baseline = {
+    set_variable = { snd_previous_civilian_factories = num_of_civilian_factories }
+    set_variable = { snd_previous_military_factories = num_of_military_factories }
+}
+
+snd_update_industry_tracking = {
+    set_variable = { snd_civilian_factory_change = num_of_civilian_factories }
+    subtract_from_variable = { snd_civilian_factory_change = snd_previous_civilian_factories }
+    set_variable = { snd_military_factory_change = num_of_military_factories }
+    subtract_from_variable = { snd_military_factory_change = snd_previous_military_factories }
+    snd_capture_industry_baseline = yes
+    set_country_flag = snd_industry_sample_ready
+}

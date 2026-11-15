@@ -12,3 +12,8 @@ altera a fila ou o modo de controle. O comando continua manual no console.
 A decisão **Consultar situação nacional** captura as contagens de fábricas
 civis e militares do país e abre um relatório consultivo. Estabilidade abaixo
 de 50% tem prioridade sobre a recomendação de guerra ou de paz.
+
+O acompanhamento industrial guarda as contagens anteriores e suas diferenças
+em variáveis de país. As flags de país controlam a coleta e a exibição no
+relatório. Só existem duas medições por indicador na comparação, sem série
+histórica ou registro de causas da variação.
