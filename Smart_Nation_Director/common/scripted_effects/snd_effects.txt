@@ -92,12 +92,20 @@ snd_record_auto_project = {
     }
 }
 
-snd_show_national_report = {
+snd_capture_report_values = {
     set_variable = { snd_report_civilian_factories = num_of_civilian_factories }
     set_variable = { snd_report_military_factories = num_of_military_factories }
     set_variable = { snd_report_dockyards = num_of_naval_factories }
     set_variable = { snd_report_manpower_k = manpower_k }
+}
+
+snd_show_national_report = {
+    snd_capture_report_values = yes
     country_event = { id = snd.3 }
+}
+
+snd_refresh_dashboard = {
+    snd_capture_report_values = yes
 }
 
 snd_review_national_risk = {
@@ -113,6 +121,10 @@ snd_review_national_risk = {
     else_if = {
         limit = { snd_has_manpower_risk = yes }
         set_temp_variable = { snd_current_risk = 3 }
+    }
+    else_if = {
+        limit = { snd_has_infantry_equipment_risk = yes }
+        set_temp_variable = { snd_current_risk = 4 }
     }
     if = {
         limit = {

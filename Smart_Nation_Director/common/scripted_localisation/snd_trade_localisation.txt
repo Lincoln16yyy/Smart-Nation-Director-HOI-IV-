@@ -1,0 +1,11 @@
+defined_text = {
+    name = GetSndTradeStatus
+    text = {
+        trigger = { snd_iron_secretary_runs_trade = yes }
+        localization_key = snd_trade_status_iron_secretary
+    }
+    text = {
+        trigger = { NOT = { snd_iron_secretary_runs_trade = yes } }
+        localization_key = snd_trade_status_no_iron_secretary
+    }
+}

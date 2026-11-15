@@ -72,3 +72,14 @@ o intervalo de construção e a preferência de gestão externa.
 O alerta de mão de obra é uma heurística consultiva para países em guerra,
 com limiar fixo de 25 mil. Ele fica atrás dos alertas de estabilidade e
 apoio à guerra. Nenhuma lei de recrutamento é alterada pelo alerta.
+
+O relatório lê as duas flags do comércio semanal do Iron Secretary 2.1.0.
+Elas indicam configuração habilitada, sem confirmar contratos ou importações.
+O alerta de equipamento de infantaria usa reserva abaixo de 500 em guerra,
+após estabilidade, apoio à guerra e mão de obra na ordem de prioridade.
+
+A categoria de decisões declara `scripted_gui = snd_dashboard`. O painel usa
+`context_type = decision_category` e não mantém estado próprio: os botões
+chamam `snd_refresh_dashboard` e `snd_show_national_report`, e a captura de
+variáveis é compartilhada por `snd_capture_report_values`. O painel foi
+dimensionado em 490x236 e ainda não foi visto em jogo.

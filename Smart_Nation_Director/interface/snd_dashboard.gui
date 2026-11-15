@@ -1,0 +1,97 @@
+guiTypes = {
+	containerWindowType = {
+		name = "snd_dashboard"
+		position = { x = 0 y = 0 }
+		size = { width = 490 height = 236 }
+		Orientation = "UPPER_LEFT"
+		clipping = no
+
+		background = {
+			name = "SndDashboardBackground"
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+
+		background = {
+			name = "SndDashboardBorder"
+			quadTextureSprite = "GFX_tiled_window2_1b_border"
+		}
+
+		instantTextboxType = {
+			name = "snd_dash_title"
+			position = { x = 16 y = 10 }
+			font = "hoi_18mbs"
+			text = "snd_dash_title"
+			maxWidth = 440
+			maxHeight = 24
+			format = left
+		}
+
+		instantTextboxType = {
+			name = "snd_dash_hint"
+			position = { x = 16 y = 36 }
+			font = "hoi_16mbs"
+			text = "snd_dash_hint"
+			maxWidth = 456
+			maxHeight = 32
+			format = left
+		}
+
+		instantTextboxType = {
+			name = "snd_dash_factories"
+			position = { x = 16 y = 76 }
+			font = "hoi_16mbs"
+			text = "snd_dash_factories"
+			maxWidth = 456
+			maxHeight = 20
+			format = left
+		}
+
+		instantTextboxType = {
+			name = "snd_dash_dockyards"
+			position = { x = 16 y = 100 }
+			font = "hoi_16mbs"
+			text = "snd_dash_dockyards"
+			maxWidth = 456
+			maxHeight = 20
+			format = left
+		}
+
+		instantTextboxType = {
+			name = "snd_dash_manpower"
+			position = { x = 16 y = 124 }
+			font = "hoi_16mbs"
+			text = "snd_dash_manpower"
+			maxWidth = 456
+			maxHeight = 20
+			format = left
+		}
+
+		instantTextboxType = {
+			name = "snd_dash_trade"
+			position = { x = 16 y = 148 }
+			font = "hoi_16mbs"
+			text = "snd_dash_trade"
+			maxWidth = 456
+			maxHeight = 20
+			format = left
+		}
+
+		buttonType = {
+			name = "snd_dash_refresh"
+			position = { x = 16 y = 186 }
+			size = { width = 150 height = 28 }
+			buttonFont = "hoi_16mbs"
+			text = "snd_dash_refresh"
+			clicksound = click_default
+		}
+
+		buttonType = {
+			name = "snd_dash_report"
+			position = { x = 182 y = 186 }
+			size = { width = 220 height = 28 }
+			buttonFont = "hoi_16mbs"
+			text = "snd_dash_report"
+			clicksound = click_default
+		}
+	}
+}
