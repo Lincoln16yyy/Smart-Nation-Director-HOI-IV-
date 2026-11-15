@@ -13,6 +13,8 @@
 - Espera por aumento de nível da obra anterior antes de despachar outra ordem automática.
 - Alerta mensal de baixa mão de obra em guerra, com limiar de 25 mil.
 - Bloqueio automático da construção quando o Iron Secretary 2.1.0 está configurado para emitir ordens.
+- Relatório identifica o comércio semanal do Iron Secretary e alerta sobre reserva baixa de equipamento de infantaria em guerra.
+- Painel do Director na categoria de decisões, com indicadores nacionais e atalhos para atualizar os valores e abrir o relatório detalhado.
 
 ## 0.1.0
 

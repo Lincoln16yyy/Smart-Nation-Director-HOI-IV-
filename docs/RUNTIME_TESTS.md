@@ -136,3 +136,27 @@ quando os três módulos de construção estão desligados.
 
 Na mesma rodada de testes, o alerta de mão de obra deve aparecer em guerra
 abaixo de 25 mil quando estabilidade e apoio à guerra não são prioritários.
+
+## Reserva de equipamento e comércio
+
+O limiar de estoque usa o padrão vanilla de `events/SEA_Warlords.txt`.
+Verifique durante uma guerra que a reserva abaixo de 500 dispara um aviso
+quando os riscos prioritários estiverem ausentes. Confira o status do
+comércio ao alternar o módulo comercial do Iron Secretary, independentemente
+dos módulos de construção.
+
+## Painel do Director
+
+O painel é um scripted GUI anexado à categoria `snd_director_category`, com
+`context_type = decision_category` e `window_name = snd_dashboard`. A ligação
+segue `common/decisions/categories/AST_decision_categories.txt`, o painel do
+Council of Ministers e o do Automated Research System. Ainda não foi visto em
+jogo.
+
+Para verificar, abra **Decisões → Smart Nation Director** e confirme que o
+painel aparece acima da lista de decisões, sem cobrir os botões. Clique em
+**Atualizar valores** e compare fábricas, estaleiros e mão de obra com a barra
+do país. Confirme que o botão **Abrir relatório detalhado** continua abrindo
+o evento `snd.3`. Repita com o Iron Secretary ligado e desligado para conferir
+a linha de comércio. Registre a resolução usada, porque o painel foi dimensionado
+em 490x236 para 1080p.

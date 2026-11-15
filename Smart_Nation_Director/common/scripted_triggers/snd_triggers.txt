@@ -90,3 +90,14 @@ snd_construction_managed_externally = {
         snd_iron_secretary_runs_construction = yes
     }
 }
+
+snd_has_infantry_equipment_risk = {
+    has_war = yes
+    has_equipment = { infantry_equipment < 500 }
+}
+
+# Mirrors the weekly trade branch in Iron Secretary 2.1.0.
+snd_iron_secretary_runs_trade = {
+    has_country_flag = ais_enabled
+    has_country_flag = ais_trade_enabled
+}

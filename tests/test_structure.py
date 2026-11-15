@@ -16,7 +16,7 @@ class PackageTests(unittest.TestCase):
         self.assertIn('supported_version="1.19.3.*"', inner)
 
     def test_script_braces_and_prefixes(self):
-        for path in MOD.rglob('*.txt'):
+        for path in sorted(MOD.rglob('*.txt')) + sorted(MOD.rglob('*.gui')):
             with self.subTest(path=path):
                 self.assertTrue(path.name.startswith('snd_'))
                 source = re.sub(r'"(?:\\.|[^"\\])*"|#[^\n]*', '', path.read_text())
@@ -36,7 +36,9 @@ class PackageTests(unittest.TestCase):
         scripted_loc = '\n'.join(
             path.read_text() for path in (MOD / 'common/scripted_localisation').glob('snd_*.txt')
         )
+        gui_text = '\n'.join(path.read_text() for path in (MOD / 'interface').glob('snd_*.gui'))
         required = {'snd_director_category'}
+        required.update(re.findall(r'\btext\s*=\s*"(snd_\w+)"', gui_text))
         required.update(re.findall(r'localization_key\s*=\s*(snd_\w+)', scripted_loc))
         getters = re.findall(r'name\s*=\s*(GetSnd\w+)', scripted_loc)
         for decision in re.findall(r'^    (snd_\w+) =', decisions, re.M):
@@ -109,6 +111,45 @@ class PackageTests(unittest.TestCase):
         self.assertIn('snd_iron_secretary_runs_construction = yes', external)
         self.assertIn('has_country_flag = snd_external_construction', external)
         self.assertEqual(actions.count('NOT = { snd_construction_managed_externally = yes }'), 2)
+
+    def test_iron_secretary_trade_status_checks_weekly_module_flags(self):
+        triggers = (MOD / 'common/scripted_triggers/snd_triggers.txt').read_text()
+        getter = (MOD / 'common/scripted_localisation/snd_trade_localisation.txt').read_text()
+        trade = triggers.split('snd_iron_secretary_runs_trade = {', 1)[1]
+        self.assertCountEqual(re.findall(r'has_country_flag = (\w+)', trade),
+                              ['ais_enabled', 'ais_trade_enabled'])
+        self.assertIn('trigger = { snd_iron_secretary_runs_trade = yes }', getter)
+        self.assertIn('trigger = { NOT = { snd_iron_secretary_runs_trade = yes } }', getter)
+
+    def test_dashboard_panel_reuses_report_capture(self):
+        decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
+        gui = (MOD / 'common/scripted_guis/snd_dashboard_gui.txt').read_text()
+        interface = (MOD / 'interface/snd_dashboard.gui').read_text()
+        effects = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
+
+        category = decisions.split('snd_director_category = {', 1)[1]
+        self.assertIn('scripted_gui = snd_dashboard', category)
+        self.assertIn('context_type = decision_category', gui)
+        self.assertIn('window_name = "snd_dashboard"', gui)
+        self.assertIn('name = "snd_dashboard"', interface)
+        self.assertIn('snd_dash_refresh_click = {', gui)
+        self.assertIn('snd_refresh_dashboard = yes', gui.split('snd_dash_refresh_click = {', 1)[1])
+        self.assertIn('snd_dash_report_click = {', gui)
+        self.assertIn('snd_show_national_report = yes', gui.split('snd_dash_report_click = {', 1)[1])
+        for widget in ('snd_dash_refresh', 'snd_dash_report', 'snd_dash_title',
+                       'snd_dash_factories', 'snd_dash_dockyards', 'snd_dash_manpower'):
+            self.assertIn(f'name = "{widget}"', interface)
+
+        capture = effects.split('snd_capture_report_values = {', 1)[1].split('\n}', 1)[0]
+        for variable in ('snd_report_civilian_factories', 'snd_report_military_factories',
+                         'snd_report_dockyards', 'snd_report_manpower_k'):
+            self.assertIn(f'{variable} =', capture)
+        report = effects.split('snd_show_national_report = {', 1)[1]
+        self.assertIn('snd_capture_report_values = yes', report)
+        self.assertIn('country_event = { id = snd.3 }', report)
+        refresh = effects.split('snd_refresh_dashboard = {', 1)[1]
+        self.assertIn('snd_capture_report_values = yes', refresh)
+        self.assertNotIn('dirty =', gui)
 
     def test_auto_project_requires_level_growth_at_the_recorded_state(self):
         effects = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()

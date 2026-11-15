@@ -22,3 +22,5 @@
 16. Construção recorrente agora espera o aumento do nível no estado registrado. Cancelamentos podem liberar a espera sem apagar o intervalo. Validação estática concluída.
 17. A revisão mensal ganhou um alerta de mão de obra abaixo de 25 mil em guerra, após as prioridades de estabilidade e apoio à guerra. Validação estática concluída.
 18. O Director passou a consultar as flags que acionam construção no Iron Secretary 2.1.0 e suspende suas ordens enquanto houver sobreposição. Validação estática concluída.
+19. Adicionado alerta de reserva baixa de equipamento de infantaria e status comercial do Iron Secretary no relatório. Validação estática concluída.
+20. Primeiro painel do Director via scripted GUI dentro da categoria de decisões, reutilizando a captura do relatório. Validação estática concluída.
