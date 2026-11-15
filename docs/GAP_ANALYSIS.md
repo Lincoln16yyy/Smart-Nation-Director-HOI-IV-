@@ -19,6 +19,6 @@ O padrão terrestre de `add_equipment_production` está em
 tecnologias vanilla e Road to 56. A documentação local 1.19.3 descreve
 consultas de estoque e capacidade, mas não encontrei nela um trigger de
 consulta a uma linha de produção por equipamento. O piloto continua
-limitado a uma solicitação por país. É necessário testar se uma linha
-existente interfere na alocação e, antes de automatizar novas solicitações,
-confirmar um método de evitar duplicatas.
+limitado a uma solicitação por país. Na Itália, a solicitação
+criou uma segunda linha do mesmo equipamento e recebeu uma fábrica. Antes
+de automatizar novas solicitações, confirme um método de evitar duplicatas.

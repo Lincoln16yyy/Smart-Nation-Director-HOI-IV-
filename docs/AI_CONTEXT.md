@@ -82,7 +82,7 @@ A categoria de decisões declara `scripted_gui = snd_dashboard`. O painel usa
 `context_type = decision_category` e não mantém estado próprio: os botões
 chamam `snd_refresh_dashboard` e `snd_show_national_report`, e a captura de
 variáveis é compartilhada por `snd_capture_report_values`. O painel foi
-dimensionado em 490x236 e ainda não foi visto em jogo.
+dimensionado em 490x236. A segunda abertura confirmou o painel e as decisões.
 
 O piloto de produção é opt-in separado das rotinas gerais e emite no máximo
 uma solicitação por país. A rotina pede uma fábrica em uma linha de armas de
@@ -100,3 +100,13 @@ A seleção de armamento usa a ordem 3, 2, 1 e 0, conforme a tecnologia.
 Os quatro vínculos tecnologia/equipamento correspondem ao vanilla e ao
 Road to 56 instalado. Estoque e capacidade militar não identificam linhas
 existentes. A autorização permanece de uso único.
+
+Na Itália de 1936, uma autorização do piloto criou a linha 17 de Carcano
+M38 com uma fábrica. A linha original continuou com quatro. Mantenha o
+limite de uso único até que exista uma forma confiável de identificar ou
+reutilizar linhas de produção existentes.
+
+O efeito documentado `add_equipment_production` cria uma linha. A versão
+local da documentação não apresenta uma operação de alocação para uma
+linha existente. O menu avisa explicitamente sobre duplicação. O teste
+isolado pode ser preparado com `bash scripts/prepare_production_test.sh`.

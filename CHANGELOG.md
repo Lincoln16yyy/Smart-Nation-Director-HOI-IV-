@@ -2,6 +2,10 @@
 
 ## Em desenvolvimento
 
+- Corrigidos o vínculo da categoria e a sintaxe do painel no HOI4 1.19.3.
+- Documentado o teste italiano de produção e adicionado um lançador isolado.
+- A autorização do piloto avisa que a solicitação abre uma nova linha.
+
 - Piloto opcional de produção de infantaria com uma única solicitação pela fila normal.
 - Controle de produção externa e status do piloto no relatório nacional.
 - Seleção do modelo padrão de infantaria mais avançado já pesquisado, entre os quatro níveis comuns ao vanilla e ao Road to 56.

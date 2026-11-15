@@ -40,3 +40,8 @@ O Director reconhece automaticamente a configuração de construção do Iron Se
 O **piloto de produção de infantaria** é uma autorização separada. Em guerra, a rotina avalia mensalmente a reserva e a capacidade militar. Pode solicitar uma única linha para o modelo mais avançado já pesquisado entre os quatro níveis compatíveis com o vanilla e o Road to 56. Use com a produção sob seu controle até a validação em jogo.
 
 Se a IA nativa ou outro mod assumir a produção militar, use **Indicar produção gerida externamente**. A autorização pendente fica guardada até você liberar a produção para o Director.
+
+**Autorizar nova linha de infantaria** é uma autorização de uso único.
+Confira a fila de produção primeiro: o teste da Itália confirmou que o
+efeito cria outra linha mesmo quando o modelo já está em produção. Para
+aumentar a alocação da linha atual, use os controles normais de produção.
