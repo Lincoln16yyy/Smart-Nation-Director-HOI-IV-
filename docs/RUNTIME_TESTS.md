@@ -258,3 +258,13 @@ para cada uma das 512 combinações de oito flags e bloqueio externo. Isso
 verifica a lógica booleana, não a interpretação ou apresentação da engine.
 A auditoria atualizada conta 354 definições, sem colisões nos tipos cobertos.
 Nenhum teste novo em campanha; roteiro acrescentado em TEST_PLAN.md.
+
+## Preparação do ciclo de construção — 15/11/2026
+
+Criados perfis descartáveis BRA e ITA pelos scripts. Confirmados país,
+ativação exclusiva do Director e igualdade SHA-256 dos 19 arquivos de cada
+cópia com o código do mod. `bash -n` aprovado nos três scripts envolvidos;
+os 23 testes Python continuam aprovados. A versão do manifesto local
+continua 1.19.3.0. Nesta etapa Wine e campanhas não foram iniciados.
+A observação da proposta, aprovação e consumo de capacidade civil continua
+pendente; o lançador do Brasil e as instruções estão preparados.

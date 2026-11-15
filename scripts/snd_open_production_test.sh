@@ -2,13 +2,22 @@
 set -euo pipefail
 
 trial=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+country=ITA
+if [[ -f "$trial/test-country" ]]; then
+    country=$(cat -- "$trial/test-country")
+fi
+case "$country" in
+    ITA|BRA) ;;
+    *) printf 'País de teste inválido: %s\n' "$country" >&2; exit 1 ;;
+esac
+
 game=${1:-"$HOME/Downloads/Hearts of Iron IV/Hearts of Iron IV/hoi4.exe"}
 if [[ ! -f "$game" ]]; then
     printf 'Executável não encontrado: %s\n' "$game" >&2
     exit 1
 fi
 
-printf '%s\n' 'Preparando o perfil Wine isolado da Itália…'
+printf 'Preparando o perfil Wine isolado de %s…\n' "$country"
 export WINEPREFIX="$trial/wine"
 if [[ ! -f "$WINEPREFIX/user.reg" ]]; then
     wineboot -i
@@ -48,4 +57,4 @@ if [[ ! -s "$target/dlc_load.json" ]]; then
 fi
 cd -- "$(dirname -- "$game")"
 printf '%s\n' 'Abrindo o HOI4. A campanha pode demorar para carregar.'
-exec wine "./$(basename -- "$game")" -gdpr-compliant -debug_mode -start_tag=ITA
+exec wine "./$(basename -- "$game")" -gdpr-compliant -debug_mode "-start_tag=$country"

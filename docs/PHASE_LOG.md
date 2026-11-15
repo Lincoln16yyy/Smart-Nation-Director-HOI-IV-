@@ -60,3 +60,9 @@
     23 testes aprovados, incluindo seleção única de status em 512 combinações.
     Auditoria atualizada: 354 definições, sem colisões nos domínios cobertos.
     Nenhuma campanha iniciada nesta etapa.
+
+38. Preparado cenário descartável do Brasil para validar o ciclo de construção.
+    O lançador compartilhado lê o país validado e mantém Itália como padrão
+    para perfis antigos. Preparação registra commit-base e copia o roteiro.
+    Verificados os perfis BRA/ITA, hashes dos 19 arquivos do mod, sintaxe shell
+    e 23 testes Python. Engine não iniciada; observação em campanha pendente.

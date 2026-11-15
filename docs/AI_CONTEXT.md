@@ -139,3 +139,12 @@ adiamento após recusa, modo consultivo, proposta supervisionada e modo
 supervisionado sem proposta. O estado de aprovação lembra que a elegibilidade
 será revalidada. Essa revisão é somente informativa e ainda precisa ser vista
 em campanha. O teste estático cobre 512 combinações de flags/bloqueio externo.
+
+A próxima validação concreta é o ciclo de construção supervisionada do Brasil.
+Use `bash scripts/prepare_construction_test.sh`, que imprime um lançador
+isolado com país BRA. O preparador de produção mantém ITA como padrão.
+As duas configurações foram verificadas sem abrir Wine. Para continuar em
+jogo, o usuário deve abrir o lançador do Brasil e a categoria do Director nas
+decisões; seguir TEST_PLAN.md para comparar fila antes/depois da proposta e
+aprovação, sem `human_ai` ou outros mods. Não confundir perfil preparado com
+validação da engine.

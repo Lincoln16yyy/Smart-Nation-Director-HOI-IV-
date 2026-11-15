@@ -35,6 +35,24 @@ passe o caminho de `hoi4.exe` como argumento do lançador.
 
 ## Mensagens de estado da construção
 
+Prepare a campanha do Brasil com
+`bash scripts/prepare_construction_test.sh`. O comando imprime o caminho de
+`open-test.sh`; execute-o com `bash CAMINHO/open-test.sh`. O lançador abre
+Brasil em 1936 com apenas o Director, em prefixo Wine separado. O perfil
+pessoal não deve ser usado neste roteiro. Cada preparação cria uma pasta
+nova em `runtime/construction-test.*`, com cópia do mod, país em
+`test-country`, commit-base em `source-commit.txt` e cópia deste plano.
+O commit identifica a base Git; alterações locais ainda não commitadas
+podem estar presentes na cópia. O cenário da Itália continua disponível
+pelo preparador de produção, sem argumentos.
+
+Na primeira abertura, pause e abra **Decisões → Smart Nation Director**.
+Confira primeiro se os indicadores do painel aparecem antes de abrir o
+relatório. Para o primeiro ciclo de supervisão, registre fila e fábricas
+civis antes da autorização, após a proposta e após a aprovação. Uma proposta
+não deve criar obra; a aprovação deve enfileirar uma única obra com progresso
+normal. Não ative o piloto de infraestrutura neste ciclo.
+
 Em campanha descartável com apenas o Director, consulte o relatório nacional
 entre as etapas; deixe `human_ai` desligado.
 

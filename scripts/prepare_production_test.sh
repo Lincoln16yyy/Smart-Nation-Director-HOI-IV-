@@ -1,9 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+country=${1:-ITA}
+case "$country" in
+    ITA) scenario=production ;;
+    BRA) scenario=construction ;;
+    *) printf 'País de teste inválido: %s\n' "$country" >&2; exit 1 ;;
+esac
+
 repo=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 mkdir -p -- "$repo/runtime"
-trial=$(mktemp -d -- "$repo/runtime/production-test.XXXXXXXX")
+trial=$(mktemp -d -- "$repo/runtime/$scenario-test.XXXXXXXX")
+printf '%s\n' "$country" > "$trial/test-country"
+cp -- "$repo/docs/TEST_PLAN.md" "$trial/TEST_PLAN.md"
+git -C "$repo" rev-parse HEAD > "$trial/source-commit.txt"
 profile="$trial/profile"
 mkdir -p -- "$profile/mod"
 cp -- "$repo/Smart_Nation_Director.mod" "$profile/mod/"

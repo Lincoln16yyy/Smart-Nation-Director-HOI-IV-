@@ -8,7 +8,7 @@
 | Relatório nacional | Decisão consultiva com estaleiros, mão de obra, alertas e acompanhamento industrial opcional. Validação em jogo pendente. |
 | Coordenação da construção | Indicação manual ou detecção por flags do Iron Secretary 2.1.0. Bloqueio validado estaticamente. |
 | Construção automática | Avaliação mensal de estados centrais, intervalo mínimo de 180 dias e verificação de aumento do nível do edifício. Validação em jogo pendente. |
-| Construção supervisionada | Proposta automática com aprovação manual, revalidação e recusa; relatório distingue espera de aprovação e adiamento. Validação em jogo pendente. |
+| Construção supervisionada | Proposta automática com aprovação manual, revalidação e recusa; relatório distingue espera de aprovação e adiamento. Preparador isolado do Brasil disponível. Validação em jogo pendente. |
 | Construção consultiva | Recomendação nas viradas elegíveis, sem despacho. Validação em jogo pendente. |
 | Alertas nacionais automáticos | Revisão mensal opcional de capitulação, estabilidade, apoio à guerra, mão de obra e equipamento de infantaria. Validação em jogo pendente. |
 | Controle das rotinas | Ativação e parada conjuntas, com elegibilidade de construção preservada. Validação em jogo pendente. |
