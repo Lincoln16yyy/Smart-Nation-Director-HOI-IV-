@@ -38,7 +38,7 @@ class PackageTests(unittest.TestCase):
         )
         gui_text = '\n'.join(path.read_text() for path in (MOD / 'interface').glob('snd_*.gui'))
         required = {'snd_director_category'}
-        required.update(re.findall(r'\btext\s*=\s*"(snd_\w+)"', gui_text))
+        required.update(re.findall(r'\b(?:text|buttonText)\s*=\s*"(snd_\w+)"', gui_text))
         required.update(re.findall(r'localization_key\s*=\s*(snd_\w+)', scripted_loc))
         getters = re.findall(r'name\s*=\s*(GetSnd\w+)', scripted_loc)
         for decision in re.findall(r'^    (snd_\w+) =', decisions, re.M):
@@ -127,8 +127,16 @@ class PackageTests(unittest.TestCase):
         interface = (MOD / 'interface/snd_dashboard.gui').read_text()
         effects = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
 
-        category = decisions.split('snd_director_category = {', 1)[1]
+        category = (MOD / 'common/decisions/categories/snd_categories.txt').read_text()
         self.assertIn('scripted_gui = snd_dashboard', category)
+        self.assertNotIn('scripted_gui', decisions)
+        buttons = re.findall(r'buttonType = \{(.*?)\n\t\t}', interface, re.S)
+        self.assertEqual(len(buttons), 2)
+        for button in buttons:
+            self.assertNotIn('size =', button)
+            self.assertIn('quadTextureSprite =', button)
+        self.assertIn('buttonText = "snd_dash_refresh"', interface)
+        self.assertIn('buttonText = "snd_dash_report"', interface)
         self.assertIn('context_type = decision_category', gui)
         self.assertIn('window_name = "snd_dashboard"', gui)
         self.assertIn('name = "snd_dashboard"', interface)

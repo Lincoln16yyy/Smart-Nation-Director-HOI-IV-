@@ -1,6 +1,4 @@
 snd_director_category = {
-    scripted_gui = snd_dashboard
-
     snd_start_automatic_government = {
         visible = {
             is_ai = no

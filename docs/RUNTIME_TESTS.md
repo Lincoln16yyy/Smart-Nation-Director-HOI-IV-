@@ -179,3 +179,30 @@ O piloto também cobre equipamento 2 e 3. Em uma campanha descartável com
 tecnologia avançada, confirme que o modelo solicitado corresponde à
 tecnologia mais alta desbloqueada. Para avaliar duplicatas, compare a
 fila antes e depois em variações com e sem uma linha de infantaria existente.
+
+A Itália abriu com o Director no perfil isolado. O setup registrou a
+categoria e os três eventos. Os logs identificaram erros no painel
+(orientação do contêiner e dimensões dos botões) e rejeitaram as decisões
+quando a referência Scripted GUI estava no arquivo de decisões. A correção
+move a referência para a categoria e usa sprites vanilla para dimensionar
+os botões. A cópia de teste foi sincronizada. Ainda é preciso reler o log
+depois de reiniciar antes de testar produção.
+
+### Itália de 1936, com linha de infantaria existente
+
+Após corrigir a categoria e os botões, o setup carregou 19 decisões e três
+eventos do Director. O log não registrou erros do Director, e a categoria
+apareceu no jogo. As capturas do usuário identificam a mesma campanha antes
+da autorização, em 4 de janeiro, e depois do despacho, em 2 de fevereiro.
+
+| Indicador | Antes | Depois |
+|---|---|---|
+| Fábricas militares em uso | 10/20 | 11/20 |
+| Carcano M38 original | 4 fábricas | 4 fábricas |
+| Solicitação do piloto | Ausente | Linha 17, Carcano M38, 1 fábrica, 2,54 unidades por semana |
+
+O efeito somou uma fábrica em uma nova linha para o mesmo modelo. Não
+aproveitou a linha original. Este cenário confirma a produção pela fila
+militar normal e reproduz a duplicata com uma linha preexistente. A variante
+sem uma linha existente e o comportamento após recarregar ainda estão
+pendentes.

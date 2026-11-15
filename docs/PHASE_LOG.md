@@ -27,3 +27,7 @@
 20. Implementado piloto opcional de linha de produção de infantaria. Validação estática concluída.
 21. Adicionado controle de gestão externa da produção e status do piloto no relatório. Validação estática concluída.
 22. Piloto de infantaria passou a escolher o modelo mais avançado entre os quatro níveis comuns ao vanilla e ao Road to 56. Validação estática concluída.
+24. A abertura da Itália revelou erros de leitura no painel e no arquivo de decisões. Ajustados o vínculo da categoria e os botões conforme o vanilla.
+25. O painel e as decisões carregaram após a correção. Na Itália, o piloto de infantaria abriu outra linha de Carcano M38 com uma fábrica, preservando as quatro da linha anterior.
+
+26. O menu passou a explicitar que o piloto abre outra linha. O lançador isolado e o roteiro documentam a reprodução do teste.

@@ -1,4 +1,5 @@
 snd_director_category = {
     allowed = { always = yes }
     visible = { is_ai = no }
+    scripted_gui = snd_dashboard
 }

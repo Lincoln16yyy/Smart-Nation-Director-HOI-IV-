@@ -3,7 +3,6 @@ guiTypes = {
 		name = "snd_dashboard"
 		position = { x = 0 y = 0 }
 		size = { width = 490 height = 236 }
-		Orientation = "UPPER_LEFT"
 		clipping = no
 
 		background = {
@@ -79,18 +78,18 @@ guiTypes = {
 		buttonType = {
 			name = "snd_dash_refresh"
 			position = { x = 16 y = 186 }
-			size = { width = 150 height = 28 }
+			quadTextureSprite = "GFX_button_148x34"
 			buttonFont = "hoi_16mbs"
-			text = "snd_dash_refresh"
+			buttonText = "snd_dash_refresh"
 			clicksound = click_default
 		}
 
 		buttonType = {
 			name = "snd_dash_report"
 			position = { x = 182 y = 186 }
-			size = { width = 220 height = 28 }
+			quadTextureSprite = "GFX_button_261x34"
 			buttonFont = "hoi_16mbs"
-			text = "snd_dash_report"
+			buttonText = "snd_dash_report"
 			clicksound = click_default
 		}
 	}

@@ -10,9 +10,9 @@
 | Construção automática | Avaliação mensal de estados centrais, intervalo mínimo de 180 dias e verificação de aumento do nível do edifício. Validação em jogo pendente. |
 | Alertas nacionais automáticos | Revisão mensal opcional de estabilidade, apoio à guerra, mão de obra e equipamento de infantaria. Validação em jogo pendente. |
 | Controle das rotinas | Ativação e parada conjuntas, com elegibilidade de construção preservada. Validação em jogo pendente. |
-| Painel do Director | Scripted GUI na categoria de decisões com fábricas, estaleiros, mão de obra e comércio. Reutiliza a captura do relatório. Validação em jogo pendente. |
-| Produção de infantaria | Piloto opt-in de uma solicitação pela fila normal, com suspensão por gestão externa e status no relatório. Seleciona o modelo pesquisado mais avançado entre os níveis 0–3. Validação em jogo pendente. |
+| Painel do Director | Scripted GUI na categoria de decisões com fábricas, estaleiros, mão de obra e comércio. Reutiliza a captura do relatório. Painel e decisões visíveis no teste da Itália. |
+| Produção de infantaria | Piloto opt-in de uma solicitação pela fila normal, com suspensão por gestão externa e status no relatório. Na Itália, abriu uma segunda linha do Carcano M38 com uma fábrica. A variante sem linha existente está pendente. |
 | Integrações, política e guerra | Pendentes. |
 | Campanhas longas e desempenho | Pendentes. |
 
-O próximo teste usa cópias de um mesmo checkpoint para comparar a IA nativa com um controle sem `human_ai`.
+O teste pendente de produção é a variante sem linha de infantaria existente e a verificação do limite de uso após recarregar. A produção recorrente depende de um meio confiável de identificar ou reutilizar linhas.
