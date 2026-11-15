@@ -18,3 +18,5 @@ python3 scripts/audit_mods.py "/caminho/perfil-hoi4"
 ## Delegar à IA nativa
 
 Abra **Decisões → Smart Nation Director → Consultar delegação à IA** para ver as instruções de `human_ai`. O comando é executado pelo jogador no console. Em um teste isolado, a IA ocupou slots normais de pesquisa, escolheu um foco e administrou construção, comércio e organização militar.
+
+**Consultar situação nacional** mostra a contagem de fábricas civis e militares e sugere uma prioridade conforme a estabilidade e a situação de guerra. A decisão atualiza os números a cada abertura.

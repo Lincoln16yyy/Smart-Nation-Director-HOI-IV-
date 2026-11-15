@@ -11,3 +11,4 @@
 6. O Brasil humano recebeu uma obra de infraestrutura no Rio de Janeiro na virada mensal, com dez fábricas civis alocadas pela fila regular.
 
 7. Adicionado guia de delegação à IA nativa no menu de decisões. Validado estaticamente.
+8. Implementado relatório nacional sob demanda com contagem de fábricas e prioridade condicional. Validação estática concluída.

@@ -57,3 +57,9 @@ foco Aftermath of the Coffee Crisis, que já estava em andamento no save.
 
 A nova decisão e seu evento passaram pelas verificações estáticas de
 referências e localização. A exibição do guia ainda não foi testada em jogo.
+
+## Relatório nacional
+
+As referências de evento, as três descrições condicionais e as variáveis de
+localização passaram pela validação estática. A renderização e os valores
+exibidos ainda precisam de uma verificação em jogo.

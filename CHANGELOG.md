@@ -3,6 +3,7 @@
 ## Em desenvolvimento
 
 - Guia de delegação à IA nativa acessível pelo menu de decisões em português e inglês.
+- Relatório nacional com fábricas civis e militares e recomendações condicionadas à estabilidade e à guerra.
 
 ## 0.1.0
 
