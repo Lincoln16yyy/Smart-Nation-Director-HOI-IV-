@@ -176,3 +176,46 @@ perfil novo com versão corrigida, conferir status do intervalo após aprovar
 e após save/load; em variante separada, conferir adiamento após recusar.
 O relatório mostrou 17 civis contra 15 próprias + 2 de comércio na fila;
 não descrever essa contagem dinâmica como exclusivamente fábricas próprias.
+
+## Resultado atual da rodada de construção
+
+O PR #14 corrigiu os temporizadores e já foi mesclado. A campanha corrigida
+`construction-test.cUtH6i16` mostrou:
+
+- 1/2/1936: após aprovação, relatório registrou fábrica civil na Bahia e
+  cooldown de 180 dias; o aviso permaneceu após o passo de save/load.
+- 1/3/1936: uma única obra, 588/10800, dez fábricas alocadas.
+- 3/9/1936: cooldown expirado e espera pela obra; fila com uma única fábrica,
+  4494/10800, velocidade 21/dia, previsão 1/7/1937.
+- 3/8/1937: indicador civil aumentou para 18 e surgiu proposta no Paraná;
+  última ordem continuou Bahia. A recusa removeu a proposta e ativou aviso
+  de adiamento por 90 dias.
+- 14/9/1937: após o passo de save/load, adiamento continuava e não havia proposta.
+- 2/12/1937: adiamento expirado, nova proposta em Minas Gerais aguardando decisão,
+  Bahia como última ordem e indicador civil ainda 18.
+
+As observações confirmam os estados e as retomadas, sem medir o dia exato das
+expirações. O aumento do indicador e a nova proposta são consistentes com
+conclusão da fábrica anterior; o nível estadual final não foi capturado.
+Os relatos anteriores são históricos; esta síntese define o próximo trabalho.
+O usuário prefere operar o jogo e enviar capturas. Preserve a campanha de
+teste e não solicite novas repetições de passos já demonstrados.
+
+Gestão externa manual e troca para consultivo já foram verificadas nesta
+rodada (detalhes abaixo). Revalidação com estado inelegível permanece pendente.
+Escolher uma dúvida concreta por vez.
+Ainda não há validação de outros países, modpack completo ou desempenho.
+
+Atualização da rodada: em dezembro, gestão externa manual desabilitou aprovação
+e preservou proposta (captura); usuário confirmou reabilitação ao clicar em
+`Allow Director construction orders`. Depois mudou para modo consultivo.
+Em 2/1/1938 às 10h, relatório mostrou recomendação de fábrica civil no Rio
+Grande do Sul, mantendo Bahia como última ordem. O usuário conferiu a fila e confirmou em texto que não iniciou obra; não
+houve captura adicional dessa conferência. Indicador civil caiu de 18 para 17; causa
+não investigada, não atribuir perda de fábrica própria sem evidência.
+
+Rodada manual encerrada para gestão externa e consultivo: preservar os
+resultados coletados, sem solicitar repetição. Próximo teste específico: revalidação de vaga na aprovação supervisionada,
+conforme a seção dedicada em TEST_PLAN.md. O roteiro usa fila manual em cópia
+descartável e distingue cenário inelegível de limitação da preparação. Não
+foi executado nesta sessão; não repetir gestão externa e consultivo.

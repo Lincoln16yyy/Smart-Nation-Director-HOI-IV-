@@ -87,3 +87,54 @@
     `value = 1` às flags temporárias de 180/90 dias conforme vanilla local.
     Reteste em engine pendente; campanha aberta continua na cópia anterior.
     Relatório exibiu 17 civis enquanto fila indicava 15 próprias + 2 comerciais.
+
+43. Reteste pelo usuário na cópia corrigida confirmou mensagem do intervalo
+    de 180 dias em 1/2/1936 às 3h após aprovar fábrica civil na Bahia. Ainda
+    faltam persistência do cooldown, expiração e teste do adiamento por recusa.
+
+44. Captura após o passo de save/load na versão corrigida preservou a mensagem
+    do cooldown de 180 dias e a última ordem na Bahia em 1/2/1936 às 3h.
+    Expiração e bloqueio nas viradas seguintes ainda pendentes.
+
+45. Captura de 1/3/1936 confirmou uma única obra na Bahia após nova virada
+    mensal e save/load, com progresso 588/10800 e dez fábricas alocadas.
+    Cooldown e espera pela obra não foram isolados; expiração ainda pendente.
+
+46. Relatório do usuário em 3/9/1936 mostrou transição de cooldown para espera
+    pela obra na Bahia, sem proposta pendente. Expiração observada até essa
+    data; duração exata não medida. Conclusão e retomada ainda pendentes.
+
+47. Fila em 3/9/1936 confirmou uma única fábrica na Bahia, 4494/10800 (41%)
+    e dez fábricas alocadas após expiração do cooldown. Conclusão prevista
+    para 1/7/1937; conclusão real e retomada ainda não observadas.
+
+48. Em 3/8/1937, relatório apresentou nova proposta no Paraná, Bahia como
+    última ordem e indicador civil aumentado de 17 para 18. Confirmada
+    retomada do planejamento após liberação da espera. Recusa ainda pendente.
+
+49. Recusa da proposta do Paraná em 3/8/1937 removeu a proposta e mostrou
+    adiamento de 90 dias, mantendo a última ordem na Bahia. Persistência e
+    expiração do adiamento ainda pendentes.
+
+50. Captura de 14/9/1937 após o passo de save/load mostrou adiamento de
+    90 dias ainda ativo e nenhuma proposta após virada de setembro.
+    Expiração do adiamento permanece pendente.
+
+51. Em 2/12/1937, relatório mostrou proposta em Minas Gerais após expiração
+    do adiamento por recusa, com Bahia como última ordem. Consolidada a rodada
+    de validação do Brasil; datas exatas de expiração não medidas. Próximas
+    lacunas: gestão externa, modo consultivo e revalidação de estado inválido.
+
+52. Gestão externa manual bloqueou aprovação preservando proposta; usuário
+    confirmou desbloqueio ao permitir ordens. Em 2/1/1938, troca para modo
+    consultivo gerou recomendação no Rio Grande do Sul, mantendo última ordem
+    na Bahia. Conferência da fila consultiva ainda pendente.
+
+53. Usuário confirmou em texto que a recomendação consultiva não iniciou obra
+    na fila. Consolidado com o relatório de 2/1/1938; sem captura adicional
+    desse passo. Gestão externa e consultivo não exigem repetição desta rodada.
+
+54. Em 15/11/2026, consolidados os resultados de gestão externa e consultivo
+    e preparado teste específico de revalidação de vaga na aprovação. Os 23
+    testes estáticos passaram. Nenhuma nova validação de engine nesta sessão;
+    PR #15 segue aberto, sem merge.
