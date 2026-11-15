@@ -148,3 +148,31 @@ jogo, o usuário deve abrir o lançador do Brasil e a categoria do Director nas
 decisões; seguir TEST_PLAN.md para comparar fila antes/depois da proposta e
 aprovação, sem `human_ai` ou outros mods. Não confundir perfil preparado com
 validação da engine.
+
+Na campanha descartável do Brasil aberta pelo usuário, a aprovação da proposta
+em 2/2/1936 às 21h criou uma fábrica civil no Paraná com 10/15 fábricas
+alocadas. A fila estava vazia antes da aprovação. O painel inicial também
+mostrou indicadores sem clique. Evidências em RUNTIME_TESTS.md e capturas
+locais em `runtime/construction-test.1giVJOvA/evidence/`.
+Em 11/2/1936 às 8h, o usuário mostrou progresso 252/10800 (2%), velocidade
+28/dia e previsão de conclusão 23/2/1937, com dez fábricas alocadas.
+Próximo passo: salvar/recarregar no
+perfil descartável para conferir que existe uma única ordem e que o estado
+de espera persiste. Usuário prefere operar a interface quando orientado.
+
+Após solicitar save/load, o usuário mostrou a mesma fila em 11/2/1936 às 8h:
+uma fábrica civil no Paraná, 252/10800 e 10/15 fábricas. O save de teste
+existe no perfil isolado, mas game.log não registra explicitamente a recarga.
+Próximo passo: abrir o relatório nacional para verificar estado de espera e
+última ordem; depois atravessar março para conferir ausência de duplicação.
+
+ATENÇÃO: o relatório após recarga preservou última ordem no Paraná e espera
+por obra, mas revelou ausência do cooldown esperado. As flags temporárias
+foram emitidas sem `value = 1`; a inspeção do save indicou valor zero no
+cooldown. Corrigidos os dois pontos de escrita (180 dias e recusa de 90 dias)
+conforme exemplos vanilla. A correção só foi validada estaticamente e não
+atualiza a campanha aberta ou flags antigas. Próxima validação prioritária:
+perfil novo com versão corrigida, conferir status do intervalo após aprovar
+e após save/load; em variante separada, conferir adiamento após recusar.
+O relatório mostrou 17 civis contra 15 próprias + 2 de comércio na fila;
+não descrever essa contagem dinâmica como exclusivamente fábricas próprias.

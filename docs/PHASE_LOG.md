@@ -66,3 +66,24 @@
     para perfis antigos. Preparação registra commit-base e copia o roteiro.
     Verificados os perfis BRA/ITA, hashes dos 19 arquivos do mod, sintaxe shell
     e 23 testes Python. Engine não iniciada; observação em campanha pendente.
+
+39. Usuário executou a campanha descartável do Brasil e forneceu capturas:
+    painel com dados antes do relatório, proposta de construção em fevereiro,
+    fila vazia antes da aprovação e uma fábrica civil no Paraná após aprovar,
+    com 10/15 fábricas alocadas. `error.log` vazio na coleta. Progresso e
+    save/load ainda pendentes; sem alteração de código nesta observação.
+
+40. Captura do usuário em 11/2/1936 confirmou progresso regular da fábrica
+    civil supervisionada no Paraná: 252/10800, velocidade 28/dia, dez fábricas
+    alocadas e prazo previsto 23/2/1937. Save/load e conclusão pendentes.
+
+41. Captura após o passo solicitado de save/load preserva a única fábrica
+    do Paraná, 252/10800 e dez fábricas alocadas. Save localizado no perfil
+    descartável; sem linha explícita de recarga em game.log. Verificação das
+    flags via relatório e da virada seguinte continua pendente.
+
+42. Relatório após recarga preservou última ordem e espera pela obra, mas
+    pulou o cooldown. Save indica cooldown com valor zero. Adicionado
+    `value = 1` às flags temporárias de 180/90 dias conforme vanilla local.
+    Reteste em engine pendente; campanha aberta continua na cópia anterior.
+    Relatório exibiu 17 civis enquanto fila indicava 15 próprias + 2 comerciais.
