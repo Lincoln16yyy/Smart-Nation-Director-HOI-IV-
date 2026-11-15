@@ -44,3 +44,18 @@ nem controle de `human_ai` pelo script.
 O relatório usa `num_of_naval_factories` para estaleiros e `manpower_k` para
 mão de obra disponível em milhares. O alerta de baixo apoio à guerra (abaixo
 de 50%) aparece em guerra, desde que a estabilidade esteja em pelo menos 50%.
+
+A construção automática é opcional e continua entre viradas mensais até
+ser desativada. O Director procura fábricas primeiro na capital e depois em outros estados centrais sob posse e controle
+e prioriza fábrica civil em paz ou militar em guerra, com infraestrutura
+na capital como alternativa. O intervalo de 180 dias limita novas ordens do Director.
+Esse intervalo conta a partir do despacho e não verifica se a fila já terminou.
+
+O relatório registra o tipo e o estado da última ordem automática. Esse
+registro indica o pedido de construção, cujo progresso pode ser conferido
+na fila vanilla.
+
+Os alertas automáticos são opt-in e rodam no ciclo mensal. A decisão e o
+alerta compartilham o disparo de `snd.3`, com os mesmos indicadores e
+prioridades. `snd_last_reported_risk` persiste o último risco. O risco zero
+rearma a próxima ocorrência sem publicar relatório.

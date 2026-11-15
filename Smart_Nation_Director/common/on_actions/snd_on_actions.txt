@@ -18,6 +18,23 @@ on_actions = {
                 }
                 snd_dispatch_pilot = yes
             }
+            if = {
+                limit = {
+                    is_ai = no
+                    has_country_flag = snd_auto_construction
+                    NOT = { has_country_flag = snd_external_construction }
+                    NOT = { has_country_flag = snd_auto_construction_cooldown }
+                    NOT = { has_country_flag = snd_pilot_enabled }
+                }
+                snd_dispatch_auto_construction = yes
+            }
+            if = {
+                limit = {
+                    is_ai = no
+                    has_country_flag = snd_risk_alerts_enabled
+                }
+                snd_review_national_risk = yes
+            }
         }
     }
 }

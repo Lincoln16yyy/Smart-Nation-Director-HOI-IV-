@@ -87,3 +87,28 @@ em `events/SEA_Japan.txt` e `common/scripted_effects/RAJ_GOE_scripted_effects.tx
 A ligação entre decisão, evento e textos passou nos testes estáticos. Em jogo,
 compare o relatório com a barra do país e confirme que o alerta de baixo apoio
 só aparece em guerra quando a estabilidade não dispara o primeiro alerta.
+
+## Construção automática
+
+Validação estática cobre o agendamento mensal, o intervalo e o uso explícito
+da fila normal nos três ramos. Em jogo, confirme fábrica civil em paz e
+militar em guerra; quando a fábrica preferida estiver sem vaga, confira a
+alternativa de infraestrutura. Depois do primeiro despacho, passe mais uma
+virada antes dos 180 dias e verifique que não surge outra ordem. Ativar ou
+desativar a opção não apaga o timer. A fila pode conter obras anteriores
+quando o intervalo termina.
+
+Para testar a seleção territorial junto com a construção automática, use uma
+capital sem vaga e outro estado central com vaga. Compare o local e tipo
+registrados no relatório com a ordem na fila. Confirme que território ocupado
+não se torna candidato e que só há tentativa de infraestrutura na capital
+quando nenhum estado elegível comporta a fábrica prioritária.
+
+## Alertas nacionais automáticos
+
+Validação estática cobre o disparo compartilhado do relatório e a comparação
+com a prioridade anterior. Em uma campanha, ative com estabilidade abaixo
+de 50% e espere duas viradas. Confira um aviso na primeira e nenhum na
+segunda. Deixe o risco desaparecer e reaparecer para conferir o novo
+aviso. Em guerra, confira a transição de estabilidade baixa para apoio à
+guerra baixo quando apenas este último risco permanecer.

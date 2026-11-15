@@ -13,3 +13,8 @@
 | Painel e ranking | Director | Triggers e valores verificáveis, interface em 1080p, atualização econômica |
 
 Nenhum adaptador de terceiros foi implementado. A escolha do responsável por uma função depende da execução demonstrada em jogo.
+
+Na instalação local, os exemplos consultados de `add_equipment_production`
+são para encomendas navais, como o cruzador em `events/NSB_Soviet.txt`.
+Ainda falta confirmar como aplicar o efeito à produção terrestre e detectar
+linhas existentes antes de permitir que o Director abra novas linhas.

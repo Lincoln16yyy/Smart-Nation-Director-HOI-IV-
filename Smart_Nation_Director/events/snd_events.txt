@@ -23,28 +23,27 @@ country_event = {
     title = snd.3.t
     desc = {
         text = snd.3.d_low_stability
-        trigger = { has_stability < 0.5 }
+        trigger = { snd_has_stability_risk = yes }
     }
     desc = {
         text = snd.3.d_low_war_support
         trigger = {
-            NOT = { has_stability < 0.5 }
-            has_war = yes
-            has_war_support < 0.5
+            NOT = { snd_has_stability_risk = yes }
+            snd_has_war_support_risk = yes
         }
     }
     desc = {
         text = snd.3.d_war
         trigger = {
-            NOT = { has_stability < 0.5 }
+            NOT = { snd_has_stability_risk = yes }
             has_war = yes
-            NOT = { has_war_support < 0.5 }
+            NOT = { snd_has_war_support_risk = yes }
         }
     }
     desc = {
         text = snd.3.d_peace
         trigger = {
-            NOT = { has_stability < 0.5 }
+            NOT = { snd_has_stability_risk = yes }
             has_war = no
         }
     }

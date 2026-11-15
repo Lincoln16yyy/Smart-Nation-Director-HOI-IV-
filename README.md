@@ -26,3 +26,7 @@ Use **Ativar acompanhamento industrial** para adicionar a variação de fábrica
 Antes de deixar a IA nativa ou outro mod cuidar da construção, use **Indicar construção gerida externamente**. Isso pausa as ordens do Director e preserva uma autorização pendente. Quando a outra automação parar, **Liberar construção para o Director** permite retomá-la.
 
 O relatório também mostra estaleiros e mão de obra disponível, em milhares. Em guerra, prioriza um alerta de apoio à guerra abaixo de 50% quando a estabilidade está em pelo menos 50%.
+
+**Ativar construção automática** mantém a avaliação mensal de obras ligada. O Director prioriza uma fábrica civil em paz, uma militar em guerra e infraestrutura na capital se a fábrica preferida não couber em um estado central controlado. Cada ordem entra na fila normal e inicia um intervalo de 180 dias. A gestão externa suspende novos despachos. O relatório registra o tipo e o local da última ordem automática.
+
+**Ativar alertas nacionais automáticos** abre o relatório quando começa ou muda uma prioridade de risco. Em condições estáveis, ou enquanto a mesma prioridade persistir, a revisão mensal segue em silêncio.

@@ -7,6 +7,8 @@
 - Estaleiros e mão de obra disponível no relatório, com alerta de baixo apoio à guerra.
 - Acompanhamento industrial opcional com variação entre as últimas duas medições.
 - Seleção manual de gestão externa da construção, com suspensão do despacho do piloto.
+- Construção automática opcional em estados centrais, com prioridade por cenário e intervalo mínimo de 180 dias.
+- Alertas mensais opcionais quando muda a prioridade de estabilidade ou apoio à guerra.
 
 ## 0.1.0
 
