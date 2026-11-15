@@ -1,6 +1,6 @@
 # Prova de conceito de human_ai
 
-O executável 1.19.3 contém o comando e uma descrição de alternância da IA para países humanos. O piloto do Director não chama o console. Não há interface de script confirmada para acionar `human_ai` ou escolher quais tarefas ele executa.
+O executável 1.19.3 contém o comando e uma descrição de alternância da IA para países humanos. Em uma campanha descartável do Brasil, o comando respondeu `Human AI is now ON` em 2 de janeiro de 1936. O teste confirmou a ativação no Brasil humano, com o piloto instalado e autorizado antes de seu primeiro ciclo mensal. Ainda falta a comparação em vanilla e com cada mod externo. O piloto do Director não chama o console. Não há interface de script confirmada para acionar `human_ai` ou escolher quais tarefas ele executa.
 
 Compare quatro execuções de Brasil em 1936 a partir de um save descartável copiado. Use uma execução humana sem automação, uma com `human_ai`, uma com o comando e um mod de automação e outra acrescentando mods individualmente. Teste também alternância desligada e save/load. Evite clicar em filas, decisões ou ordens durante a observação.
 

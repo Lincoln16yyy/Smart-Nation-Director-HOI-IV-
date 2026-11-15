@@ -1,5 +1,8 @@
 # Testes na instalação real
 
 - A tentativa em sandbox falhou na abertura do socket do wineserver.
+- A primeira tentativa vanilla com Wine fora do sandbox gerou logs em Documents padrão do usuário, pois o prefixo novo trazia um link para essa pasta. A execução não criou um save. Antes de carregar o piloto, substituí apenas o link do prefixo temporário por um diretório interno.
 - Uma execução autorizada via Wine em prefixo temporário inicializou o HOI4 com debug e apenas o piloto habilitado. `setup.log` registrou uma categoria, duas decisões e um evento do piloto. `game.log` registrou a execução do histórico até 1º de janeiro de 1936. Na coleta inicial, `error.log` estava vazio.
-- A revisão da sessão de campanha e as medições de efeito estão em andamento. Registros de carga, histórico e ausência de erro inicial são evidência de inicialização. A execução de ações no país humano exige evidência separada.
+- Em uma tela virtual, `-start_tag=BRA` abriu a campanha de Brasil em 1º de janeiro de 1936. No menu inglês, a categoria Smart Nation Director e a decisão de autorização estavam visíveis, com a decisão habilitada. Em uma segunda execução, o clique de autorização revelou a opção de revogar o piloto. `error.log` permaneceu vazio nas coletas iniciais. `game.log` também contém uma mensagem sobre Conflict Risk, sem atribuição ao piloto.
+- Em 2 de janeiro de 1936, com o país humano pausado e o piloto apenas autorizado, o console respondeu `Human AI is now ON` a `human_ai`. A ativação foi confirmada; a fila do piloto, a persistência e os efeitos de cada tarefa exigem verificação adicional.
+- O limite de cinco minutos da sessão isolada encerrou o jogo antes da próxima virada mensal. A campanha chegou a 2 de janeiro durante a observação. Sem evidência de trabalho efetivamente realizado pela IA, as tarefas da matriz permanecem pendentes.

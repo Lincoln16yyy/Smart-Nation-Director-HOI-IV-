@@ -21,7 +21,7 @@ A leitura dos descriptors internos e externos encontrou a diferença de nome no 
 | Área | Evidência estática local | Teste em partida |
 |---|---|---|
 | Construção e logística | Iron Secretary expõe categoria com `is_ai = no` e usa `add_building_construction` com `instant_build = no` em projetos e suprimentos. Inspecionar habilitação e custos por módulo antes de integrar. | Pendente |
-| Pesquisa | Automated Research System tem GUI, on-actions e `zzars_grant` em `zz_auto_research_grant.txt`, com chamadas a `set_technology`. O modo seguro precisa ser demonstrado antes da integração. | Pendente |
+| Pesquisa | Automated Research System avança slots virtuais no evento `zzars.1`, compara progresso ao custo e chama `zzars_grant`, que concede a tecnologia com `set_technology`. Esse caminho tem espera simulada, mas usa a rotina de concessão em vez da fila nativa. Excluído da integração de pesquisa legítima enquanto não se demonstrar um modo com slots normais. | Pendente |
 | Indústria e equipamentos | Design Bureau tem decisões para humanos, módulos de indústria militar e vários efeitos e modificadores próprios. Verificar custos e impactos no RT56. | Pendente |
 | Aliados | General Staff oferece decisões para humanos e efeitos `add_ai_strategy`. Isso comprova configuração da IA por script, e a execução pelos aliados precisa de medição. | Pendente |
 | Administração | Council of Ministers tem decisões para humanos, GUI e efeitos próprios de construção e pesquisa. A versão é anterior ao alvo e há disputa de localização com General Staff. | Pendente |
