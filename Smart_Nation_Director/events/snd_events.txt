@@ -1,0 +1,10 @@
+add_namespace = snd
+
+country_event = {
+    id = snd.1
+    title = snd.1.t
+    desc = snd.1.d
+    is_triggered_only = yes
+
+    option = { name = snd.1.a }
+}

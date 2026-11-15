@@ -1,0 +1,57 @@
+"""Static checks for the original pilot package. Runtime semantics are tested in HOI4."""
+from pathlib import Path
+import re
+import unittest
+
+REPO = Path(__file__).resolve().parents[1]
+MOD = REPO / 'Smart_Nation_Director'
+
+
+class PackageTests(unittest.TestCase):
+    def test_descriptors_match(self):
+        inner = (MOD / 'descriptor.mod').read_text()
+        outer = (REPO / 'Smart_Nation_Director.mod').read_text()
+        self.assertEqual(outer, inner + 'path="mod/Smart_Nation_Director"\n')
+        self.assertNotIn('replace_path', inner)
+        self.assertIn('supported_version="1.19.3.*"', inner)
+
+    def test_script_braces_and_prefixes(self):
+        for path in MOD.rglob('*.txt'):
+            with self.subTest(path=path):
+                self.assertTrue(path.name.startswith('snd_'))
+                source = re.sub(r'"(?:\\.|[^"\\])*"|#[^\n]*', '', path.read_text())
+                depth = 0
+                for brace in re.findall(r'[{}]', source):
+                    depth += 1 if brace == '{' else -1
+                    self.assertGreaterEqual(depth, 0)
+                self.assertEqual(depth, 0)
+
+    def test_event_references_and_localisation(self):
+        event_text = (MOD / 'events/snd_events.txt').read_text()
+        event_id = re.search(r'\bid\s*=\s*(snd\.\d+)', event_text)[1]
+        effect = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
+        self.assertIn(f'country_event = {{ id = {event_id} }}', effect)
+        decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
+        required = {'snd_director_category'}
+        for decision in re.findall(r'^    (snd_\w+) =', decisions, re.M):
+            required.update([decision, decision + '_desc'])
+        required.update(re.findall(r'\b(?:title|desc|name)\s*=\s*(snd\.\S+?)(?=\s)', event_text))
+        for language in ('english', 'braz_por'):
+            with self.subTest(language=language):
+                path = MOD / 'localisation' / language / f'snd_l_{language}.yml'
+                self.assertTrue(path.read_bytes().startswith(b'\xef\xbb\xbf'))
+                header, *lines = path.read_text(encoding='utf-8-sig').splitlines()
+                self.assertEqual(header, f'l_{language}:')
+                keys = [re.fullmatch(r' ([\w.]+):0 "[^"]+"', line)[1] for line in lines]
+                self.assertCountEqual(keys, required)
+
+    def test_pilot_uses_regular_queue(self):
+        effect = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
+        self.assertIn('instant_build = no', effect)
+        self.assertNotIn('instant_build = yes', effect)
+        self.assertIn('set_country_flag = snd_pilot_dispatched', effect)
+        self.assertIn('clr_country_flag = snd_pilot_enabled', effect)
+
+
+if __name__ == '__main__':
+    unittest.main()

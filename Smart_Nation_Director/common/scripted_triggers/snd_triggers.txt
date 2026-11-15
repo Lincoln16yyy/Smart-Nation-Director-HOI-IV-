@@ -1,0 +1,7 @@
+snd_pilot_capital_eligible = {
+    capital_scope = {
+        is_owned_by = ROOT
+        is_controlled_by = ROOT
+        infrastructure < 5
+    }
+}

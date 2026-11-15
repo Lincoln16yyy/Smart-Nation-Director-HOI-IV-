@@ -1,0 +1,9 @@
+﻿l_braz_por:
+ snd_director_category:0 "Smart Nation Director"
+ snd_enable_pilot:0 "Autorizar projeto-piloto de infraestrutura"
+ snd_enable_pilot_desc:0 "Na próxima revisão mensal, o Director emitirá uma ordem de infraestrutura para a capital se ela continuar elegível. A obra usa a fila normal de construção."
+ snd_disable_pilot:0 "Cancelar projeto-piloto pendente"
+ snd_disable_pilot_desc:0 "Revoga a autorização antes da revisão mensal. Uma ordem já emitida permanece na fila de construção."
+ snd.1.t:0 "Ordem de infraestrutura emitida"
+ snd.1.d:0 "O Director emitiu a ordem de infraestrutura. Confira na fila de construção se a obra entrou e quantas fábricas civis estão alocadas."
+ snd.1.a:0 "Fechar"
