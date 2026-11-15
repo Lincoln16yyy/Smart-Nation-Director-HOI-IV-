@@ -1,4 +1,12 @@
 snd_director_category = {
+    snd_open_delegation_guide = {
+        visible = { is_ai = no }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            country_event = { id = snd.2 }
+        }
+    }
     snd_enable_pilot = {
         visible = {
             NOT = { has_country_flag = snd_pilot_enabled }

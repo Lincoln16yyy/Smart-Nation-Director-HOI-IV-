@@ -7,3 +7,8 @@
  snd.1.t:0 "Capital infrastructure order issued"
  snd.1.d:0 "The Director issued its infrastructure order. Inspect the construction queue to see whether the project was accepted and how many civilian factories are assigned."
  snd.1.a:0 "Close"
+ snd_open_delegation_guide:0 "Open native AI delegation guide"
+ snd_open_delegation_guide_desc:0 "Shows how to delegate the country to the native AI through the console."
+ snd.2.t:0 "Native AI delegation"
+ snd.2.d:0 "In a non-Ironman test campaign, pause the game, open the console and enter human_ai. Wait for Human AI is now ON, then unpause. To take back control, pause and repeat the command until the console confirms that human AI is off.\n\nThe command lets the AI use the regular game systems. Keep third-party automation that uses the same queues off while testing. This decision opens the guide and leaves country control unchanged."
+ snd.2.a:0 "Close"

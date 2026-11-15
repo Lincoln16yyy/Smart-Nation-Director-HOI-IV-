@@ -8,3 +8,12 @@ country_event = {
 
     option = { name = snd.1.a }
 }
+
+country_event = {
+    id = snd.2
+    title = snd.2.t
+    desc = snd.2.d
+    is_triggered_only = yes
+
+    option = { name = snd.2.a }
+}

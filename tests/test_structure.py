@@ -28,10 +28,11 @@ class PackageTests(unittest.TestCase):
 
     def test_event_references_and_localisation(self):
         event_text = (MOD / 'events/snd_events.txt').read_text()
-        event_id = re.search(r'\bid\s*=\s*(snd\.\d+)', event_text)[1]
+        event_ids = re.findall(r'\bid\s*=\s*(snd\.\d+)', event_text)
         effect = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
-        self.assertIn(f'country_event = {{ id = {event_id} }}', effect)
         decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
+        references = re.findall(r'country_event\s*=\s*\{\s*id\s*=\s*(snd\.\d+)', effect + decisions)
+        self.assertCountEqual(event_ids, references)
         required = {'snd_director_category'}
         for decision in re.findall(r'^    (snd_\w+) =', decisions, re.M):
             required.update([decision, decision + '_desc'])

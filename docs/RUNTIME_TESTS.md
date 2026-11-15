@@ -52,3 +52,8 @@ confirmei que o Brasil voltou à data do save. O console retornou
 Avancei 30 dias após recarregar e cheguei a 3 de abril de 1936. O evento do
 piloto não reapareceu na observação da virada. O jogo exibiu a conclusão do
 foco Aftermath of the Coffee Crisis, que já estava em andamento no save.
+
+## Guia de delegação
+
+A nova decisão e seu evento passaram pelas verificações estáticas de
+referências e localização. A exibição do guia ainda não foi testada em jogo.
