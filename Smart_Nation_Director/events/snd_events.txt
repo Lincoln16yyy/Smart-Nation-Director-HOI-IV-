@@ -8,3 +8,38 @@ country_event = {
 
     option = { name = snd.1.a }
 }
+
+country_event = {
+    id = snd.2
+    title = snd.2.t
+    desc = snd.2.d
+    is_triggered_only = yes
+
+    option = { name = snd.2.a }
+}
+
+country_event = {
+    id = snd.3
+    title = snd.3.t
+    desc = {
+        text = snd.3.d_low_stability
+        trigger = { has_stability < 0.5 }
+    }
+    desc = {
+        text = snd.3.d_war
+        trigger = {
+            NOT = { has_stability < 0.5 }
+            has_war = yes
+        }
+    }
+    desc = {
+        text = snd.3.d_peace
+        trigger = {
+            NOT = { has_stability < 0.5 }
+            has_war = no
+        }
+    }
+    is_triggered_only = yes
+
+    option = { name = snd.3.a }
+}

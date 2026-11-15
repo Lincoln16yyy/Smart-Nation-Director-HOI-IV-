@@ -1,0 +1,21 @@
+defined_text = {
+    name = GetSndIndustryTrend
+    text = {
+        trigger = { NOT = { has_country_flag = snd_industry_tracking } }
+        localization_key = snd_industry_trend_off
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_industry_tracking
+            NOT = { has_country_flag = snd_industry_sample_ready }
+        }
+        localization_key = snd_industry_trend_pending
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_industry_tracking
+            has_country_flag = snd_industry_sample_ready
+        }
+        localization_key = snd_industry_trend_result
+    }
+}

@@ -52,3 +52,22 @@ confirmei que o Brasil voltou à data do save. O console retornou
 Avancei 30 dias após recarregar e cheguei a 3 de abril de 1936. O evento do
 piloto não reapareceu na observação da virada. O jogo exibiu a conclusão do
 foco Aftermath of the Coffee Crisis, que já estava em andamento no save.
+
+## Guia de delegação
+
+A nova decisão e seu evento passaram pelas verificações estáticas de
+referências e localização. A exibição do guia ainda não foi testada em jogo.
+
+## Relatório nacional
+
+As referências de evento, as três descrições condicionais e as variáveis de
+localização passaram pela validação estática. A renderização e os valores
+exibidos ainda precisam de uma verificação em jogo.
+
+## Acompanhamento industrial
+
+Validado estaticamente. A checagem em jogo pode ser feita em uma única
+campanha de teste. Ative, confira a mensagem de espera e passe uma virada de
+mês após uma mudança conhecida na contagem de fábricas. Compare a variação
+com as contagens observadas. Desative e reative para conferir a limpeza da
+comparação anterior.
