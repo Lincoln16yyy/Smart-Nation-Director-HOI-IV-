@@ -201,7 +201,21 @@ Os relatos anteriores são históricos; esta síntese define o próximo trabalho
 O usuário prefere operar o jogo e enviar capturas. Preserve a campanha de
 teste e não solicite novas repetições de passos já demonstrados.
 
-Próximos testes úteis: gestão externa durante uma proposta pendente (bloquear
-aprovação e preservar proposta), troca para modo consultivo sem despacho e
-revalidação com estado inelegível. Escolher uma dúvida concreta por vez.
+Gestão externa manual e troca para consultivo já foram verificadas nesta
+rodada (detalhes abaixo). Revalidação com estado inelegível permanece pendente.
+Escolher uma dúvida concreta por vez.
 Ainda não há validação de outros países, modpack completo ou desempenho.
+
+Atualização da rodada: em dezembro, gestão externa manual desabilitou aprovação
+e preservou proposta (captura); usuário confirmou reabilitação ao clicar em
+`Allow Director construction orders`. Depois mudou para modo consultivo.
+Em 2/1/1938 às 10h, relatório mostrou recomendação de fábrica civil no Rio
+Grande do Sul, mantendo Bahia como última ordem. O usuário conferiu a fila e confirmou em texto que não iniciou obra; não
+houve captura adicional dessa conferência. Indicador civil caiu de 18 para 17; causa
+não investigada, não atribuir perda de fábrica própria sem evidência.
+
+Rodada manual encerrada para gestão externa e consultivo: preservar os
+resultados coletados, sem solicitar repetição. Próximo teste específico: revalidação de vaga na aprovação supervisionada,
+conforme a seção dedicada em TEST_PLAN.md. O roteiro usa fila manual em cópia
+descartável e distingue cenário inelegível de limitação da preparação. Não
+foi executado nesta sessão; não repetir gestão externa e consultivo.

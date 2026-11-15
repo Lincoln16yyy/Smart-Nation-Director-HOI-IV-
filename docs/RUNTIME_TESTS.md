@@ -467,3 +467,43 @@ estados de temporizador corrigidos, espera pela obra e retomada do planejamento,
 e recusa com adiamento e posterior retomada. Permanecem pendentes a duração
 exata dos prazos, revalidação com estado inválido, gestão externa, demais modos,
 países/modpacks e desempenho. Não houve benchmark de campanha longa.
+
+### Gestão externa durante proposta e troca para modo consultivo
+
+Em 2/12/1937 às 10h, com proposta em Minas Gerais, o usuário confirmou que
+marcar gestão externa desabilitou a aprovação. A captura fornecida mostra
+`Allow Director construction orders` disponível, aprovação cinza e recusa
+ativa: a proposta permanece acessível durante o bloqueio. Ao selecionar
+`Allow Director construction orders`, o usuário confirmou que a aprovação
+voltou a ficar habilitada, sem aprovar. O desbloqueio foi informado em texto,
+sem captura específica. Não testa detecção automática do Iron Secretary.
+
+Após solicitar troca para modo consultivo e avanço, captura em 2/1/1938 às
+10h mostra modo consultivo ativo, recomendação de fábrica civil no Rio
+Grande do Sul e Bahia como última ordem. Na lista, `Leave advisory
+construction mode` e `Require approval for new construction` estão disponíveis,
+coerente com a saída do modo supervisionado. O indicador civil mostra 17,
+antes 18; sem nova coleta da fila não se atribui causa a essa variação nem
+se interpreta como perda de uma fábrica própria. Falta verificar diretamente
+que a recomendação consultiva não adicionou construção à fila.
+Capturas locais: `evidence/external-management-approval-disabled.png` e
+`evidence/advisory-report-jan02-1938.png`.
+
+### Conferência da fila no modo consultivo
+
+Após solicitar abrir Construção na campanha de 2/1/1938, o usuário confirmou
+em texto: “nao iniciou”. Isso sustenta ausência de despacho da recomendação
+consultiva observada no Rio Grande do Sul. Não houve captura adicional da
+fila neste passo; não se inferem valores de capacidade ou composição da
+fila além do relato. Junto do relatório anterior, o teste demonstra mudança
+de supervisionado para consultivo, recomendação mensal e ausência de nova
+obra segundo a verificação do usuário. Não abrange outros países ou mods.
+
+### Continuidade documental — 15/11/2026
+
+Consolidados os resultados anteriores de gestão externa e modo consultivo.
+Revisados os guards da aprovação: disponibilidade e efeito consultam
+`snd_construction_proposal_is_eligible`, que reavalia estado e vaga. Preparado
+roteiro de esgotamento de vagas em TEST_PLAN.md; nenhuma nova sessão da engine
+foi executada. `python3 -m unittest discover -s tests -v`: 23 testes passaram.
+Isso valida o pacote estaticamente, sem confirmar a semântica de vagas na fila.

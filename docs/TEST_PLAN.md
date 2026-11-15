@@ -79,3 +79,33 @@ adiamento de 90 dias, inclusive após salvar/recarregar e ao trocar para modo
 consultivo. Confira a duração efetiva cruzando os prazos, sem confundir
 intervalo expirado com liberação da espera de obra. Saves da versão anterior
 podem conter temporizadores de valor zero e não validam essa correção.
+
+## Revalidação de vaga na aprovação supervisionada
+
+Este é o próximo teste isolado; gestão externa manual e modo consultivo já
+foram observados e não precisam ser repetidos. Use uma cópia descartável da
+campanha, com apenas o Director e `human_ai` desligado. Preserve o save da
+rodada anterior. Não avance o calendário durante a comparação.
+
+1. Com supervisão ativa e proposta de fábrica pendente, registre o tipo e o
+   estado propostos, a aprovação habilitada e a fila antes de qualquer ação.
+2. Pela interface vanilla, enfileire manualmente fábricas no estado proposto
+   até ocupar as vagas compartilhadas disponíveis. Registre essas ordens
+   manuais separadamente; elas não são ações do Director. Se a interface não
+   permitir esgotar as vagas, registre a limitação e não declare o cenário
+   inelegível como testado.
+3. Volte às decisões. A proposta deve permanecer, mas a aprovação deve ficar
+   indisponível. Confira o tooltip e registre a fila: nenhuma ordem adicional
+   do Director deve ter sido emitida.
+4. Cancele uma das ordens manuais recém-criadas para liberar uma vaga. Confira
+   se a mesma proposta volta a permitir aprovação. Não cancele obras anteriores
+   nem aprove antes de registrar a comparação.
+5. Aprove uma vez e confira que entrou exatamente uma ordem do tipo e estado
+   registrados, com progresso normal e intervalo de 180 dias no relatório.
+
+O roteiro verifica como `free_building_slots` considera vagas ocupadas por
+obras enfileiradas nesta versão da engine. O resultado ainda é desconhecido;
+se a fila manual não tornar o estado inelegível para o trigger, isso é uma
+limitação do cenário e precisa ser investigado antes de alterar o código.
+Perda de posse/controle, desmilitarização e mudança entre paz e guerra
+continuam sendo variantes distintas, ainda sem execução demonstrada.

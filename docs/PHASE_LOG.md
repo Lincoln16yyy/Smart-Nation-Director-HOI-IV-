@@ -124,3 +124,17 @@
     do adiamento por recusa, com Bahia como última ordem. Consolidada a rodada
     de validação do Brasil; datas exatas de expiração não medidas. Próximas
     lacunas: gestão externa, modo consultivo e revalidação de estado inválido.
+
+52. Gestão externa manual bloqueou aprovação preservando proposta; usuário
+    confirmou desbloqueio ao permitir ordens. Em 2/1/1938, troca para modo
+    consultivo gerou recomendação no Rio Grande do Sul, mantendo última ordem
+    na Bahia. Conferência da fila consultiva ainda pendente.
+
+53. Usuário confirmou em texto que a recomendação consultiva não iniciou obra
+    na fila. Consolidado com o relatório de 2/1/1938; sem captura adicional
+    desse passo. Gestão externa e consultivo não exigem repetição desta rodada.
+
+54. Em 15/11/2026, consolidados os resultados de gestão externa e consultivo
+    e preparado teste específico de revalidação de vaga na aprovação. Os 23
+    testes estáticos passaram. Nenhuma nova validação de engine nesta sessão;
+    PR #15 segue aberto, sem merge.

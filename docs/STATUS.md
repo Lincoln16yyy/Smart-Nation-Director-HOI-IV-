@@ -6,10 +6,10 @@
 | human_ai | Comando confirmado no console do Brasil humano. Guia de delegação implementado e validado estaticamente. Observados pesquisa em slots nativos, foco, construção, comércio e organização militar em 30 dias. Comparação controlada ainda pendente. |
 | Piloto | Carregado no Brasil em 1936 e autorização acionada pela interface. Ordem de infraestrutura no Rio de Janeiro e alocação de 10 fábricas civis confirmadas. Flag de despacho preservada após recarregar. |
 | Relatório nacional | Decisão consultiva com estaleiros, mão de obra, alertas e acompanhamento industrial opcional. Validação em jogo pendente. |
-| Coordenação da construção | Indicação manual ou detecção por flags do Iron Secretary 2.1.0. Bloqueio validado estaticamente. |
+| Coordenação da construção | Indicação manual ou detecção por flags do Iron Secretary 2.1.0. Gestão externa manual desabilitou aprovação e preservou proposta; usuário confirmou reabilitação ao desmarcar. Detecção do Iron Secretary ainda sem validação em jogo. |
 | Construção automática | Avaliação mensal e espera por aumento do edifício implementadas. Temporizador corrigido para valor explícito; relatório confirmou cooldown ativo após aprovação no reteste. Estado de cooldown preservado após save/load; virada de março manteve uma única obra na Bahia (588/10800). Em 3/9/1936, relatório passou à espera pela obra, evidenciando cooldown expirado até essa data; dia exato não medido. |
 | Construção supervisionada | Proposta automática com aprovação manual, revalidação e recusa; relatório distingue espera de aprovação e adiamento. No Brasil, proposta sem obra e aprovação de uma fábrica civil no Paraná com 10/15 fábricas alocadas confirmadas. Progresso regular observado em 11/2/1936: 252/10800, velocidade 28/dia. Fila, progresso, última ordem e espera pela obra preservados após o passo de save/load. Cooldown ativo observado no reteste corrigido, com ordem na Bahia. Cooldown preservado após save/load; março manteve uma única obra com progresso 588/10800. Em setembro, cooldown expirado e espera pela obra mantida, com uma única fábrica na fila (4494/10800); Em 3/8/1937, indicador civil aumentou para 18 e surgiu nova proposta no Paraná, mantendo Bahia como última ordem. Recusa removeu proposta e ativou aviso de 90 dias em 3/8/1937. Adiamento preservado após save/load e virada de setembro; em 2/12/1937 expirou e houve nova proposta em Minas Gerais. Duração exata, estados inválidos e outras configurações pendentes. |
-| Construção consultiva | Recomendação nas viradas elegíveis, sem despacho. Validação em jogo pendente. |
+| Construção consultiva | Relatório em 2/1/1938 mostrou recomendação no Rio Grande do Sul após troca do supervisionado. Usuário conferiu a fila e informou que não iniciou obra; sem captura adicional desse passo. Outros países e configurações pendentes. |
 | Alertas nacionais automáticos | Revisão mensal opcional de capitulação, estabilidade, apoio à guerra, mão de obra e equipamento de infantaria. Validação em jogo pendente. |
 | Controle das rotinas | Ativação e parada conjuntas, com elegibilidade de construção preservada. Validação em jogo pendente. |
 | Painel do Director | Scripted GUI na categoria de decisões com fábricas, estaleiros, mão de obra e comércio. Painel e decisões visíveis no teste da Itália. Leitura inicial sem clique observada no Brasil: 15 civis, 3 militares, 2 estaleiros e 572 mil de mão de obra. Atualização após mudanças e outros idiomas/resoluções pendentes. |
@@ -23,3 +23,7 @@
 | Campanhas longas e desempenho | Pendentes. |
 
 O teste pendente de produção é a variante sem linha de infantaria existente e a verificação do limite de uso após recarregar. A produção recorrente depende de um meio confiável de identificar ou reutilizar linhas.
+
+Próxima validação de construção: ocupar as vagas do estado proposto pela
+fila vanilla, conferir bloqueio e posterior reabilitação da aprovação ao
+liberar uma vaga. Roteiro em TEST_PLAN.md; ainda não executado.
