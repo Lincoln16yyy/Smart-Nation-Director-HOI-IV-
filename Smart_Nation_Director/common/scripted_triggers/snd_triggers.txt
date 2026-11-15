@@ -113,3 +113,39 @@ snd_can_dispatch_rifle_order = {
         has_tech = advanced_infantry_weapons
     }
 }
+
+snd_can_plan_auto_construction = {
+    has_country_flag = snd_auto_construction
+    NOT = { snd_construction_managed_externally = yes }
+    NOT = { has_country_flag = snd_auto_construction_cooldown }
+    NOT = { has_country_flag = snd_auto_project_pending }
+    NOT = { has_country_flag = snd_pilot_enabled }
+}
+
+snd_construction_proposal_is_eligible = {
+    snd_can_plan_auto_construction = yes
+    has_country_flag = snd_construction_supervised
+    NOT = { has_country_flag = snd_construction_advisory }
+    has_country_flag = snd_construction_proposal_pending
+    var:snd_proposal_state = {
+        OR = {
+            AND = {
+                check_variable = { ROOT.snd_proposal_type = 1 }
+                ROOT = { has_war = no }
+                snd_auto_factory_candidate = yes
+            }
+            AND = {
+                check_variable = { ROOT.snd_proposal_type = 2 }
+                ROOT = { has_war = yes }
+                snd_auto_factory_candidate = yes
+            }
+            AND = {
+                check_variable = { ROOT.snd_proposal_type = 3 }
+                is_owned_by = ROOT
+                is_controlled_by = ROOT
+                is_demilitarized_zone = no
+                infrastructure < 5
+            }
+        }
+    }
+}

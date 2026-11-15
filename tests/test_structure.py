@@ -93,8 +93,10 @@ class PackageTests(unittest.TestCase):
 
         on_actions = (MOD / 'common/on_actions/snd_on_actions.txt').read_text()
         auto_check = on_actions.split('snd_dispatch_auto_construction = yes', 1)[0].rsplit('            if = {', 1)[1]
+        self.assertIn('snd_can_plan_auto_construction = yes', auto_check)
+        planning_guard = triggers.split('snd_can_plan_auto_construction = {', 1)[1].split('\n}', 1)[0]
         for flag in ('snd_auto_construction_cooldown', 'snd_pilot_enabled', 'snd_auto_project_pending'):
-            self.assertIn(f'NOT = {{ has_country_flag = {flag} }}', auto_check)
+            self.assertIn(f'NOT = {{ has_country_flag = {flag} }}', planning_guard)
 
     def test_iron_secretary_gate_checks_construction_modules(self):
         triggers = (MOD / 'common/scripted_triggers/snd_triggers.txt').read_text()
@@ -110,7 +112,10 @@ class PackageTests(unittest.TestCase):
         self.assertIn('any_owned_state = { has_state_flag = ais_railway_project_active }', groups[1])
         self.assertIn('snd_iron_secretary_runs_construction = yes', external)
         self.assertIn('has_country_flag = snd_external_construction', external)
-        self.assertEqual(actions.count('NOT = { snd_construction_managed_externally = yes }'), 2)
+        self.assertIn('NOT = { snd_construction_managed_externally = yes }', actions)
+        planning_guard = triggers.split('snd_can_plan_auto_construction = {', 1)[1].split('\n}', 1)[0]
+        self.assertIn('NOT = { snd_construction_managed_externally = yes }', planning_guard)
+        self.assertIn('snd_can_plan_auto_construction = yes', actions)
 
     def test_iron_secretary_trade_status_checks_weekly_module_flags(self):
         triggers = (MOD / 'common/scripted_triggers/snd_triggers.txt').read_text()
@@ -121,7 +126,47 @@ class PackageTests(unittest.TestCase):
         self.assertIn('trigger = { snd_iron_secretary_runs_trade = yes }', getter)
         self.assertIn('trigger = { NOT = { snd_iron_secretary_runs_trade = yes } }', getter)
 
-    def test_dashboard_panel_reuses_report_capture(self):
+    def test_supervised_construction_revalidates_the_selected_project(self):
+        effects = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
+        actions = (MOD / 'common/on_actions/snd_on_actions.txt').read_text()
+        triggers = (MOD / 'common/scripted_triggers/snd_triggers.txt').read_text()
+        decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
+        offer = effects.split('snd_offer_construction_project = {', 1)[1].split('\n}', 1)[0]
+        self.assertIn('set_country_flag = snd_construction_proposal_pending', offer.split('else =', 1)[0])
+        self.assertNotIn('snd_queue_planned_project = yes', offer.split('else =', 1)[0])
+        self.assertIn('snd_queue_planned_project = yes', offer.split('else =', 1)[1])
+        self.assertIn('NOT = { has_country_flag = snd_construction_proposal_pending }', actions)
+        approve = decisions.split('snd_approve_construction_proposal = {', 1)[1].split('\n    }', 1)[0]
+        self.assertIn('available = { snd_construction_proposal_is_eligible = yes }', approve)
+        self.assertIn('limit = { snd_construction_proposal_is_eligible = yes }', approve)
+        self.assertIn('snd_queue_planned_project = yes', approve)
+        eligible = triggers.split('snd_construction_proposal_is_eligible = {', 1)[1]
+        self.assertIn('snd_can_plan_auto_construction = yes', eligible)
+        self.assertIn('var:snd_proposal_state = {', eligible)
+        decline = decisions.split('snd_decline_construction_proposal = {', 1)[1].split('\n    }', 1)[0]
+        self.assertIn('flag = snd_construction_proposal_deferred days = 90', decline)
+        self.assertNotIn('snd_queue_planned_project = yes', decline)
+
+    def test_advisory_construction_only_refreshes_a_recommendation(self):
+        effects = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
+        actions = (MOD / 'common/on_actions/snd_on_actions.txt').read_text()
+        decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
+        triggers = (MOD / 'common/scripted_triggers/snd_triggers.txt').read_text()
+        offer = effects.split('snd_offer_construction_project = {', 1)[1].split('\n}', 1)[0]
+        recommendation, dispatch = offer.split('else =', 1)
+        self.assertIn('has_country_flag = snd_construction_advisory', recommendation)
+        self.assertIn('set_country_flag = snd_construction_proposal_pending', recommendation)
+        self.assertNotIn('snd_queue_planned_project = yes', recommendation)
+        self.assertIn('snd_queue_planned_project = yes', dispatch)
+        self.assertRegex(actions, r'OR = \{\s*has_country_flag = snd_construction_advisory\s*'
+                                  r'NOT = \{ has_country_flag = snd_construction_proposal_pending }')
+        advisory = decisions.split('snd_enable_construction_advisory = {', 1)[1].split('\n    }', 1)[0]
+        self.assertIn('clr_country_flag = snd_construction_supervised', advisory)
+        self.assertIn('clr_country_flag = snd_construction_proposal_pending', advisory)
+        eligibility = triggers.split('snd_construction_proposal_is_eligible = {', 1)[1]
+        self.assertIn('NOT = { has_country_flag = snd_construction_advisory }', eligibility)
+
+    def test_dashboard_reads_live_values_and_opens_report(self):
         decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
         gui = (MOD / 'common/scripted_guis/snd_dashboard_gui.txt').read_text()
         interface = (MOD / 'interface/snd_dashboard.gui').read_text()
@@ -131,20 +176,17 @@ class PackageTests(unittest.TestCase):
         self.assertIn('scripted_gui = snd_dashboard', category)
         self.assertNotIn('scripted_gui', decisions)
         buttons = re.findall(r'buttonType = \{(.*?)\n\t\t}', interface, re.S)
-        self.assertEqual(len(buttons), 2)
+        self.assertEqual(len(buttons), 1)
         for button in buttons:
             self.assertNotIn('size =', button)
             self.assertIn('quadTextureSprite =', button)
-        self.assertIn('buttonText = "snd_dash_refresh"', interface)
         self.assertIn('buttonText = "snd_dash_report"', interface)
         self.assertIn('context_type = decision_category', gui)
         self.assertIn('window_name = "snd_dashboard"', gui)
         self.assertIn('name = "snd_dashboard"', interface)
-        self.assertIn('snd_dash_refresh_click = {', gui)
-        self.assertIn('snd_refresh_dashboard = yes', gui.split('snd_dash_refresh_click = {', 1)[1])
         self.assertIn('snd_dash_report_click = {', gui)
         self.assertIn('snd_show_national_report = yes', gui.split('snd_dash_report_click = {', 1)[1])
-        for widget in ('snd_dash_refresh', 'snd_dash_report', 'snd_dash_title',
+        for widget in ('snd_dash_report', 'snd_dash_title',
                        'snd_dash_factories', 'snd_dash_dockyards', 'snd_dash_manpower'):
             self.assertIn(f'name = "{widget}"', interface)
 
@@ -155,8 +197,14 @@ class PackageTests(unittest.TestCase):
         report = effects.split('snd_show_national_report = {', 1)[1]
         self.assertIn('snd_capture_report_values = yes', report)
         self.assertIn('country_event = { id = snd.3 }', report)
-        refresh = effects.split('snd_refresh_dashboard = {', 1)[1]
-        self.assertIn('snd_capture_report_values = yes', refresh)
+        for language in ('english', 'braz_por'):
+            loc = (MOD / 'localisation' / language / f'snd_l_{language}.yml').read_text(encoding='utf-8-sig')
+            dashboard = '\n'.join(line for line in loc.splitlines() if line.startswith(' snd_dash_'))
+            for name in ('num_of_civilian_factories', 'num_of_military_factories',
+                         'num_of_naval_factories', 'manpower_k'):
+                self.assertIn(f'[?ROOT.{name}|', dashboard)
+            self.assertNotIn('[?snd_report_', dashboard)
+        self.assertNotIn('snd_refresh_dashboard', effects)
         self.assertNotIn('dirty =', gui)
 
     def test_auto_project_requires_level_growth_at_the_recorded_state(self):

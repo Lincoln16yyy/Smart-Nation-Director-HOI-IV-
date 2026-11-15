@@ -2,6 +2,12 @@
 
 ## Em desenvolvimento
 
+- Modo consultivo de construção, com recomendações mensais sem despacho.
+
+- Modo supervisionado de construção com seleção automática, aprovação e recusa.
+
+- Painel consulta os indicadores nacionais sem exigir clique para atualizar.
+
 - Corrigidos o vínculo da categoria e a sintaxe do painel no HOI4 1.19.3.
 - Documentado o teste italiano de produção e adicionado um lançador isolado.
 - A autorização do piloto avisa que a solicitação abre uma nova linha.

@@ -79,10 +79,10 @@ O alerta de equipamento de infantaria usa reserva abaixo de 500 em guerra,
 após estabilidade, apoio à guerra e mão de obra na ordem de prioridade.
 
 A categoria de decisões declara `scripted_gui = snd_dashboard`. O painel usa
-`context_type = decision_category` e não mantém estado próprio: os botões
-chamam `snd_refresh_dashboard` e `snd_show_national_report`, e a captura de
-variáveis é compartilhada por `snd_capture_report_values`. O painel foi
-dimensionado em 490x236. A segunda abertura confirmou o painel e as decisões.
+`context_type = decision_category` e consulta variáveis dinâmicas do país
+diretamente na localização. O botão restante abre o relatório detalhado,
+cuja captura continua separada. A interface anterior foi vista na Itália
+com zeros antes do primeiro clique. Esta revisão ainda precisa de teste em jogo.
 
 O piloto de produção é opt-in separado das rotinas gerais e emite no máximo
 uma solicitação por país. A rotina pede uma fábrica em uma linha de armas de
@@ -110,3 +110,7 @@ O efeito documentado `add_equipment_production` cria uma linha. A versão
 local da documentação não apresenta uma operação de alocação para uma
 linha existente. O menu avisa explicitamente sobre duplicação. O teste
 isolado pode ser preparado com `bash scripts/prepare_production_test.sh`.
+
+A supervisão guarda o tipo e o estado da proposta antes de enfileirar. A autorização revalida a gestão da fila, o controle do estado e a vaga. Desligar as rotinas ou a supervisão descarta propostas pendentes. Uma recusa adia o planejamento por 90 dias. A construção automática continua sem essa etapa enquanto a supervisão estiver desativada.
+
+O modo consultivo usa o mesmo planejador de construção, mas registra somente uma recomendação. Os modos consultivo e supervisionado são exclusivos. Trocar de modo descarta a proposta ou recomendação anterior. O planejamento continua sujeito aos controles de gestão externa e de obras pendentes.

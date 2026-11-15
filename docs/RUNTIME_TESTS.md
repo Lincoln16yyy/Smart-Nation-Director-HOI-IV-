@@ -154,9 +154,7 @@ Council of Ministers e o do Automated Research System. Ainda não foi visto em
 jogo.
 
 Para verificar, abra **Decisões → Smart Nation Director** e confirme que o
-painel aparece acima da lista de decisões, sem cobrir os botões. Clique em
-**Atualizar valores** e compare fábricas, estaleiros e mão de obra com a barra
-do país. Confirme que o botão **Abrir relatório detalhado** continua abrindo
+painel aparece acima da lista de decisões, sem cobrir os botões. Compare fábricas, estaleiros e mão de obra com a barra do país sem clicar em atualização. Confirme que o botão **Abrir relatório detalhado** continua abrindo
 o evento `snd.3`. Repita com o Iron Secretary ligado e desligado para conferir
 a linha de comércio. Registre a resolução usada, porque o painel foi dimensionado
 em 490x236 para 1080p.
@@ -206,3 +204,17 @@ aproveitou a linha original. Este cenário confirma a produção pela fila
 militar normal e reproduz a duplicata com uma linha preexistente. A variante
 sem uma linha existente e o comportamento após recarregar ainda estão
 pendentes.
+
+
+Na captura da Itália, a versão anterior do painel exibia zeros antes de
+atualizar. A nova versão consulta variáveis dinâmicas do país sem passar
+pelo botão. As ligações foram verificadas estaticamente. Falta conferir se
+os valores aparecem corretamente na primeira abertura em jogo.
+
+## Construção supervisionada
+
+Com a construção recorrente e a supervisão ligadas, passe uma virada e confira que há proposta no relatório e nenhuma ordem nova. Salve e recarregue para verificar a persistência. Aprove e confira o mesmo projeto na fila. Em outra variante, marque a gestão externa ou ocupe a última vaga antes de aprovar. A aprovação deve ficar indisponível. Confira também a recusa e o intervalo de 90 dias.
+
+## Construção consultiva
+
+Com a construção recorrente ligada, selecione o modo consultivo. Passe uma virada elegível e confira o estado e a obra sugerida no relatório. Confirme a fila inalterada e a ausência das decisões de aprovação. Troque para supervisão e confira que a recomendação antiga não pode ser aprovada. A cobertura atual é estática.
