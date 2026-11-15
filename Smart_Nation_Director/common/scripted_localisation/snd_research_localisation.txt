@@ -1,0 +1,33 @@
+defined_text = {
+    name = GetSndResearchStatus
+    text = {
+        trigger = { snd_automated_research_enabled = yes }
+        localization_key = snd_research_status_virtual
+    }
+    text = {
+        trigger = { NOT = { snd_automated_research_enabled = yes } }
+        localization_key = snd_research_status_native_available
+    }
+}
+
+defined_text = {
+    name = GetSndResearchAdvice
+    text = {
+        trigger = { snd_consider_infantry_research = yes }
+        localization_key = snd_research_advice_infantry
+    }
+    text = {
+        trigger = {
+            NOT = { snd_consider_infantry_research = yes }
+            snd_consider_industrial_research = yes
+        }
+        localization_key = snd_research_advice_industry
+    }
+    text = {
+        trigger = {
+            NOT = { snd_consider_infantry_research = yes }
+            NOT = { snd_consider_industrial_research = yes }
+        }
+        localization_key = snd_research_advice_none
+    }
+}

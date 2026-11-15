@@ -36,3 +36,9 @@
 28. Adicionado modo supervisionado de construção com proposta persistente, aprovação e recusa. Validação estática concluída.
 
 29. Adicionado modo consultivo de construção, com recomendação mensal e sem despacho. Validação estática concluída.
+
+30. Adicionada avaliação consultiva de recrutamento e mobilização econômica ao relatório nacional. Validação estática concluída.
+
+31. Adicionada leitura de slots nativos, identificação do sistema virtual e sugestão contextual de pesquisa. Validação estática concluída.
+
+32. Adicionadas orientação de focos e leitura de progresso de um foco brasileiro conhecido. Validação estática concluída.

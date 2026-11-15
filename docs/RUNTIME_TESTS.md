@@ -218,3 +218,15 @@ Com a construção recorrente e a supervisão ligadas, passe uma virada e confir
 ## Construção consultiva
 
 Com a construção recorrente ligada, selecione o modo consultivo. Passe uma virada elegível e confira o estado e a obra sugerida no relatório. Confirme a fila inalterada e a ausência das decisões de aprovação. Troque para supervisão e confira que a recomendação antiga não pode ser aprovada. A cobertura atual é estática.
+
+## Política interna no relatório
+
+Validação estática cobre a ligação do texto e o uso dos identificadores vanilla. Compare em jogo uma campanha em paz, uma em guerra sob economia civil e outra em guerra com pouca mão de obra e recrutamento limitado. Confira o poder político e a prioridade sem mudar a lei.
+
+## Pesquisa no relatório
+
+A leitura e as referências passaram na validação estática. Em jogo, compare o total de slots com a interface de pesquisa, alterne o Automated Research System e confira o aviso. Coloque a tecnologia recomendada em um slot e confirme que a próxima leitura deixa de sugeri-la.
+
+## Focos nacionais no relatório
+
+Em uma campanha com a árvore brasileira `brazil_tree`, compare o texto antes de iniciar, durante e após concluir Consequências da crise do café. Use outra árvore para conferir a orientação genérica. O relatório não seleciona nem conclui focos. Validação atual estática.
