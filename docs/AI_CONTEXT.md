@@ -40,3 +40,7 @@ marcada, o Director bloqueia novas autorizações e o despacho mensal. Uma
 autorização anterior permanece pendente e ainda pode ser cancelada. O
 controle também aparece no relatório nacional. Não há detecção de outros mods
 nem controle de `human_ai` pelo script.
+
+O relatório usa `num_of_naval_factories` para estaleiros e `manpower_k` para
+mão de obra disponível em milhares. O alerta de baixo apoio à guerra (abaixo
+de 50%) aparece em guerra, desde que a estabilidade esteja em pelo menos 50%.

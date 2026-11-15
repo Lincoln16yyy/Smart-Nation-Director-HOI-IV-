@@ -14,6 +14,8 @@ snd_director_category = {
         complete_effect = {
             set_variable = { snd_report_civilian_factories = num_of_civilian_factories }
             set_variable = { snd_report_military_factories = num_of_military_factories }
+            set_variable = { snd_report_dockyards = num_of_naval_factories }
+            set_variable = { snd_report_manpower_k = manpower_k }
             country_event = { id = snd.3 }
         }
     }

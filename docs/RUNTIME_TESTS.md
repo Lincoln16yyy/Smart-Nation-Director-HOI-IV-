@@ -79,3 +79,11 @@ relatório. Para conferir em jogo, autorize o piloto, marque gestão externa e
 passe a virada de mês. Confira que a autorização permanece pendente e que
 não houve despacho. Libere o Director antes da virada seguinte e confira
 uma única ordem, desde que a capital continue elegível.
+
+## Estaleiros e mobilização
+
+As variáveis de estaleiros e mão de obra disponível seguem exemplos vanilla
+em `events/SEA_Japan.txt` e `common/scripted_effects/RAJ_GOE_scripted_effects.txt`.
+A ligação entre decisão, evento e textos passou nos testes estáticos. Em jogo,
+compare o relatório com a barra do país e confirme que o alerta de baixo apoio
+só aparece em guerra quando a estabilidade não dispara o primeiro alerta.
