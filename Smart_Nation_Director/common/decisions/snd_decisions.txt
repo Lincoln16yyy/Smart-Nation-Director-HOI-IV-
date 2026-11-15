@@ -14,6 +14,8 @@ snd_director_category = {
         complete_effect = {
             set_variable = { snd_report_civilian_factories = num_of_civilian_factories }
             set_variable = { snd_report_military_factories = num_of_military_factories }
+            set_variable = { snd_report_dockyards = num_of_naval_factories }
+            set_variable = { snd_report_manpower_k = manpower_k }
             country_event = { id = snd.3 }
         }
     }
@@ -42,12 +44,37 @@ snd_director_category = {
             clr_country_flag = snd_industry_sample_ready
         }
     }
+    snd_set_external_construction = {
+        visible = {
+            is_ai = no
+            NOT = { has_country_flag = snd_external_construction }
+        }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = snd_external_construction
+        }
+    }
+    snd_clear_external_construction = {
+        visible = {
+            is_ai = no
+            has_country_flag = snd_external_construction
+        }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            clr_country_flag = snd_external_construction
+        }
+    }
     snd_enable_pilot = {
         visible = {
             NOT = { has_country_flag = snd_pilot_enabled }
             NOT = { has_country_flag = snd_pilot_dispatched }
         }
-        available = { snd_pilot_capital_eligible = yes }
+        available = {
+            NOT = { has_country_flag = snd_external_construction }
+            snd_pilot_capital_eligible = yes
+        }
         cost = 0
         ai_will_do = { factor = 0 }
         complete_effect = {

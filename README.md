@@ -22,3 +22,7 @@ Abra **Decisões → Smart Nation Director → Consultar delegação à IA** par
 **Consultar situação nacional** mostra a contagem de fábricas civis e militares e sugere uma prioridade conforme a estabilidade e a situação de guerra. A decisão atualiza os números a cada abertura.
 
 Use **Ativar acompanhamento industrial** para adicionar a variação de fábricas ao relatório nacional. A primeira comparação vai da ativação à próxima virada de mês. As demais comparam duas viradas consecutivas. Reativar começa uma nova comparação.
+
+Antes de deixar a IA nativa ou outro mod cuidar da construção, use **Indicar construção gerida externamente**. Isso pausa as ordens do Director e preserva uma autorização pendente. Quando a outra automação parar, **Liberar construção para o Director** permite retomá-la.
+
+O relatório também mostra estaleiros e mão de obra disponível, em milhares. Em guerra, prioriza um alerta de apoio à guerra abaixo de 50% quando a estabilidade está em pelo menos 50%.

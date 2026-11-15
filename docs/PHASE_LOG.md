@@ -13,3 +13,5 @@
 7. Adicionado guia de delegação à IA nativa no menu de decisões. Validado estaticamente.
 8. Implementado relatório nacional sob demanda com contagem de fábricas e prioridade condicional. Validação estática concluída.
 9. Adicionado acompanhamento industrial opcional ao relatório nacional, com amostragem mensal sem eventos automáticos. Validação estática concluída.
+10. Adicionado controle manual para suspender ordens de construção do Director durante gestão externa. Validação estática concluída.
+11. Relatório ampliado com estaleiros, mão de obra disponível e alerta de baixo apoio à guerra. Validação estática concluída.

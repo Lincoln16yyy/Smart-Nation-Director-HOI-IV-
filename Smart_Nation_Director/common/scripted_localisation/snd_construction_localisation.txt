@@ -1,0 +1,11 @@
+defined_text = {
+    name = GetSndConstructionStatus
+    text = {
+        trigger = { has_country_flag = snd_external_construction }
+        localization_key = snd_construction_status_external
+    }
+    text = {
+        trigger = { NOT = { has_country_flag = snd_external_construction } }
+        localization_key = snd_construction_status_available
+    }
+}
