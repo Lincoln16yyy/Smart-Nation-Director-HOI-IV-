@@ -7,6 +7,16 @@ snd_director_category = {
             country_event = { id = snd.2 }
         }
     }
+    snd_open_national_report = {
+        visible = { is_ai = no }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_variable = { snd_report_civilian_factories = num_of_civilian_factories }
+            set_variable = { snd_report_military_factories = num_of_military_factories }
+            country_event = { id = snd.3 }
+        }
+    }
     snd_enable_pilot = {
         visible = {
             NOT = { has_country_flag = snd_pilot_enabled }

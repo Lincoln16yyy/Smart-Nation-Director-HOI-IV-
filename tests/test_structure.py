@@ -36,7 +36,7 @@ class PackageTests(unittest.TestCase):
         required = {'snd_director_category'}
         for decision in re.findall(r'^    (snd_\w+) =', decisions, re.M):
             required.update([decision, decision + '_desc'])
-        required.update(re.findall(r'\b(?:title|desc|name)\s*=\s*(snd\.\S+?)(?=\s)', event_text))
+        required.update(re.findall(r'\b(?:title|desc|text|name)\s*=\s*(snd\.\S+?)(?=\s)', event_text))
         for language in ('english', 'braz_por'):
             with self.subTest(language=language):
                 path = MOD / 'localisation' / language / f'snd_l_{language}.yml'
@@ -45,6 +45,9 @@ class PackageTests(unittest.TestCase):
                 self.assertEqual(header, f'l_{language}:')
                 keys = [re.fullmatch(r' ([\w.]+):0 "[^"]+"', line)[1] for line in lines]
                 self.assertCountEqual(keys, required)
+                for line in lines:
+                    for variable in re.findall(r"\[\?(snd_\w+)", line):
+                        self.assertIn(f"{variable} =", decisions)
 
     def test_pilot_uses_regular_queue(self):
         effect = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()
