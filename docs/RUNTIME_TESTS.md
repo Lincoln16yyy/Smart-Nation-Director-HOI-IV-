@@ -345,3 +345,125 @@ mas o intervalo da versão testada não deve ser considerado validado.
 Repetir aprovação/recusa em perfil novo com código corrigido e conferir o
 status e a persistência dos temporizadores antes de declarar a correção
 confirmada em runtime.
+
+### Reteste do cooldown com valor explícito
+
+Na nova campanha descartável `construction-test.cUtH6i16`, o usuário repetiu
+supervisão, ativação da construção e aprovação. A captura fornecida em
+1/2/1936 às 3h mostra o relatório com a mensagem de espera pelo intervalo
+mínimo de 180 dias, sem proposta pendente e última ordem de fábrica civil
+na Bahia. Isso confirma reconhecimento do cooldown após despacho na versão
+corrigida. A escolha de outro estado é compatível com a seleção aleatória
+dos estados elegíveis quando a capital não é candidata.
+
+Não confirma ainda persistência desse temporizador após save/load, duração
+efetiva de 180 dias, expiração, nem o adiamento de 90 dias após recusa.
+Captura preservada localmente em `evidence/report-corrected-cooldown-feb01.png`.
+
+### Persistência do cooldown corrigido
+
+Após solicitar salvar como `snd_teste_intervalo` e recarregar, o usuário
+forneceu captura em 1/2/1936 às 3h com a mensagem do intervalo mínimo de
+180 dias ainda presente, última ordem de fábrica civil na Bahia e nenhuma
+proposta pendente. A observação após o procedimento solicitado confirma
+persistência do estado de cooldown exibido pelo relatório. A expiração
+no prazo e o bloqueio em viradas posteriores continuam pendentes.
+Captura local: `evidence/report-cooldown-after-reload-feb01.png`.
+
+### Primeira virada mensal após recarga na versão corrigida
+
+Captura do usuário em 1/3/1936 à 1h mostra uma única fábrica civil na Bahia,
+com 10/15 fábricas alocadas e 588/10800 de progresso (5%). Não houve uma
+segunda ordem na fila após essa virada mensal. O tooltip indica velocidade
+21/dia e previsão de 1/7/1937 à 1h. Além dos modificadores de economia civil,
+exportações, Neglected State e infraestrutura, mostra Cangaço Active in State
+−10%. Esses dados pertencem à obra da Bahia; a velocidade de 28/dia medida
+no teste anterior era da obra do Paraná, em outra campanha.
+
+A observação demonstra progresso e ausência de duplicação na primeira
+virada após o procedimento de save/load. Como cooldown e obra pendente
+coexistem, não isola qual das duas barreiras impediu novo planejamento.
+Expiração do cooldown e adiamento por recusa continuam pendentes.
+Captura local: `evidence/queue-march01-no-duplicate.png`.
+
+### Transição após o prazo do cooldown
+
+Captura do usuário em 3/9/1936 às 14h mostra espera por aumento do nível da
+obra anterior, última ordem de fábrica civil na Bahia e nenhuma proposta
+pendente. A mensagem do cooldown deixou de aparecer. Como a localização
+prioriza o cooldown sobre a obra pendente, isso evidencia sua expiração
+até essa data e a manutenção da barreira de obra pendente. Não mede o dia
+exato da expiração nem comprova, isoladamente, duração exata de 180 dias.
+A fila não foi mostrada nesta captura; não permite afirmar contagem de
+obras em setembro. Próxima verificação: conclusão normal da fábrica,
+liberação da espera e geração de nova proposta na virada mensal elegível.
+Captura local: `evidence/report-sept03-cooldown-expired.png`.
+
+### Fila após expiração do cooldown
+
+Nova captura em 3/9/1936 às 14h confirmou uma única fábrica civil na Bahia,
+4494/10800 (41%), 10/15 fábricas alocadas, velocidade 21/dia e previsão de
+conclusão em 1/7/1937 à 1h. A combinação com o relatório anterior mostra
+que, mesmo após expirar o cooldown, a obra ainda em andamento não foi
+acompanhada de nova proposta ou segunda ordem até essa observação.
+Captura local: `evidence/queue-sept03-single-project.png`.
+
+### Retomada supervisionada após a obra anterior
+
+Captura do usuário em 3/8/1937 às 7h mostra o relatório aguardando decisão
+sobre uma nova proposta de fábrica civil no Paraná. A última ordem continua
+sendo a fábrica civil na Bahia. O indicador civil passou de 17 para 18,
+enquanto militares e estaleiros permaneceram em 3 e 2. O painel também
+mostra 18/3 sem atualização manual, acompanhando a mudança do indicador.
+
+A nova proposta demonstra que a espera pela obra anterior foi liberada e o
+planejamento supervisionado retomou sem autorizar a segunda obra por conta
+própria. O aumento de uma unidade no indicador é consistente com conclusão
+da fábrica da Bahia; não foram capturados o instante da conclusão nem o
+nível estadual final. A fila após a nova proposta não foi mostrada nesta
+captura. Não equivale a validação de todos os modos, países ou configurações.
+Próximo teste: recusar a proposta do Paraná e conferir adiamento de 90 dias.
+Captura local: `evidence/report-aug1937-next-proposal.png`.
+
+### Recusa da proposta seguinte
+
+Em 3/8/1937 às 7h, após a instrução de recusar a proposta do Paraná, a nova
+captura do usuário mostra planejamento adiado após recusa por um período
+de 90 dias, nenhuma proposta pendente e última ordem ainda na Bahia.
+Isso confirma remoção da proposta e reconhecimento do temporizador de
+recusa com valor explícito. Não confirma persistência após recarregar,
+duração exata, bloqueio em virada seguinte ou expiração desse temporizador.
+A fila não foi mostrada neste passo. Captura local:
+`evidence/report-declined-aug03-1937.png`.
+
+### Adiamento após recarga e virada mensal
+
+Após solicitar salvar/recarregar `snd_teste_recusa` e atravessar setembro,
+o usuário forneceu captura em 14/9/1937 às 15h. O relatório mantém o aviso
+de adiamento de 90 dias, sem proposta pendente e com Bahia como última ordem.
+A observação após o procedimento solicitado sustenta persistência do
+adiamento e bloqueio de nova proposta na virada de setembro. Não mede o
+instante da recarga nem demonstra duração exata ou expiração. Próxima
+verificação: relatório após a virada de dezembro, posterior aos 90 dias
+contados desde a recusa em 3/8/1937.
+Captura local: `evidence/report-decline-after-reload-sept14.png`.
+
+### Retomada após adiamento por recusa
+
+Captura do usuário em 2/12/1937 às 10h mostra nova proposta de fábrica civil
+em Minas Gerais, aguardando decisão, sem aviso de adiamento. A última ordem
+continua sendo a fábrica civil na Bahia e o indicador civil permanece em 18.
+A recusa da proposta do Paraná em 3/8/1937 não ficou bloqueada indefinidamente:
+o adiamento permaneceu observado em setembro e expirou até dezembro, permitindo
+nova proposta. O dia exato da expiração não foi capturado; não se declara
+medição exata de 90 dias com esses checkpoints. A fila não foi mostrada em
+dezembro e essa captura não autoriza afirmar que a nova proposta foi executada.
+Captura local: `evidence/report-dec02-new-proposal.png`.
+
+Esta rodada demonstrou, no Brasil humano com Director isolado e interface em
+inglês, proposta supervisionada, autorização e progresso pela fila normal,
+continuidade após o passo de save/load, ativação/persistência/expiração dos
+estados de temporizador corrigidos, espera pela obra e retomada do planejamento,
+e recusa com adiamento e posterior retomada. Permanecem pendentes a duração
+exata dos prazos, revalidação com estado inválido, gestão externa, demais modos,
+países/modpacks e desempenho. Não houve benchmark de campanha longa.
