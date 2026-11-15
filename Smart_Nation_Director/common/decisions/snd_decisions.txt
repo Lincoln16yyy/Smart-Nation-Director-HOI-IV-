@@ -1,0 +1,22 @@
+snd_director_category = {
+    snd_enable_pilot = {
+        visible = {
+            NOT = { has_country_flag = snd_pilot_enabled }
+            NOT = { has_country_flag = snd_pilot_dispatched }
+        }
+        available = { snd_pilot_capital_eligible = yes }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = snd_pilot_enabled
+        }
+    }
+    snd_disable_pilot = {
+        visible = { has_country_flag = snd_pilot_enabled }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            clr_country_flag = snd_pilot_enabled
+        }
+    }
+}

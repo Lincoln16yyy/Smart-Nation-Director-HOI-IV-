@@ -1,0 +1,9 @@
+﻿l_english:
+ snd_director_category:0 "Smart Nation Director"
+ snd_enable_pilot:0 "Authorize capital infrastructure pilot"
+ snd_enable_pilot_desc:0 "At the next monthly check, the Director issues one order for capital infrastructure if the capital remains eligible. Construction uses the regular queue."
+ snd_disable_pilot:0 "Cancel the pending pilot"
+ snd_disable_pilot_desc:0 "Withdraw authorization before the monthly check. An order already issued stays in the construction queue."
+ snd.1.t:0 "Capital infrastructure order issued"
+ snd.1.d:0 "The Director issued its infrastructure order. Inspect the construction queue to see whether the project was accepted and how many civilian factories are assigned."
+ snd.1.a:0 "Close"

@@ -1,0 +1,15 @@
+on_actions = {
+    on_monthly = {
+        effect = {
+            if = {
+                limit = {
+                    is_ai = no
+                    has_country_flag = snd_pilot_enabled
+                    NOT = { has_country_flag = snd_pilot_dispatched }
+                    snd_pilot_capital_eligible = yes
+                }
+                snd_dispatch_pilot = yes
+            }
+        }
+    }
+}

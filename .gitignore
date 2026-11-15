@@ -1,0 +1,26 @@
+*.hoi4
+*.log
+*.dmp
+*.exe
+*.dll
+*.pdb
+*.zip
+*.7z
+*.rar
+.env*
+*.pem
+*.key
+__pycache__/
+.cache/
+runtime/
+dist/
+logs/
+crashes/
+dumps/
+shadercache/
+save games/
+wine-prefixes/
+drive_c/
+dlc_load.json
+settings.txt
+pdx_settings.txt

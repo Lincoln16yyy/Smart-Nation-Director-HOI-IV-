@@ -1,0 +1,12 @@
+snd_dispatch_pilot = {
+    capital_scope = {
+        add_building_construction = {
+            type = infrastructure
+            level = 1
+            instant_build = no
+        }
+    }
+    set_country_flag = snd_pilot_dispatched
+    clr_country_flag = snd_pilot_enabled
+    country_event = { id = snd.1 }
+}
