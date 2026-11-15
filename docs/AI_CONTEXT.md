@@ -129,6 +129,13 @@ A visão diplomática é uma leitura do próprio país. `snd.5` usa `is_faction_
 
 A auditoria de símbolos pode ser repetida com
 `python3 scripts/audit_symbols.py PERFIL`. O resumo em
-`docs/SYMBOL_AUDIT.json` registra 346 definições do Director, 11 mods e nenhuma
+`docs/SYMBOL_AUDIT.json` registra 354 definições do Director, 11 mods e nenhuma
 colisão nos domínios cobertos. Não inclui flags, variáveis, ideias, sprites,
 janelas, vanilla nem todos os pares de terceiros; veja `MOD_AUDIT.md`.
+
+O status de construção no relatório agora prioriza: rotinas desligadas,
+gestão externa, piloto autorizado, intervalo entre ordens, obra pendente,
+adiamento após recusa, modo consultivo, proposta supervisionada e modo
+supervisionado sem proposta. O estado de aprovação lembra que a elegibilidade
+será revalidada. Essa revisão é somente informativa e ainda precisa ser vista
+em campanha. O teste estático cobre 512 combinações de flags/bloqueio externo.

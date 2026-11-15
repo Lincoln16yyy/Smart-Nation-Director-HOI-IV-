@@ -20,20 +20,14 @@ defined_text = {
 defined_text = {
     name = GetSndAutoConstructionStatus
     text = {
-        trigger = { NOT = { has_country_flag = snd_auto_construction } }
+        trigger = {
+            NOT = { has_country_flag = snd_auto_construction }
+        }
         localization_key = snd_auto_construction_off
     }
     text = {
         trigger = {
             has_country_flag = snd_auto_construction
-            has_country_flag = snd_construction_advisory
-        }
-        localization_key = snd_construction_advisory_active
-    }
-    text = {
-        trigger = {
-            has_country_flag = snd_auto_construction
-            NOT = { has_country_flag = snd_construction_advisory }
             snd_construction_managed_externally = yes
         }
         localization_key = snd_auto_construction_suspended
@@ -41,8 +35,16 @@ defined_text = {
     text = {
         trigger = {
             has_country_flag = snd_auto_construction
-            NOT = { has_country_flag = snd_construction_advisory }
             NOT = { snd_construction_managed_externally = yes }
+            has_country_flag = snd_pilot_enabled
+        }
+        localization_key = snd_auto_construction_pilot_waiting
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_auto_construction
+            NOT = { snd_construction_managed_externally = yes }
+            NOT = { has_country_flag = snd_pilot_enabled }
             has_country_flag = snd_auto_construction_cooldown
         }
         localization_key = snd_auto_construction_waiting
@@ -50,8 +52,8 @@ defined_text = {
     text = {
         trigger = {
             has_country_flag = snd_auto_construction
-            NOT = { has_country_flag = snd_construction_advisory }
             NOT = { snd_construction_managed_externally = yes }
+            NOT = { has_country_flag = snd_pilot_enabled }
             NOT = { has_country_flag = snd_auto_construction_cooldown }
             has_country_flag = snd_auto_project_pending
         }
@@ -60,10 +62,64 @@ defined_text = {
     text = {
         trigger = {
             has_country_flag = snd_auto_construction
-            NOT = { has_country_flag = snd_construction_advisory }
             NOT = { snd_construction_managed_externally = yes }
+            NOT = { has_country_flag = snd_pilot_enabled }
             NOT = { has_country_flag = snd_auto_construction_cooldown }
             NOT = { has_country_flag = snd_auto_project_pending }
+            has_country_flag = snd_construction_proposal_deferred
+        }
+        localization_key = snd_auto_construction_deferred
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_auto_construction
+            NOT = { snd_construction_managed_externally = yes }
+            NOT = { has_country_flag = snd_pilot_enabled }
+            NOT = { has_country_flag = snd_auto_construction_cooldown }
+            NOT = { has_country_flag = snd_auto_project_pending }
+            NOT = { has_country_flag = snd_construction_proposal_deferred }
+            has_country_flag = snd_construction_advisory
+        }
+        localization_key = snd_construction_advisory_active
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_auto_construction
+            NOT = { snd_construction_managed_externally = yes }
+            NOT = { has_country_flag = snd_pilot_enabled }
+            NOT = { has_country_flag = snd_auto_construction_cooldown }
+            NOT = { has_country_flag = snd_auto_project_pending }
+            NOT = { has_country_flag = snd_construction_proposal_deferred }
+            NOT = { has_country_flag = snd_construction_advisory }
+            has_country_flag = snd_construction_supervised
+            has_country_flag = snd_construction_proposal_pending
+        }
+        localization_key = snd_auto_construction_approval
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_auto_construction
+            NOT = { snd_construction_managed_externally = yes }
+            NOT = { has_country_flag = snd_pilot_enabled }
+            NOT = { has_country_flag = snd_auto_construction_cooldown }
+            NOT = { has_country_flag = snd_auto_project_pending }
+            NOT = { has_country_flag = snd_construction_proposal_deferred }
+            NOT = { has_country_flag = snd_construction_advisory }
+            NOT = { has_country_flag = snd_construction_proposal_pending }
+            has_country_flag = snd_construction_supervised
+        }
+        localization_key = snd_auto_construction_supervised
+    }
+    text = {
+        trigger = {
+            has_country_flag = snd_auto_construction
+            NOT = { snd_construction_managed_externally = yes }
+            NOT = { has_country_flag = snd_pilot_enabled }
+            NOT = { has_country_flag = snd_auto_construction_cooldown }
+            NOT = { has_country_flag = snd_auto_project_pending }
+            NOT = { has_country_flag = snd_construction_proposal_deferred }
+            NOT = { has_country_flag = snd_construction_advisory }
+            NOT = { has_country_flag = snd_construction_supervised }
         }
         localization_key = snd_auto_construction_active
     }

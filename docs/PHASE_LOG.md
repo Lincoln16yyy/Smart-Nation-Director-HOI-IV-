@@ -53,3 +53,10 @@
     Em 15/11/2026, 346 definições comparadas a 11 mods, sem colisões ou duplicatas
     nos domínios cobertos. Versão 1.19.3.0 reconfirmada. 22 testes estáticos
     aprovados; nenhum novo teste em campanha.
+
+37. Corrigido o status de construção para mostrar bloqueios também no modo
+    consultivo e distinguir espera por aprovação, supervisão sem proposta e
+    adiamento de 90 dias após recusa. Textos em português e inglês atualizados.
+    23 testes aprovados, incluindo seleção única de status em 512 combinações.
+    Auditoria atualizada: 354 definições, sem colisões nos domínios cobertos.
+    Nenhuma campanha iniciada nesta etapa.

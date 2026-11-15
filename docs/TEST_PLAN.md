@@ -31,3 +31,22 @@ passe o caminho de `hoi4.exe` como argumento do lançador.
    virada e compare o modelo, a linha e a quantidade de fábricas alocadas.
    Registre também o status do relatório. O teste com linha existente já
    está registrado em [RUNTIME_TESTS.md](RUNTIME_TESTS.md).
+
+
+## Mensagens de estado da construção
+
+Em campanha descartável com apenas o Director, consulte o relatório nacional
+entre as etapas; deixe `human_ai` desligado.
+
+1. Ative o modo consultivo e as rotinas. Marque gestão externa de construção:
+   o status deve indicar suspensão. Remova a marca e confirme o modo consultivo.
+2. Troque para supervisão e avance uma virada elegível. Com proposta pendente,
+   o relatório deve pedir sua decisão e a fila deve continuar sem nova ordem.
+3. Recuse a proposta. Confira o aviso de adiamento de 90 dias. Trocar para modo
+   consultivo durante esse período deve preservar o aviso de adiamento.
+4. Depois do prazo, volte à supervisão, espere uma proposta e aprove. Confira
+   a ordem na fila e o aviso do intervalo de 180 dias. Quando só restar a flag
+   de obra pendente, confira o aviso para verificar a fila ou liberar a espera.
+5. Desative as rotinas: o status deve indicar desativação, preservando o registro
+   da última ordem e o intervalo. Repita os estados principais após salvar e
+   recarregar; registre idiomas testados e erros de localização em RUNTIME_TESTS.
