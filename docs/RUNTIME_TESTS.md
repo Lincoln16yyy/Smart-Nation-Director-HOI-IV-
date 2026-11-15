@@ -18,8 +18,8 @@ de Janeiro. A linha mostrava **10/15 fábricas civis** alocadas, depois das sete
 destinadas a bens de consumo. Nenhuma ordem de obra foi emitida manualmente.
 
 Esse teste confirma que a autorização e o ciclo mensal acionaram uma ordem real
-pela fila regular, com consumo de capacidade civil. Save/load e conclusão da
-obra continuam pendentes.
+pela fila regular, com consumo de capacidade civil. A persistência foi testada separadamente;
+a conclusão da obra ainda não foi medida.
 
 ## Primeiras ações de human_ai
 
@@ -38,3 +38,17 @@ estava fora da configuração do teste.
 Essa é uma observação sequencial com o piloto já despachado. Uma execução de
 controle com o mesmo checkpoint de fevereiro é necessária para atribuir toda
 mudança ao comando e medir efeitos ao longo do tempo.
+
+
+## Persistência depois do despacho
+
+Salvei a partida pausada em 4 de março de 1936 com `savegame`. O arquivo foi
+gravado no perfil temporário. A flag `snd_pilot_dispatched` aparece no save;
+`snd_pilot_enabled` está ausente. Reabri o arquivo pelo menu **Load Game** e
+confirmei que o Brasil voltou à data do save. O console retornou
+`Result = yes` em escopo de país para
+`eval_trigger has_country_flag = snd_pilot_dispatched`.
+
+Avancei 30 dias após recarregar e cheguei a 3 de abril de 1936. O evento do
+piloto não reapareceu na observação da virada. O jogo exibiu a conclusão do
+foco Aftermath of the Coffee Crisis, que já estava em andamento no save.
