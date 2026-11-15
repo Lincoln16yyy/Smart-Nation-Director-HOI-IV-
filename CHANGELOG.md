@@ -2,6 +2,10 @@
 
 ## Em desenvolvimento
 
+- Piloto opcional de produção de infantaria com uma única solicitação pela fila normal.
+- Controle de produção externa e status do piloto no relatório nacional.
+- Seleção do modelo padrão de infantaria mais avançado já pesquisado, entre os quatro níveis comuns ao vanilla e ao Road to 56.
+
 - Guia de delegação à IA nativa acessível pelo menu de decisões em português e inglês.
 - Relatório nacional com fábricas civis e militares e recomendações condicionadas à estabilidade e à guerra.
 - Estaleiros e mão de obra disponível no relatório, com alerta de baixo apoio à guerra.

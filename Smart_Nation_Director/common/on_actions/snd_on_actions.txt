@@ -44,6 +44,15 @@ on_actions = {
                 }
                 snd_review_national_risk = yes
             }
+            if = {
+                limit = {
+                    is_ai = no
+                    has_country_flag = snd_rifle_production_enabled
+                    NOT = { has_country_flag = snd_rifle_order_issued }
+                    snd_can_dispatch_rifle_order = yes
+                }
+                snd_dispatch_rifle_order = yes
+            }
         }
     }
 }

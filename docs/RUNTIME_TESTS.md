@@ -160,3 +160,22 @@ do país. Confirme que o botão **Abrir relatório detalhado** continua abrindo
 o evento `snd.3`. Repita com o Iron Secretary ligado e desligado para conferir
 a linha de comércio. Registre a resolução usada, porque o painel foi dimensionado
 em 490x236 para 1080p.
+
+## Piloto de produção de infantaria
+
+O padrão terrestre está em `history/units/BRA_1936.txt` do vanilla. Em uma
+campanha descartável em guerra, compare a fila antes e depois de uma virada
+com reserva baixa, tecnologia liberada e capacidade militar disponível.
+Confira o modelo, a alocação, a eficiência inicial e o estoque. Repita uma
+virada para conferir o limite de uma solicitação. A semântica de capacidade
+disponível e o efeito sobre linhas existentes ainda precisam de teste.
+
+No teste da produção, autorize o piloto e marque gestão externa antes
+da primeira virada. Confira que a autorização fica suspensa. Libere
+a produção e observe a próxima virada elegível. Verifique que o relatório
+registra a solicitação e compare com a fila para confirmar a aceitação.
+
+O piloto também cobre equipamento 2 e 3. Em uma campanha descartável com
+tecnologia avançada, confirme que o modelo solicitado corresponde à
+tecnologia mais alta desbloqueada. Para avaliar duplicatas, compare a
+fila antes e depois em variações com e sem uma linha de infantaria existente.

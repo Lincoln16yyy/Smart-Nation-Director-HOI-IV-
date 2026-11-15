@@ -101,3 +101,15 @@ snd_iron_secretary_runs_trade = {
     has_country_flag = ais_enabled
     has_country_flag = ais_trade_enabled
 }
+
+snd_can_dispatch_rifle_order = {
+    NOT = { has_country_flag = snd_external_production }
+    snd_has_infantry_equipment_risk = yes
+    num_of_available_military_factories > 0
+    OR = {
+        has_tech = infantry_weapons
+        has_tech = infantry_weapons1
+        has_tech = improved_infantry_weapons
+        has_tech = advanced_infantry_weapons
+    }
+}

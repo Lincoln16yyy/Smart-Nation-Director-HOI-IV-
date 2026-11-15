@@ -27,6 +27,7 @@ snd_director_category = {
                 has_country_flag = snd_risk_alerts_enabled
                 has_country_flag = snd_auto_construction
                 has_country_flag = snd_pilot_enabled
+                has_country_flag = snd_rifle_production_enabled
             }
         }
         cost = 0
@@ -36,6 +37,7 @@ snd_director_category = {
             clr_country_flag = snd_risk_alerts_enabled
             clr_country_flag = snd_auto_construction
             clr_country_flag = snd_pilot_enabled
+            clr_country_flag = snd_rifle_production_enabled
         }
     }
     snd_open_delegation_guide = {
@@ -154,6 +156,57 @@ snd_director_category = {
         ai_will_do = { factor = 0 }
         complete_effect = {
             clr_country_flag = snd_auto_project_pending
+        }
+    }
+    snd_set_external_production = {
+        visible = {
+            is_ai = no
+            NOT = { has_country_flag = snd_external_production }
+            NOT = { has_country_flag = snd_rifle_order_issued }
+        }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = snd_external_production
+        }
+    }
+    snd_clear_external_production = {
+        visible = {
+            is_ai = no
+            has_country_flag = snd_external_production
+        }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            clr_country_flag = snd_external_production
+        }
+    }
+    snd_enable_rifle_production_pilot = {
+        visible = {
+            is_ai = no
+            NOT = { has_country_flag = snd_rifle_production_enabled }
+            NOT = { has_country_flag = snd_rifle_order_issued }
+        }
+        available = { NOT = { has_country_flag = snd_external_production } }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            set_country_flag = snd_rifle_production_enabled
+        }
+    }
+    snd_disable_rifle_production_pilot = {
+        visible = {
+            is_ai = no
+            has_country_flag = snd_rifle_production_enabled
+        }
+        cost = 0
+        fire_only_once = no
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            clr_country_flag = snd_rifle_production_enabled
         }
     }
     snd_enable_pilot = {
