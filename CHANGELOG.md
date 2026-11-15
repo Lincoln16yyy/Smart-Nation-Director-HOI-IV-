@@ -4,6 +4,7 @@
 
 - Guia de delegação à IA nativa acessível pelo menu de decisões em português e inglês.
 - Relatório nacional com fábricas civis e militares e recomendações condicionadas à estabilidade e à guerra.
+- Acompanhamento industrial opcional com variação entre as últimas duas medições.
 
 ## 0.1.0
 

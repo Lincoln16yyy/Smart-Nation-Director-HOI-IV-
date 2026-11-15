@@ -33,7 +33,10 @@ class PackageTests(unittest.TestCase):
         decisions = (MOD / 'common/decisions/snd_decisions.txt').read_text()
         references = re.findall(r'country_event\s*=\s*\{\s*id\s*=\s*(snd\.\d+)', effect + decisions)
         self.assertCountEqual(event_ids, references)
+        scripted_loc = (MOD / 'common/scripted_localisation/snd_industry_localisation.txt').read_text()
         required = {'snd_director_category'}
+        required.update(re.findall(r'localization_key\s*=\s*(snd_\w+)', scripted_loc))
+        getters = re.findall(r'name\s*=\s*(GetSnd\w+)', scripted_loc)
         for decision in re.findall(r'^    (snd_\w+) =', decisions, re.M):
             required.update([decision, decision + '_desc'])
         required.update(re.findall(r'\b(?:title|desc|text|name)\s*=\s*(snd\.\S+?)(?=\s)', event_text))
@@ -47,7 +50,8 @@ class PackageTests(unittest.TestCase):
                 self.assertCountEqual(keys, required)
                 for line in lines:
                     for variable in re.findall(r"\[\?(snd_\w+)", line):
-                        self.assertIn(f"{variable} =", decisions)
+                        self.assertIn(f"{variable} =", decisions + effect)
+                self.assertEqual(set(re.findall(r'\[Root\.(GetSnd\w+)\]', '\n'.join(lines))), set(getters))
 
     def test_pilot_uses_regular_queue(self):
         effect = (MOD / 'common/scripted_effects/snd_effects.txt').read_text()

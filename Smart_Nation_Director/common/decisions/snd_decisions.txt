@@ -17,6 +17,31 @@ snd_director_category = {
             country_event = { id = snd.3 }
         }
     }
+    snd_enable_industry_tracking = {
+        visible = {
+            is_ai = no
+            NOT = { has_country_flag = snd_industry_tracking }
+        }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            snd_capture_industry_baseline = yes
+            clr_country_flag = snd_industry_sample_ready
+            set_country_flag = snd_industry_tracking
+        }
+    }
+    snd_disable_industry_tracking = {
+        visible = {
+            is_ai = no
+            has_country_flag = snd_industry_tracking
+        }
+        cost = 0
+        ai_will_do = { factor = 0 }
+        complete_effect = {
+            clr_country_flag = snd_industry_tracking
+            clr_country_flag = snd_industry_sample_ready
+        }
+    }
     snd_enable_pilot = {
         visible = {
             NOT = { has_country_flag = snd_pilot_enabled }
