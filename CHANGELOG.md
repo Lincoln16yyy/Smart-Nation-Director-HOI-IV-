@@ -2,6 +2,8 @@
 
 ## Em desenvolvimento
 
+- Status de construção distingue bloqueios no modo consultivo, aprovação pendente e adiamento após recusa.
+
 - Visão diplomática de facções e países subordinados.
 
 - Alerta prioritário de risco de capitulação na revisão mensal.

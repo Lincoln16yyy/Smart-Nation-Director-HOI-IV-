@@ -249,3 +249,12 @@ Executados `python3 scripts/audit_symbols.py PERFIL` e
 O manifesto da instalação mantém a versão 1.19.3.0. Não foi iniciada uma
 campanha nesta etapa. Os testes pendentes do painel, relatórios, modos de
 construção e variante de produção continuam pendentes.
+
+## Estados informativos de construção — 15/11/2026
+
+A revisão do relatório passou por 23 testes estáticos. O teste de status
+interpreta os triggers de localização e verifica uma única mensagem correta
+para cada uma das 512 combinações de oito flags e bloqueio externo. Isso
+verifica a lógica booleana, não a interpretação ou apresentação da engine.
+A auditoria atualizada conta 354 definições, sem colisões nos tipos cobertos.
+Nenhum teste novo em campanha; roteiro acrescentado em TEST_PLAN.md.

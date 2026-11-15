@@ -52,3 +52,8 @@ Mods exclusivamente gráficos podem ter zero definições cobertas. Ausência
 de colisão de ID não comprova coexistência das automações em campanha.
 A versão local foi reconfirmada em `launcher-settings.json`:
 Operation Postern v1.19.3.0.c01a (5632).
+
+Após a revisão dos estados informativos de construção, o resumo JSON foi
+atualizado para **354 definições** (oito novas entradas de localização),
+ainda contra 11 mods e sem colisões, duplicatas internas ou descriptors
+ignorados. O escopo da auditoria permanece o descrito acima.
